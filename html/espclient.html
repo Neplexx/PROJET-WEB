@@ -8,10 +8,35 @@
     <link rel="stylesheet" type="text/css" href ="espclient.css">
 </head>
 <body>
-    <div>
+    <div class ="conteneur">
+           <h1>
+            Paramètres du compte
+           </h1>
         <div>
+            <h2>Paramètres généraux</h2>
+            <h3>Photo de profil</h3>
+            <form action="/upload-profile-picture" method="post" enctype="multipart/form-data">
+                <label for="profile-picture">Changer la photo de profil :</label>
+                <input type="file" id="profile-picture" name="profile-picture" accept="image/*" required>
+                <button type="submit">Télécharger</button>
+            </form>
             <div>
+                <h3>Mot de passe</h3>
+                <form action="/change-password" method="post">
+                    <label for="current-password">Mot de passe actuel :</label>
+                    <input type="password" id="current-password" name="current-password" required>
+                    
+                    <label for="new-password">Nouveau mot de passe :</label>
+                    <input type="password" id="new-password" name="new-password" required>
+                
+                    <label for="confirm-password">Confirmer le nouveau mot de passe :</label>
+                    <input type="password" id="confirm-password" name="confirm-password" required>
+                
+                    <button type="submit">Changer le mot de passe</button>
+                </form>
+                
 
+                </div>
             </div>
         </div>
     </div>

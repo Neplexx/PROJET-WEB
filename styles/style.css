@@ -3,3 +3,17 @@
     --bleu-bordure:#1F5A92;
     --bleu-texte-1:#79B5EA;
 }
+.noms {
+    max-height: 0;
+    overflow: hidden;
+}
+input[type="checkbox"]:checked + .noms{
+    transition: max-height 0.3s ease-out;
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid var(--bleu-bordure);
+    padding:10px;
+    border-radius: 5px;
+    margin-top: 10px;
+    background-color: var(--bleu-principal);
+}

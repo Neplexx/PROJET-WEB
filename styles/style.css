@@ -2,10 +2,13 @@
     --bleu-principal:#518CC4;
     --bleu-bordure:#1F5A92;
     --bleu-texte-1:#79B5EA;
+    --bleu-fond:#BFCBE8;
+    --orange:#D4603F;
 }
 .noms {
     max-height: 0;
     overflow: hidden;
+    
 }
 input[type="checkbox"]:checked + .noms{
     transition: max-height 0.3s ease-out;
@@ -15,5 +18,5 @@ input[type="checkbox"]:checked + .noms{
     padding:10px;
     border-radius: 5px;
     margin-top: 10px;
-    background-color: var(--bleu-principal);
+    background-color: var(--bleu-fond);
 }

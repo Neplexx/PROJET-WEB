@@ -4,6 +4,13 @@
     --bleu-texte-1:#79B5EA;
     --bleu-fond:#BFCBE8;
     --orange:#D4603F;
+    --gris-texte:#E0E0E0;
+}
+*{
+    font-family: Roboto, sans-serif;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style-type: none;
 }
 .noms {
     max-height: 0;
@@ -19,4 +26,52 @@ input[type="checkbox"]:checked + .noms{
     border-radius: 5px;
     margin-top: 10px;
     background-color: var(--bleu-fond);
+}
+header{
+    display: flex;
+    align-items: center;
+    padding:10px;
+    position: relative;
+    height: 40px;
+    background-color: var(--bleu-principal);
+}
+header > a {
+    float: right;
+    position: absolute;
+    top:20%;
+    right:3%;
+}
+nav{
+    background-color: var(--bleu-principal);
+    padding: 1px;
+}
+nav > ul > li{
+    margin-left:30px;
+    display: inline;
+}
+nav > ul > li > a {
+    color:var(--gris-texte);
+    font-weight: bold;
+    text-transform: uppercase;
+}
+#maintenant{
+    color: var(--orange);
+    background-color:var(--bleu-fond);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding: 18px;
+}
+body {
+    margin:0;
+}
+main{
+    background-color: var(--bleu-fond);
+}
+main > section {
+    padding : 10px;
+}
+footer{
+    background-color: var(--bleu-principal);
+    height: 200px;
+    border-top:1px solid var(--bleu-bordure);
 }

@@ -6,54 +6,84 @@
     <meta name = "author" content="GLONOU Stefen">
     <title> Profil </title>
     <link rel="stylesheet" type="text/css" href ="espclient.css">
+    <link rel = "icon" type="image/x-icon" href="logo.ico">
 </head>
 <body>
-    <div class="conteneur-profil">
-        <div class="barre">
-            <div class="photo-profil">
-                <img src="photo de profil neutre.png" alt="Photo de profil">
+    <div class="container">
+        <div class="main">
+            <div class="topbar">
+                <a href="">Déconnexion</a>
+                <a href="">Home</a>
+                <a href="">Support</a>
             </div>
-        
+            <div class="row">
+                <div class="col-md-4 mt-1">
+                    <div class="card text-center sidebar">
+                        <div class="card-body">
+                            <img src="photo de profil neutre.png" class="rounded-circle" width="140" alt="Photo de profil">
+                            <div class="mt-3">
+                                <h3>Nom de l'utilisateur</h3>
+                                <a href="">Home</a>
+                                <a href="">Support</a>
+                                <a href="">Paramètres</a>
+                            </div>        
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8 mt-1">
+                    <div class="card mb-3 content">
+                        <h1 class="m-3 pt-3">About</h1>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <h5>Nom complet</h5>
+                                </div>
+                                <div class="col-md-9 text-secondary">
+                                    Stefff
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <h5>Email</h5>
+                        </div>
+                        <div class="texte-secondaire">
+                            abc@gmail.com
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <h5>Téléphone</h5>
+                        </div>
+                        <div class="col-md-9 text-secondary">
+                            0102010201020101
+                        </div>
+                    </div>
+                    <div class="rows">
+                        <div class="col-md-3">
+                            <h5>Adresse</h5>
+                        </div>
+                        <div class="col-md-text-secondary">
+                            Rue  n°13.113
+                        </div>
+                    </div>
+                </div>
+            </div>
+          <div class="card mb-3 content">
+            <h1 class="m-3">Projets récents</h1>
+            <div class="card-body">
+                 <div class="row">
+                     <div class="col-md-3">
+                        <h5>Nom du projet</h5>
+                    </div>
+                        <div class="col-md-9 text-secondary">
+                            Description du projet
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="contenu">
-            <h1>Informations personnelles</h1>
-
-            <!-- Partie des informations personnelles  -->
-            <div class="section-info" onclick="toggleSection('details-info')">
-                <div class="info-details" id="info-details">
-                    <form>
-                        <label for="sexe">Sexe :</label>
-                        <select id="sexe" name="sexe">
-                            <option value="homme">Homme</option>
-                            <option value="femme">Femme</option>
-                            <option value="autre">Autre</option>
-                        </select>
-
-                        <label for="anniversaire">Date de naissance :</label>
-                        <input type="date" id="anniversaire" name="anniversaire">
-
-                        <label for="telephone">Numéro de téléphone :</label>
-                        <input type="tel" id="telephone" name="telephone" placeholder="Ex : 314015454">
-                    </form>
-                </div>
-
-                </div>
-
     </div>
-           
-        </div>
-   
-        <div class="conteneur-autres-details">
-            <div class="statut">
-                <!-- membre actif ou à la recherche de monteur-->
-                <h1>Statut ou rôle</h1>
-            </div>
-            <div class="recommandations">
-                    <h1>Mes recommandations</h1>
-            </div>
-            <div class="liens">
-                    <h1>Liens rapides</h1>
-            </div>
-
+</body>
 
 </html>

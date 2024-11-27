@@ -75,3 +75,48 @@ footer{
     height: 200px;
     border-top:1px solid var(--bleu-bordure);
 }
+.conteneur {
+display: flex;
+}
+#BeauDiapo {
+    position: relative;
+	width: 30%;
+	margin:auto;
+	height: 400px;
+	overflow: hidden;
+    border: #D4603F solid;
+    border-radius: 5%;
+    left: 30%;
+}
+#BeauDiapo .diapo img{
+	height: 400px;
+	width: 25%;
+}
+#BeauDiapo .diapo{
+	height: 400px;
+	width: 400%;
+	position: relative;
+	animation-name: diaporama;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+	animation-direction:inherit;
+	animation-timing-function: linear;
+}
+
+@keyframes diaporama {
+	from, 10% {
+		right: 0;
+	  }
+  
+	  30%, 40% {
+		right: 100%;
+	  }
+  
+	  60%, 70% {
+		right: 200%;
+	  }
+  
+	  90%, to {
+		right: 300%;
+	  }
+}

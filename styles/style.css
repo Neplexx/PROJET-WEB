@@ -76,12 +76,11 @@ footer #supportbouton{
     font-weight: bold;
     background-color: var(--orange);
     border: 1px solid var(--bleu-bordure);
-    padding: 10px vertical 20px horizontal;
     margin: 10px;
     width: 120px;
     height: 40px;
     border-radius: 5px;
-    color: var(--orange);
+    color: var(--gris-texte);
     text-decoration: none;
 }
 footer #supportbouton:hover {
@@ -89,7 +88,7 @@ footer #supportbouton:hover {
         border: 1px solid var(--bleu-bordure);
         background-color: var(--bleu-fond);
         text-decoration: none;
-        cursor: pointer;
+        color: var(--orange);
 }
     
 .conteneur {

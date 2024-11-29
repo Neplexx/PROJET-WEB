@@ -81,7 +81,6 @@ footer #supportbouton:hover {
         cursor: pointer;
         border: 2px solid var(--bleu-bordure);
         background-color: var(--bleu-texte-1);
-        box-shadow: 2px var(--orange) 5px;
         text-decoration: none;
         cursor: pointer;
 }

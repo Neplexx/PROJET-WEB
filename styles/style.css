@@ -58,10 +58,35 @@ main{
     background-color: var(--bleu-fond);
 }
 footer{
+    display: flex;
     background-color: var(--bleu-principal);
     height: 200px;
     border-top:1px solid var(--bleu-bordure);
 }
+
+footer #supportbouton{
+    position: absolute;
+    right: 3%;
+    top: 85%;
+    font-weight: bold;
+    color: white;
+    background-color: var(--orange);
+    border: 2px solid var(--bleu-bordure);
+    padding: 10px vertical 20px horizontal;
+    margin: 10px;
+    width: 120px;
+    border-radius: 5px;
+    color: var(--orange);
+}
+footer #supportbouton:hover {
+        cursor: pointer;
+        border: 2px solid var(--bleu-bordure);
+        background-color: var(--bleu-texte-1);
+        box-shadow: 2px var(--orange) 5px;
+        text-decoration: none;
+        cursor: pointer;
+}
+    
 .conteneur {
 display: flex;
 }

@@ -17,16 +17,6 @@
     overflow: hidden;
     
 }
-input[type="checkbox"]:checked + .noms{
-    transition: max-height 0.3s ease-out;
-    max-height: 200px;
-    overflow-y: auto;
-    border: 1px solid var(--bleu-bordure);
-    padding:10px;
-    border-radius: 5px;
-    margin-top: 10px;
-    background-color: var(--bleu-fond);
-}
 header{
     display: flex;
     align-items: center;
@@ -67,9 +57,6 @@ body {
 main{
     background-color: var(--bleu-fond);
 }
-main > section {
-    padding : 10px;
-}
 footer{
     background-color: var(--bleu-principal);
     height: 200px;
@@ -77,6 +64,25 @@ footer{
 }
 .conteneur {
 display: flex;
+}
+section{
+    padding: 10px;
+}
+h1{
+    text-align: center;
+}
+article{
+    padding: 5px;
+    text-align: center;
+}
+input[type="checkbox"]:checked + .noms{
+    transition: max-height 0.3s ease-out;
+    max-height: 200px;
+    border: 1px solid var(--bleu-bordure);
+    padding:10px;
+    border-radius: 5px;
+    margin-top: 10px;
+    background-color: var(--bleu-fond);
 }
 #BeauDiapo {
     position: relative;

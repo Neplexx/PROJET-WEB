@@ -12,6 +12,12 @@
     text-decoration: none;
     list-style-type: none;
 }
+header img {
+    transition: 0.8s ease-in-out;
+}
+header img:hover {
+    content: url("../pictures/photoDeProfil2.png");
+}
 .noms {
     max-height: 0;
     overflow: hidden; 

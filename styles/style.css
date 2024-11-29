@@ -70,23 +70,24 @@ footer{
 }
 
 footer #supportbouton{
-    position: absolute;
-    right: 3%;
-    top: 85%;
+    position: relative;
+    left:90%;
+    top:60%;
     font-weight: bold;
     background-color: var(--orange);
-    border: 2px solid var(--bleu-bordure);
+    border: 1px solid var(--bleu-bordure);
     padding: 10px vertical 20px horizontal;
     margin: 10px;
     width: 120px;
+    height: 40px;
     border-radius: 5px;
     color: var(--orange);
     text-decoration: none;
 }
 footer #supportbouton:hover {
         cursor: pointer;
-        border: 2px solid var(--bleu-bordure);
-        background-color: var(--bleu-texte-1);
+        border: 1px solid var(--bleu-bordure);
+        background-color: var(--bleu-fond);
         text-decoration: none;
         cursor: pointer;
 }

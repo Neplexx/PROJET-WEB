@@ -68,7 +68,6 @@ footer #supportbouton{
     right: 3%;
     top: 85%;
     font-weight: bold;
-    color: white;
     background-color: var(--orange);
     border: 2px solid var(--bleu-bordure);
     padding: 10px vertical 20px horizontal;
@@ -76,6 +75,7 @@ footer #supportbouton{
     width: 120px;
     border-radius: 5px;
     color: var(--orange);
+    text-decoration: none;
 }
 footer #supportbouton:hover {
         cursor: pointer;

@@ -14,8 +14,7 @@
 }
 .noms {
     max-height: 0;
-    overflow: hidden;
-    
+    overflow: hidden; 
 }
 header{
     display: flex;
@@ -88,13 +87,16 @@ footer #supportbouton:hover {
 }
     
 .conteneur {
-display: flex;
+    display: flex;
 }
 section{
     padding: 10px;
 }
 h1{
     text-align: center;
+    color: var(--orange);
+    font-size: 30px;
+    text-decoration: underline;
 }
 article{
     padding: 5px;
@@ -107,8 +109,12 @@ input[type="checkbox"]:checked + .noms{
     padding:10px;
     border-radius: 5px;
     margin-top: 10px;
+    margin-left: 25%;
+    margin-right: 25%;
     background-color: var(--bleu-fond);
+    text-align: center;
 }
+
 #BeauDiapo {
     position: relative;
 	width: 30%;

@@ -1,46 +1,134 @@
 body {
-    margin-top: 20px;
-    background-color: beige;
-
-}
-.main{
-    padding: 15px;
-    font-family: Arial, Helvetica, sans-serif;
-}
-.topbar{
-    background-color: teal;
-    overflow: hidden;
-}
-.topbar a{
-    float: right;
-    color: whitesmoke;
-    text-align: center;
-    padding: 20px 26px;
-    text-decoration: none;
-    font-size: 26px;
-
-}
-.sidebar{
-
-    background-color: black;
-    color: white;
-    height: 100%;
-}
-.sidebar a{
-    margin-left:10px ;
-    display: block;
-    color: white;
-    padding-bottom: 10px;
-    font-size: 30px;
-    text-decoration: none;
-
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
 }
 
-.card{
-    position: relative;
+.conteneur {
     display: flex;
-    flex-direction: column;
+    width: 100%;
 }
-.content{
-    background-color: whitesmoke;
+
+.sidebar {
+    width: 250px;
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    height: 100vh;
+}
+
+.profil-info {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.profil-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.sidebar h2 {
+    margin: 10px 0;
+    font-size: 1.2em;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin: 10px 0;
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1em;
+}
+
+.sidebar ul li a:hover {
+    text-decoration: underline;
+}
+
+.main-contenu {
+    flex-grow: 1;
+    padding: 20px;
+}
+
+header {
+    background-color: blue;
+    padding: 10px;
+    color: white;
+    text-align: center;
+}
+
+header nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+header nav ul li {
+    display: inline;
+    margin: 0 10px;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1em;
+}
+
+header nav ul li a:hover {
+    text-decoration: underline;
+}
+
+.profil-details {
+    background-color: white;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 8px;
+}
+
+.profil-details h3 {
+    margin-bottom: 20px;
+    font-size: 1.5em;
+}
+
+.profil-details table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.profil-details table td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.profil-details table td:first-child {
+    font-weight: bold;
+}
+
+
+.projets-recents {
+    background-color: white;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 8px;
+}
+
+.projets-recents h3 {
+    margin-bottom: 20px;
+    font-size: 1.5em;
+}
+
+.projets-recents ul {
+    list-style: none;
+    padding: 0;
+}
+
+.projets-recents ul li {
+    margin: 10px 0;
 }

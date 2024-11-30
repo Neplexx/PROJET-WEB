@@ -24,7 +24,6 @@ header #util:hover {
     height: 100px;
     width: 100px;
     top: 130%;
-    left: 87%;
 }
 header #logo:hover {
     content: url("../pictures/deco.png");
@@ -33,12 +32,15 @@ header #logo:hover {
     width: 75px;
     top: 125%;
 }
+
 header #logo {
 position: relative;
 height: 75px;
 width: 75px;
 top: 125%;
+right:1720%;
 }
+
 header #util {
     position: relative;
     height: 60px;
@@ -74,6 +76,7 @@ nav > ul > li{
     left: 10%;
     margin-left:30px;
     display: inline;
+    
 }
 nav > ul > li > a {
     color:var(--gris-texte);

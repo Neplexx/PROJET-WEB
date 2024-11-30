@@ -105,7 +105,7 @@ footer{
 
 footer #supportbouton{
     position: relative;
-    left:90%;
+    left:950%;
     top:60%;
     font-weight: bold;
     background-color: var(--orange);

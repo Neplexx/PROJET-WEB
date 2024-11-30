@@ -19,11 +19,14 @@ h1 {
     margin-top: 20px;
     font-size: 18px;
     color: white;
+    
 }
 
 h1:first-of-type {
     text-align: center;
     padding-top: 3pt;
+    font-weight: bolder;
+    font-size: larger;
 }
 
 p {

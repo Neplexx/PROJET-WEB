@@ -25,6 +25,56 @@ header #util:hover {
     width: 100px;
     top: 130%;
 }
+
+.bigconteneur {
+display: flex;
+height: 450px;
+}
+.commentaire {
+    position: relative;
+    background: rgb(238, 167, 167);
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    height: 250px;
+    width: 700px;
+    left: 2%;
+    margin-top: 2%;
+}
+.commentaire2 {
+    position: relative;
+    background: var(--gris-texte);
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    height: 200px;
+    width: 700px;
+    left: 5%;
+    margin-top: 2%;
+}
+.commentaire3 {
+    position: relative;
+    background: var(--gris-texte);
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    height: 200px;
+    width: 600px;
+    left: 6%;
+    margin-top: 2%;
+}
+.commentaire4 {
+    position: relative;
+    background: var(--gris-texte);
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    height: 200px;
+    width: 600px;
+    left: 7%;
+    margin-top: 2%;
+}
 header #logo:hover {
     content: url("../pictures/deco.png");
     position: relative;
@@ -38,7 +88,7 @@ position: relative;
 height: 75px;
 width: 75px;
 top: 125%;
-right:1720%;
+right:1710%;
 }
 
 header #util {
@@ -83,6 +133,22 @@ nav > ul > li > a {
     font-weight: bold;
     text-transform: uppercase;
 }
+nav > ul > li > a:hover {
+
+
+    animation-name: survol;
+    animation-duration: 0.25s;
+    animation-fill-mode: forwards;
+    }
+    
+    @keyframes survol {
+        from {
+            color: white;
+        }
+        to {
+            color:var(--orange);
+        }
+    }
 #maintenant{
     color: var(--orange);
     background-color:var(--bleu-fond);
@@ -121,10 +187,30 @@ footer #supportbouton:hover {
         cursor: pointer;
         border: 1px solid var(--bleu-bordure);
         background-color: var(--bleu-fond);
-        text-decoration: none;
-        color: var(--orange);
+        animation-name: survol2;
+        animation-duration: 0.25s;
+        animation-fill-mode: forwards;
 }
-    
+        
+        @keyframes survol2 {
+            from {
+                font-weight: bold;
+                background-color: var(--orange);
+                border: 1px solid var(--bleu-bordure);
+                margin: 10px;
+                width: 120px;
+                height: 40px;
+                border-radius: 5px;
+                color: var(--gris-texte);
+                text-decoration: none;
+            }
+            to {
+                border: 1px solid var(--bleu-bordure);
+                background-color: var(--bleu-fond);
+                color: var(--orange);
+            }
+        }
+ 
 .conteneur {
     display: flex;
 }
@@ -156,13 +242,14 @@ input[type="checkbox"]:checked + .noms{
 
 #BeauDiapo {
     position: relative;
-	width: 30%;
+	width: 60%;
 	margin:auto;
 	height: 400px;
 	overflow: hidden;
     border: #D4603F solid;
     border-radius: 5%;
-    left: 30%;
+    left: 12%;
+    top: 5%;
 }
 #BeauDiapo .diapo img{
 	height: 400px;

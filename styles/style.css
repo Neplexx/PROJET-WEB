@@ -28,7 +28,7 @@ header #util:hover {
 
 .bigconteneur {
 display: flex;
-height: 450px;
+height: 438px;
 }
 .commentaire {
     position: relative;
@@ -139,6 +139,14 @@ nav > ul > li > a:hover {
     animation-name: survol;
     animation-duration: 0.25s;
     animation-fill-mode: forwards;
+    animation-direction: alternate;
+    }
+    
+    nav > ul > li > a:not(:hover) {
+        animation-name: retour;
+        animation-duration: 0.25s;
+    animation-fill-mode: forwards;
+    animation-direction: alternate;
     }
     
     @keyframes survol {
@@ -146,7 +154,16 @@ nav > ul > li > a:hover {
             color: white;
         }
         to {
-            color:var(--orange);
+            color: var(--orange);
+        }
+    }
+    
+    @keyframes retour {
+        from {
+            color: var(--orange);
+        }
+        to {
+            color: white;
         }
     }
 #maintenant{
@@ -190,6 +207,16 @@ footer #supportbouton:hover {
         animation-name: survol2;
         animation-duration: 0.25s;
         animation-fill-mode: forwards;
+        animation-direction: alternate;
+}
+footer #supportbouton:not(:hover) {
+    cursor: pointer;
+    border: 1px solid var(--bleu-bordure);
+    background-color: var(--bleu-fond);
+    animation-name: retour2;
+    animation-duration: 0.25s;
+    animation-fill-mode: forwards;
+    animation-direction: alternate;
 }
         
         @keyframes survol2 {
@@ -210,7 +237,24 @@ footer #supportbouton:hover {
                 color: var(--orange);
             }
         }
- 
+        @keyframes retour2 {
+            from {
+                border: 1px solid var(--bleu-bordure);
+                background-color: var(--bleu-fond);
+                color: var(--orange);
+            }
+            to {
+                font-weight: bold;
+                background-color: var(--orange);
+                border: 1px solid var(--bleu-bordure);
+                margin: 10px;
+                width: 120px;
+                height: 40px;
+                border-radius: 5px;
+                color: var(--gris-texte);
+                text-decoration: none;
+            }
+        }
 .conteneur {
     display: flex;
 }

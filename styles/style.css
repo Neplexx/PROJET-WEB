@@ -12,18 +12,46 @@
     text-decoration: none;
     list-style-type: none;
 }
+header {
+    display: flex;
+}
 header img {
     transition: 0.8s ease-in-out;
 }
-header img:hover {
+header #util:hover {
     content: url("../pictures/photoDeProfil2.png");
+    position: relative;
+    height: 100px;
+    width: 100px;
+    top: 130%;
+    left: 87%;
 }
+header #logo:hover {
+    content: url("../pictures/deco.png");
+    position: relative;
+    height: 75px;
+    width: 75px;
+    top: 125%;
+}
+header #logo {
+position: relative;
+height: 75px;
+width: 75px;
+top: 125%;
+}
+header #util {
+    position: relative;
+    height: 60px;
+    width: 60px;
+    top: 40%;
+    left: 87%;
+}
+
 .noms {
     max-height: 0;
     overflow: hidden; 
 }
 header{
-    display: flex;
     align-items: center;
     padding:10px;
     position: relative;
@@ -34,13 +62,16 @@ header > a {
     float: right;
     position: absolute;
     top:20%;
-    right:3%;
+    right:10%;
 }
 nav{
+    display: flex;
     background-color: var(--bleu-principal);
     padding: 1px;
 }
 nav > ul > li{
+    position: relative;
+    left: 10%;
     margin-left:30px;
     display: inline;
 }

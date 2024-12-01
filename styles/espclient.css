@@ -1,8 +1,22 @@
+:root{
+    --bleu-principal:#518CC4;
+    --bleu-bordure:#1F5A92;
+    --bleu-texte-1:#79B5EA;
+    --bleu-fond:#BFCBE8;
+    --orange:#D4603F;
+    --gris-texte:#E0E0E0;
+}
+*{
+    font-family: Roboto, sans-serif;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style-type: none;
+}
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    background-color: var(--bleu-fond);
 }
 
 .conteneur {
@@ -12,8 +26,8 @@ body {
 
 .sidebar {
     width: 250px;
-    background-color: #333;
-    color: white;
+    background-color: var(--bleu-bordure);
+    color: var(--gris-texte);
     padding: 20px;
     height: 100vh;
 }
@@ -44,7 +58,7 @@ body {
 }
 
 .sidebar ul li a {
-    color: white;
+    color: var(--gris-texte);;
     text-decoration: none;
     font-size: 1em;
 }
@@ -59,9 +73,9 @@ body {
 }
 
 header {
-    background-color: blue;
+    background-color: var(--bleu-principal);
     padding: 10px;
-    color: white;
+    color: var(--gris-texte);;
     text-align: center;
 }
 
@@ -76,7 +90,7 @@ header nav ul li {
 }
 
 header nav ul li a {
-    color: white;
+    color: var(--gris-texte);;
     text-decoration: none;
     font-size: 1em;
 }
@@ -86,7 +100,7 @@ header nav ul li a:hover {
 }
 
 .profil-details {
-    background-color: white;
+    background-color: var(--gris-texte);;
     padding: 20px;
     margin-top: 20px;
     border-radius: 8px;
@@ -104,7 +118,7 @@ header nav ul li a:hover {
 
 .profil-details table td {
     padding: 10px;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid var(--gris-texte);;
 }
 
 .profil-details table td:first-child {
@@ -113,7 +127,7 @@ header nav ul li a:hover {
 
 
 .projets-recents {
-    background-color: white;
+    background-color: var(--gris-texte);;
     padding: 20px;
     margin-top: 20px;
     border-radius: 8px;

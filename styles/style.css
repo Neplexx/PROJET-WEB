@@ -185,25 +185,54 @@ footer{
     height: 200px;
     border-top:1px solid var(--bleu-bordure);
 }
-
-footer #supportbouton{
+footer #conteneurfooter {
+    display: flex;
+}
+    footer #supportbouton {
+        position: relative;
+        display: inline-block; 
+        font-weight: bold;
+        background-color: var(--orange);
+        border: 1px solid var(--bleu-bordure);
+        width: 120px;
+        height: 40px;
+        border-radius: 5px;
+        color: var(--gris-texte);
+        text-decoration: none;
+        margin-left: 20px;
+        cursor: pointer;
+        transition: transform 0.3s ease, background-color 0.3s ease;
+        left: 970%;
+        top: 60%;
+    }
+footer #imagediscord img {
     position: relative;
-    left:950%;
-    top:60%;
-    font-weight: bold;
-    background-color: var(--orange);
-    border: 1px solid var(--bleu-bordure);
-    margin: 10px;
+    margin: 0;          
+    padding: 0;
+    width: 50px;
+    height: 50px;
+    margin-right: 20px;
+    top: 70%;
+    right: 170%;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+footer #imagediscord img:hover {
+    transform: scale(1.1);
+}
+footer a #liensupport{
+    position: relative;
     width: 120px;
     height: 40px;
-    border-radius: 5px;
-    color: var(--gris-texte);
-    text-decoration: none;
+    cursor: pointer;
+    left:950%;
+    top:60%;
 }
 footer #supportbouton:hover {
-        cursor: pointer;
-        border: 1px solid var(--bleu-bordure);
+        transform: scale(1.1);
         background-color: var(--bleu-fond);
+        color: var(--orange);
         animation-name: survol2;
         animation-duration: 0.25s;
         animation-fill-mode: forwards;
@@ -225,8 +254,6 @@ footer #supportbouton:not(:hover) {
                 background-color: var(--orange);
                 border: 1px solid var(--bleu-bordure);
                 margin: 10px;
-                width: 120px;
-                height: 40px;
                 border-radius: 5px;
                 color: var(--gris-texte);
                 text-decoration: none;
@@ -248,8 +275,6 @@ footer #supportbouton:not(:hover) {
                 background-color: var(--orange);
                 border: 1px solid var(--bleu-bordure);
                 margin: 10px;
-                width: 120px;
-                height: 40px;
                 border-radius: 5px;
                 color: var(--gris-texte);
                 text-decoration: none;

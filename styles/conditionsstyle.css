@@ -27,11 +27,13 @@ body {
     height: 75px;
     left: 15%;
     top: 0.5%;
+    transition: transform 0.3s ease, width 0.3s ease, height 0.3s ease;
 }
 #logo:hover {
     content: url("../pictures/deco.png");
     position: relative;
     height: 75px;
+    transform: scale(1.1);
     width: 75px;
 }
 h1 {

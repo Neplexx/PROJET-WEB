@@ -103,7 +103,7 @@ footer {
 
 .conteneur {
     position: relative;
-    right: 9%;
+    right: 2%;
     max-width: 800px;
     margin: 0 auto;
     background-color: var(--gris-fond);

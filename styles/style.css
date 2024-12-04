@@ -46,10 +46,6 @@ header #espaceClient:hover img {
     content: url("../pictures/photoDeProfil2.png");
     transform: scale(1.1);
 }
-.noms {
-    max-height: 0;
-    overflow: hidden; 
-}
 header{
     align-items: center;
     padding:10px;
@@ -127,6 +123,11 @@ body {
 }
 main{
     background-color: var(--bleu-fond);
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 .bigconteneur {
     display: flex;
@@ -181,16 +182,41 @@ main{
     display: flex;
 }
 section{
-    padding: 10px;
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: center;
+    gap: 20px; 
+    padding: 30px;
 }
 h1{
     text-align: center;
     color: var(--orange);
     font-size: 30px;
     text-decoration: underline;
+    padding: 30px;
+    margin:0;
 }
 article{
-    padding: 5px;
+    position: relative;
+    margin: 50px;
+    width: 600px;
+    overflow: hidden;
+    background: var(--gris-texte);
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.noms {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 95%;
+    height: 80%;
+    margin-top: 3%;
+    margin-left: 2.5%;
+    max-height: 0;
+    line-height: 20px;
+    overflow: hidden; 
     text-align: center;
 }
 input[type="checkbox"]:checked + .noms{
@@ -199,11 +225,8 @@ input[type="checkbox"]:checked + .noms{
     border: 1px solid var(--bleu-bordure);
     padding:10px;
     border-radius: 5px;
-    margin-top: 10px;
-    margin-left: 25%;
-    margin-right: 25%;
     background-color: var(--bleu-fond);
-    text-align: center;
+    pointer-events: all;
 }
 
 #BeauDiapo {

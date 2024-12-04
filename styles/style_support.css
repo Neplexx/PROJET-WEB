@@ -1,3 +1,18 @@
+:root{
+    --bleu-principal:#518CC4;
+    --bleu-bordure:#1F5A92;
+    --bleu-texte-1:#79B5EA;
+    --bleu-fond:#BFCBE8;
+    --orange:#D4603F;
+    --gris-texte:#E0E0E0;
+}
+*{
+    font-family: Roboto, sans-serif;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style-type: none;
+}
+
 body {
     font-family: Arial, sans-serif;
     background-color: #f9f9f9;

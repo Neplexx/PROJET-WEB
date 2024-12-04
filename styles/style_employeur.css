@@ -13,3 +13,99 @@
     text-decoration: none;
     list-style-type: none;
 }
+
+header {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+header #index {
+    position: absolute;
+    bottom:0;
+    left:1%;
+}
+header #index img{
+    width: 75px;
+    height: 75px;
+    transition: transform 0.3s ease, width 0.3s ease, height 0.3s ease;
+}
+header #index img:hover {
+    content: url("../pictures/deco.png");
+    transform: scale(1.1);
+}
+header #espaceClient {
+    position: absolute;
+    right: 1%;
+    top: 0;
+}
+header #espaceClient img {
+    width: 90px;
+    height: 90px;
+    transition: transform 0.3s ease, width 0.3s ease, height 0.3s ease;
+}
+header #espaceClient:hover img {
+    content: url("../pictures/photoDeProfil2.png");
+    transform: scale(1.1);
+}
+
+header{
+    align-items: center;
+    padding:10px;
+    position: relative;
+    height: 40px;
+    background-color: var(--bleu-principal);
+}
+header > a {
+    float: right;
+    position: absolute;
+    top:20%;
+    right:10%;
+}
+nav{
+    display: flex;
+    background-color: var(--bleu-principal);
+    padding: 1px;
+}
+nav > ul > li{
+    position: relative;
+    left: 20%;
+    margin-left: 30px;
+    display: inline;
+    
+}
+nav > ul > li > a {
+    color:var(--gris-texte);
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.pageNonActive:hover {
+    animation-name: survol;
+    animation-duration: 0.25s;
+    animation-fill-mode: forwards;
+    animation-direction: alternate;
+}
+    
+.pageNonActive:not(:hover) {
+    animation-name: retour;
+    animation-duration: 0.25s;
+    animation-fill-mode: forwards;
+    animation-direction: alternate;
+}
+    
+    @keyframes survol {
+        from {
+            color: white;
+        }
+        to {
+            color: var(--orange);
+        }
+    }
+    
+    @keyframes retour {
+        from {
+            color: var(--orange);
+        }
+        to {
+            color: white;
+        }
+    }

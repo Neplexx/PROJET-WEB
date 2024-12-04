@@ -109,3 +109,37 @@ nav > ul > li > a {
             color: white;
         }
     }
+
+    #pageActive{
+        color: var(--orange);
+        background-color:var(--bleu-fond);
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        padding: 18px;
+    }
+    body {
+        margin:0;
+    }
+    main{
+        background-color: var(--bleu-fond);
+    }
+    .bigconteneur {
+        display: flex;
+        height: 438px;
+    }
+    
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #BFCBE8;
+        margin: 0;
+        padding: 0;
+    }
+    h1 {
+        text-align: center;
+        color: #333;
+    }
+    p {
+        text-align: center;
+        color: #555;
+        margin-bottom: 20px;
+    }

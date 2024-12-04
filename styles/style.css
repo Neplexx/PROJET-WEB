@@ -16,6 +16,7 @@ header {
     display: flex;
     align-items: center;
     position: relative;
+    z-index: 1;
 }
 header #index {
     position: absolute;
@@ -66,6 +67,10 @@ nav{
     display: flex;
     background-color: var(--bleu-principal);
     padding: 1px;
+	text-align:center;
+	top:0px;
+	position:sticky;
+    z-index: 0;
 }
 nav > ul > li{
     position: relative;

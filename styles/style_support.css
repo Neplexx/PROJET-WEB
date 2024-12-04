@@ -13,6 +13,40 @@
     list-style-type: none;
 }
 
+header {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+header #index {
+    position: absolute;
+    bottom:0;
+    left:1%;
+}
+header #index img{
+    width: 75px;
+    height: 75px;
+    transition: transform 0.3s ease, width 0.3s ease, height 0.3s ease;
+}
+header #index img:hover {
+    content: url("../pictures/deco.png");
+    transform: scale(1.1);
+}
+header #espaceClient {
+    position: absolute;
+    right: 1%;
+    top: 0;
+}
+header #espaceClient img {
+    width: 90px;
+    height: 90px;
+    transition: transform 0.3s ease, width 0.3s ease, height 0.3s ease;
+}
+header #espaceClient:hover img {
+    content: url("../pictures/photoDeProfil2.png");
+    transform: scale(1.1);
+}
+
 body {
     font-family: Arial, sans-serif;
     background-color: #f9f9f9;

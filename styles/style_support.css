@@ -53,6 +53,7 @@ header{
     position: relative;
     height: 40px;
     background-color: var(--bleu-principal);
+    z-index: 1;
 }
 header > a {
     float: right;
@@ -64,6 +65,9 @@ nav{
     display: flex;
     background-color: var(--bleu-principal);
     padding: 1px;
+    top:0px;
+	position:sticky;
+    z-index: 0;
 }
 nav > ul > li{
     position: relative;
@@ -134,7 +138,7 @@ body {
 }
 h1 {
     text-align: center;
-    color: #333;
+    color: var(--orange);
 }
 p {
     text-align: center;
@@ -144,14 +148,14 @@ p {
 #supportForm {
     max-width: 600px;
     margin: 0 auto;
-    background: #ffffff;
+    background: var(--gris-texte);
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 label {
     font-weight: bold;
-    color: #444;
+    color: var(--bleu-bordure);
     display: block;
     margin-bottom: 5px;
 }
@@ -165,7 +169,7 @@ textarea {
     border-radius: 5px;
     font-size: 16px;
     color: #333;
-    background-color: #f5f5f5;
+    background-color: #d1d1d1;
     transition: all 0.3s;
 }
 input[type="text"]:focus,
@@ -180,23 +184,30 @@ textarea {
     resize: none;
 }
 button {
-    background-color: #007bff;
+    background-color: var(--orange);
     color: #fff;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
+    font-weight: bold;
     transition: all 0.3s ease;
+    border: 1px solid var(--bleu-bordure);
+    border-radius: 5px;
 }
 button:hover {
-    background-color: #28a745; /* Vert */
-    transform: scale(1.1); /* Agrandissement */
+    background-color: var(--bleu-fond); 
+    transform: scale(1.1); 
+    color: var(--orange);
+    font-weight: bold;
+    border: 1px solid var(--bleu-bordure);
+    border-radius: 5px;
 }
 footer {
     text-align: center;
     padding: 20px;
-    background-color: #333;
+    background-color:var(--orange);
     color: #fff;
 }
 footer a img {
@@ -228,7 +239,7 @@ footer #supportbouton {
     border-radius: 5px;
     color: var(--gris-texte);
     text-decoration: none;
-    margin-left: 20px;
+    margin-left: 19px;
     cursor: pointer;
     transition: transform 0.3s ease, background-color 0.3s ease;
     left: 970%;

@@ -128,3 +128,121 @@ footer a img {
 footer a img:hover {
     transform: scale(1.2);
 }
+
+footer{
+    display: flex;
+    background-color: var(--bleu-principal);
+    height: 200px;
+    border-top:1px solid var(--bleu-bordure);
+}
+footer #conteneurfooter {
+    display: flex;
+}
+footer #supportbouton {
+    position: relative;
+    display: inline-block; 
+    font-weight: bold;
+    background-color: var(--orange);
+    border: 1px solid var(--bleu-bordure);
+    width: 120px;
+    height: 40px;
+    border-radius: 5px;
+    color: var(--gris-texte);
+    text-decoration: none;
+    margin-left: 20px;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    left: 970%;
+    top: 60%;
+}
+footer #imagediscord img {
+    position: relative;
+    margin: 0;          
+    padding: 0;
+    width: 50px;
+    height: 40px;
+    margin-right: 20px;
+    top: 72%;
+    right: 170%;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+footer #imagediscord img:hover {
+    transform: scale(1.1);
+}
+footer #imagegithub img {
+    position: relative;
+    margin: 0;          
+    padding: 0;
+    width: 50px;
+    height: 50px;
+    margin-right: 20px;
+    top: 70%;
+    right: 175%;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+footer #imagegithub img:hover {
+    transform: scale(1.1);
+}
+footer a #liensupport{
+    position: absolute;
+    width: 120px;
+    height: 40px;
+    cursor: pointer;
+    bottom:2%;
+    right:3%;
+}
+footer #supportbouton:hover {
+        transform: scale(1.1);
+        background-color: var(--bleu-fond);
+        color: var(--orange);
+        animation-name: survol2;
+        animation-duration: 0.25s;
+        animation-fill-mode: forwards;
+        animation-direction: alternate;
+}
+footer #supportbouton:not(:hover) {
+    cursor: pointer;
+    border: 1px solid var(--bleu-bordure);
+    background-color: var(--bleu-fond);
+    animation-name: retour2;
+    animation-duration: 0.25s;
+    animation-fill-mode: forwards;
+    animation-direction: alternate;
+}
+        
+        @keyframes survol2 {
+            from {
+                font-weight: bold;
+                background-color: var(--orange);
+                border: 1px solid var(--bleu-bordure);
+                margin: 10px;
+                border-radius: 5px;
+                color: var(--gris-texte);
+                text-decoration: none;
+            }
+            to {
+                border: 1px solid var(--bleu-bordure);
+                background-color: var(--bleu-fond);
+                color: var(--orange);
+            }
+        }
+        @keyframes retour2 {
+            from {
+                border: 1px solid var(--bleu-bordure);
+                background-color: var(--bleu-fond);
+                color: var(--orange);
+            }
+            to {
+                font-weight: bold;
+                background-color: var(--orange);
+                border: 1px solid var(--bleu-bordure);
+                margin: 10px;
+                border-radius: 5px;
+                color: var(--gris-texte);
+                text-decoration: none;
+            }
+        }

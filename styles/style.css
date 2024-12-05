@@ -66,8 +66,6 @@ nav{
     padding: 1px;
 	text-align:center;
     top:0px;
-	position:sticky;
-    z-index: 1;
 }
 nav > ul > li{
     position: relative;
@@ -201,14 +199,35 @@ article{
     position: relative;
     margin: 50px;
     width: 600px;
+    height: 170px;
     overflow: hidden;
     background: var(--gris-texte);
     padding: 20px 30px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+article > label {
+    text-align: center;
+}
+article > label > p {
+    font-style: italic;
+    color: rgba(0, 0, 0, 0.7);
+}
+.afficheCheckbox{
+    position: absolute;
+    color: var(--orange);
+    left: 25px;
+    bottom: 5px;
+}
+.afficheCheckbox:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}
 .noms {
     position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: top;
     top: 0;
     left: 0;
     width: 95%;
@@ -217,8 +236,31 @@ article{
     margin-left: 2.5%;
     max-height: 0;
     line-height: 20px;
-    overflow: hidden; 
-    text-align: center;
+    overflow: hidden;        
+}
+.noms > ul {
+    display : grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px 100px;
+    padding: 0;
+    margin-top: 15px;
+}
+.noms > ul > li:hover {
+    color: var(--orange);
+    text-decoration: underline;
+    cursor: pointer;
+}
+.noms > label {
+    position: absolute;
+    bottom:10px;
+    left: 15px;
+    color:var(--orange);
+    font-style: italic;
+}
+.noms > label:hover{
+    cursor: pointer;
+    text-decoration: underline;
+    font-style: italic;
 }
 input[type="checkbox"]:checked + .noms{
     transition: max-height 0.3s ease-out;

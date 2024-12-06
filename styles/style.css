@@ -180,7 +180,7 @@ main{
 .conteneur {
     display: flex;
 }
-section{
+#sectionRecherche {
     display: flex;
     flex-wrap: wrap; 
     justify-content: center;
@@ -195,7 +195,7 @@ h1{
     padding: 30px;
     margin:0;
 }
-article{
+#sectionRecherche > article{
     position: relative;
     margin: 50px;
     width: 600px;
@@ -206,16 +206,17 @@ article{
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-article > label {
+#sectionRecherche > article > label {
     text-align: center;
 }
-article > label > p {
+#sectionRecherche > article > label > p:first-of-type {
     font-style: italic;
     color: rgba(0, 0, 0, 0.7);
 }
 .afficheCheckbox{
     position: absolute;
     color: var(--orange);
+    font-style: italic;
     left: 25px;
     bottom: 5px;
 }
@@ -271,7 +272,24 @@ input[type="checkbox"]:checked + .noms{
     background-color: var(--bleu-fond);
     pointer-events: all;
 }
-
+section#sectionEmployeur{
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: center;
+    gap: 20px; 
+    padding: 30px;
+}
+section#sectionEmployeur > article{
+    position: relative;
+    margin: 50px;
+    width: 600px;
+    height: 170px;
+    overflow: hidden;
+    background: var(--gris-texte);
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 #BeauDiapo {
     position: relative;
 	width: 60%;

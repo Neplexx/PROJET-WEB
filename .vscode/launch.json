@@ -8,7 +8,7 @@
             "type": "chrome",
             "request": "launch",
             "name": "Open recherche.html",
-            "file": "c:\\Users\\dahi_\\OneDrive\\Documente\\Cours\\Web et Internet\\Web Statique\\Projet\\PROJET-WEB\\html\\recherche.html"
+            "file": "c:\\Users\\dahi_\\OneDrive\\Documente\\Cours\\Web et Internet\\Web Statique\\Projet\\PROJET-WEB\\index.html"
         }
     ]
 }

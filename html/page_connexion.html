@@ -4,13 +4,44 @@
     <meta charset="UTF-8">
     <meta name="description" author="Page de connexion">
     <meta name="autor" content="GLONOU Stefen">
-    <link rel="stylesheet" href="page_connexion.css">
+    <link rel="stylesheet" href="../styles/connexion.css">
     <link rel="icon" type="image/x-icon" href="../pictures/logo.ico">
-    <title>Connexion | CTM</title>
+    <title>Connexion</title>
 </head>
 <body>
-    
+    <div class="login-box">
+        <div class="login-header">
+            <header>Bienvenue sur ChercheTonMonteur</header>
+        </div>
+        <div class="input-box">
+            <input type="text" class="input-field" placeholder="Email" autocomplete="off" required>
+        </div>
+        <div class="input-box">
+            <input type="mot de passe" class="input-field" placeholder="Mot de passe" autocomplete="off" required>
+        </div>
+        <div class="forgot">
+            <section>
+                <input type="checkbox" id="check">
+                <label for="check">Se souvenir de moi</label>
+            </section>
+            <section>
+                <a href="#">Mot de passe oublié</a>
+            </section>
+        </div>
+        <div class="input-submit">
+            <button class="submit-btn" id="submit"></button>
+            <label for="submit">Connexion</label>
+        </div>
+        <div class="sign-up-link">
+            <p>Vous n'avez pas de compte ? <a href="#">S'inscrire</a></p>
+        </div>
+        <div class="input-submit">
+            <a href="index.html">
+                <button class="submit-btn" id="visiteur"></button>
+                <label for="submit">Continuer en tant que visiteur</label>
+            </a>
+        </div>
 
-
+    </div>
 </body>
 </html>

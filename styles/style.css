@@ -142,6 +142,9 @@ main{
     display: flex;
     height: 438px;
     }
+#conteneurfooter p {
+color: #518CC4;
+}
     .commentaire {
         position: relative;
         background: rgb(238, 167, 167);

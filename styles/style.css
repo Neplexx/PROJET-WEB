@@ -272,6 +272,7 @@ input[type="checkbox"]:checked + .noms {
     padding: 10px;
     border-radius: 5px;
     background-color: var(--bleu-fond);
+
 }
 section#sectionEmployeur{
     display: flex;

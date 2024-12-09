@@ -433,3 +433,136 @@ footer #supportbouton:not(:hover) {
     animation-fill-mode: forwards;
     animation-direction: alternate;
 }
+@media screen and (max-width: 768px) {
+    header {
+        flex-direction: column;
+        height: auto;
+        padding: 10px;
+        text-align: center;
+    }
+    header #index {
+        display: block;
+        position: absolute;
+        bottom:0;
+        left:0%;
+        width: 40px;
+        height: 40px;
+    }
+    header #espaceClient img {
+        width: 60px;
+        height: 60px;
+    }
+
+    nav {
+        flex-direction: column;
+        padding: 10px 0;
+    }
+
+    nav > ul {
+        padding: 0;
+        margin: 0 auto;
+    }
+
+    nav > ul > li {
+        margin: 10px 0;
+        left: 0;
+    }
+
+    main {
+        padding: 10px;
+    }
+
+    .bigconteneur {
+        flex-direction: column;
+        height: auto;
+        margin: 10px 0;
+    }
+
+    .commentaire,
+    .commentaire2,
+    .commentaire3,
+    .commentaire4 {
+        width: 90%;
+        height: auto;
+        margin: 10px auto;
+    }
+
+    #sectionRecherche {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    #sectionRecherche > article {
+        width: 90%;
+        margin: 20px auto;
+    }
+
+    #BeauDiapo {
+        width: 50%;
+        left: 0;
+    }
+
+    #BeauDiapo .diapo img {
+        width: 50%;
+    }
+
+    footer {
+        flex-direction: column;
+        height: 150px;
+        text-align: center;
+        padding: 10px;
+    }
+
+    footer #imagediscord img,
+    footer #imagegithub img {
+        width: 40px;
+        height: 35px;
+        margin: 5px auto;
+    }
+
+    footer #supportbouton {
+        width: 100px;
+        height: 35px;
+        margin: 10px auto;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    header #index {
+        position: absolute;
+        bottom:0;
+        left:0%;
+        width: 40px;
+        height: 40px;
+    }
+    header #espaceClient img {
+        width: 50px;
+        height: 50px;
+    }
+
+    h1 {
+        font-size: 24px;
+        padding: 15px;
+    }
+
+    .commentaire,
+    .commentaire2,
+    .commentaire3,
+    .commentaire4 {
+        padding: 15px;
+    }
+
+    nav > ul > li > a {
+        font-size: 14px;
+    }
+
+    footer #imagediscord img,
+    footer #imagegithub img {
+        width: 35px;
+        height: 30px;
+    }
+
+    footer #supportbouton {
+        font-size: 12px;
+    }
+}

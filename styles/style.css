@@ -1,10 +1,11 @@
 :root{
-    --bleu-principal:#518CC4;
-    --bleu-bordure:#1F5A92;
-    --bleu-texte-1:#79B5EA;
-    --bleu-fond:#BFCBE8;
-    --orange:#D4603F;
-    --gris-texte:#E0E0E0;
+    /* alors ici on déclare des variables css pour les couleurs qu'on va utiliser partout */
+    --bleu-principal:#518CC4; /* ça c'est la couleur principale, genre le bleu de base */
+    --bleu-bordure:#1F5A92; /* ça, c'est pour les bordures, un bleu plus foncé */
+    --bleu-texte-1:#79B5EA; /* un bleu un peu flashy pour certains textes */
+    --bleu-fond:#BFCBE8; /* un bleu clair qu'on utilise pour les fonds */
+    --orange:#D4603F; /* une couleur orange pour les éléments importants */
+    --gris-texte:#E0E0E0; /* du gris clair pour des textes neutres */
 }
 @media (prefers-color-scheme: dark) {
     :root {
@@ -17,45 +18,79 @@
     }
 }
 *{
-    font-family: Roboto, sans-serif;
-    box-sizing: border-box;
-    text-decoration: none;
-    list-style-type: none;
+    /* ici on met des règles générales pour toute la page */
+    font-family: Roboto, sans-serif; /* on choisit une police sympa et moderne */
+    box-sizing: border-box; /* ça évite des calculs bizarres avec les dimensions */
+    text-decoration: none; /* on vire les soulignements sur les liens */
+    list-style-type: none; /* plus de puces moches sur les listes */
 }
+
 header {
-    display: flex;
-    align-items: center;
-    position: relative;
-    z-index: 1;
+    /* alors ça, c'est notre header, genre la barre du haut */
+    display: flex; /* pour aligner les trucs en ligne */
+    align-items: center; /* on centre verticalement les éléments */
+    position: relative; /* pour pouvoir positionner les enfants facilement */
+    z-index: 1; /* pour qu'il soit au-dessus des autres éléments */
 }
+
 header #index {
-    position: absolute;
-    bottom:0;
-    left:1%;
+    /* voilà le style pour notre logo */
+    position: absolute; /* on le positionne indépendamment */
+    bottom: 0; /* il touche le bas du header */
+    left: 1%; /* petite marge à gauche pour qu'il respire */
 }
-header #index img{
-    width: 75px;
-    height: 75px;
-    transition: transform 0.3s ease, width 0.3s ease, height 0.3s ease;
+
+header #index img {
+    /* ici c'est pour l'image du logo */
+    width: 75px; /* taille en largeur */
+    height: 75px; /* taille en hauteur */
+    transition: transform 0.3s ease, width 0.3s ease, height 0.3s ease; /* une petite animation quand on passe dessus */
 }
+
 header #index img:hover {
-    content: url("../pictures/deco.png");
-    transform: scale(1.1);
+    /* alors ça, c'est ce qui se passe quand tu survoles le logo */
+    content: url("../pictures/deco.png"); /* l'image change pour une autre */
+    transform: scale(1.1); /* elle devient un peu plus grande */
 }
+
 header #espaceClient {
-    position: absolute;
-    right: 1%;
-    top: 0;
+    /* maintenant c'est le coin pour l'espace client */
+    position: absolute; /* on le met où on veut */
+    right: 1%; /* collé à droite */
+    top: 0; /* et tout en haut */
 }
+
 header #espaceClient img {
-    width: 90px;
-    height: 90px;
-    transition: transform 0.3s ease, width 0.3s ease, height 0.3s ease;
+    /* l'image pour l'espace client */
+    width: 90px; /* taille un peu plus grande que le logo */
+    height: 90px; /* même chose ici */
+    transition: transform 0.3s ease, width 0.3s ease, height 0.3s ease; /* animation aussi */
 }
+
 header #espaceClient:hover img {
-    content: url("../pictures/photoDeProfil2.png");
-    transform: scale(1.1);
+    /* et là, ce qui se passe quand tu survoles */
+    content: url("../pictures/photoDeProfil2.png"); /* l'image change aussi */
+    transform: scale(1.1); /* petit effet d'agrandissement */
 }
+<<<<<<< HEAD
+
+nav {
+    /* on arrive à la barre de navigation */
+    display: flex; /* pour aligner les liens en ligne */
+    background-color: var(--bleu-principal); /* on met le bleu principal en fond */
+    padding: 1px; /* on resserre un peu */
+    text-align: center; /* tout centré au milieu */
+    position: sticky; /* ça reste visible quand tu scrolles */
+    z-index: 0; /* on le met derrière le header */
+}
+
+nav > ul > li {
+    /* bon, ici chaque item du menu de navigation */
+    position: relative; /* pour des ajustements internes */
+    left: 20%; /* on pousse un peu tout vers la droite */
+    margin-left: 30px; /* un espace sympa entre chaque lien */
+    display: inline; /* ils restent tous sur une seule ligne */
+=======
 header{
     align-items: center;
     padding:10px;
@@ -83,53 +118,71 @@ nav > ul > li{
     margin-left: 30px;
     display: inline;
     
+>>>>>>> 64e00696d5682f7494dd3ecf58d188445b3edc93
 }
+
 nav > ul > li > a {
-    color:var(--gris-texte);
-    font-weight: bold;
-    text-transform: uppercase;
+    /* pour les liens dans le menu */
+    color: var(--gris-texte); /* texte en gris clair */
+    font-weight: bold; /* en gras pour que ça ressorte bien */
+    text-transform: uppercase; /* tout en majuscules, c'est pro */
 }
+
 .pageNonActive:hover {
-    animation-name: survol;
-    animation-duration: 0.25s;
-    animation-fill-mode: forwards;
-    animation-direction: alternate;
+    /* alors ça, c'est ce qui se passe quand on survole un lien qui n'est pas actif */
+    animation-name: survol; /* on lance une petite animation */
+    animation-duration: 0.25s; /* ça dure un quart de seconde */
+    animation-fill-mode: forwards; /* l'effet reste à la fin */
+    animation-direction: alternate; /* ça joue dans les deux sens */
 }
-    
+
 .pageNonActive:not(:hover) {
-    animation-name: retour;
-    animation-duration: 0.25s;
-    animation-fill-mode: forwards;
-    animation-direction: alternate;
+    /* ça c'est quand tu ne survoles pas, le retour à l'état normal */
+    animation-name: retour; /* une autre animation */
+    animation-duration: 0.25s; /* même durée */
+    animation-fill-mode: forwards; /* même idée, effet final conservé */
+    animation-direction: alternate; /* encore une fois, dans les deux sens */
 }
-    
-    @keyframes survol {
-        from {
-            color: white;
-        }
-        to {
-            color: var(--orange);
-        }
+
+@keyframes survol {
+    /* animation pour le survol */
+    from {
+        color: white; /* ça commence en blanc */
     }
-    
-    @keyframes retour {
-        from {
-            color: var(--orange);
-        }
-        to {
-            color: white;
-        }
+    to {
+        color: var(--orange); /* et ça devient orange ! */
     }
-#pageActive{
-    color: var(--orange);
-    background-color:var(--bleu-fond);
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    padding: 18px;
 }
+
+@keyframes retour {
+    /* et là, l'animation de retour */
+    from {
+        color: var(--orange); /* ça part de l'orange */
+    }
+    to {
+        color: white; /* pour revenir au blanc */
+    }
+}
+
+#pageActive {
+    /* le lien actif dans le menu */
+    color: var(--orange); /* il est orange direct */
+    background-color: var(--bleu-fond); /* avec un fond bleu clair */
+    border-top-left-radius: 10px; /* coins arrondis en haut à gauche */
+    border-top-right-radius: 10px; /* et aussi à droite */
+    padding: 18px; /* un peu de rembourrage */
+}
+
 body {
-    margin:0;
+    /* on s'occupe du corps de la page ici */
+    margin: 0; /* aucun espace autour */
 }
+<<<<<<< HEAD
+
+main {
+    /* maintenant le gros bloc principal */
+    background-color: var(--bleu-fond); /* on met ce bleu clair en fond */
+=======
 main{
     background-color: var(--bleu-fond);
     position: relative;
@@ -137,62 +190,106 @@ main{
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
+>>>>>>> 64e00696d5682f7494dd3ecf58d188445b3edc93
 }
+
 .bigconteneur {
-    display: flex;
-    height: 438px;
-    }
-#conteneurfooter p {
-color: #518CC4;
+    /* ça c'est pour organiser les gros éléments */
+    display: flex; /* on les met côte à côte */
+    height: 438px; /* hauteur fixe */
 }
-    .commentaire {
-        position: relative;
-        background: rgb(238, 167, 167);
-        padding: 20px 30px;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        text-align: center;
-        height: 250px;
-        width: 700px;
-        left: 2%;
-        margin-top: 2%;
-    }
-    .commentaire2 {
-        position: relative;
-        background: var(--gris-texte);
-        padding: 20px 30px;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        height: 200px;
-        width: 700px;
-        left: 5%;
-        margin-top: 2%;
-    }
-    .commentaire3 {
-        position: relative;
-        background: var(--gris-texte);
-        padding: 20px 30px;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        height: 200px;
-        width: 600px;
-        left: 6%;
-        margin-top: 2%;
-    }
-    .commentaire4 {
-        position: relative;
-        background: var(--gris-texte);
-        padding: 20px 30px;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        height: 200px;
-        width: 600px;
-        left: 7%;
-        margin-top: 2%;
-    }
+
+.commentaire {
+    /* premier bloc de commentaires */
+    position: relative; /* positionnement indépendant */
+    background: rgb(238, 167, 167); /* un fond rose clair */
+    padding: 20px 30px; /* espace interne horizontal et vertical */
+    border-radius: 10px; /* coins arrondis */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* une petite ombre sympa */
+    text-align: center; /* tout centré */
+    height: 250px; /* une hauteur spécifique */
+    width: 700px; /* largeur spécifique */
+    left: 2%; /* petite marge à gauche */
+    margin-top: 2%; /* et une au-dessus */
+}
+
+.commentaire2 {
+    /* deuxième bloc de commentaires, un peu différent */
+    position: relative; /* même positionnement */
+    background: var(--gris-texte); /* fond gris clair */
+    padding: 20px 30px; /* toujours de l'espace interne */
+    border-radius: 10px; /* encore des coins arrondis */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* une ombre légère */
+    height: 200px; /* un peu moins haut */
+    width: 700px; /* même largeur que le premier */
+    left: 5%; /* plus décalé à gauche */
+    margin-top: 2%; /* même espace au-dessus */
+}
+
+.commentaire3 {
+    /* troisième bloc, ajusté pour être plus étroit */
+    position: relative;
+    background: var(--gris-texte); /* même fond gris clair */
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    height: 200px; /* même hauteur que le deuxième */
+    width: 600px; /* un peu moins large */
+    left: 6%; /* encore plus décalé */
+    margin-top: 2%;
+}
+
+.commentaire4 {
+    /* dernier bloc de commentaires */
+    position: relative;
+    background: var(--gris-texte);
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    height: 200px;
+    width: 600px;
+    left: 7%; /* décalé encore davantage à gauche */
+    margin-top: 2%;
+}
+
 .conteneur {
-    display: flex;
+    /* pour aligner des éléments ensemble */
+    display: flex; /* en mode "tout côte à côte" */
 }
+<<<<<<< HEAD
+
+section {
+    /* sections spécifiques du contenu */
+    padding: 10px; /* rembourrage interne */
+}
+
+h1 {
+    /* style pour les titres principaux */
+    text-align: center; /* centré au milieu */
+    color: var(--orange); /* couleur orange */
+    font-size: 30px; /* texte bien grand */
+    text-decoration: underline; /* avec un soulignement */
+}
+
+article {
+    /* les articles dans la page */
+    padding: 5px; /* juste un petit rembourrage */
+    text-align: center; /* tout au centre */
+}
+
+input[type="checkbox"]:checked + .noms {
+    /* quand une case à cocher est activée, ça déclenche ça */
+    transition: max-height 0.3s ease-out; /* animation d'agrandissement */
+    max-height: 200px; /* hauteur max dévoilée */
+    border: 1px solid var(--bleu-bordure); /* bordure bleue pour encadrer */
+    padding: 10px; /* rembourrage à l'intérieur */
+    border-radius: 5px; /* coins arrondis */
+    margin-top: 10px; /* espace au-dessus */
+    margin-left: 25%; /* centré horizontalement */
+    margin-right: 25%;
+    background-color: var(--bleu-fond); /* fond bleu clair */
+    text-align: center; /* centré */
+=======
 #sectionRecherche {
     display: flex;
     flex-wrap: wrap; 
@@ -236,6 +333,7 @@ h1{
 .afficheCheckbox:hover{
     cursor: pointer;
     text-decoration: underline;
+>>>>>>> 64e00696d5682f7494dd3ecf58d188445b3edc93
 }
 
 .noms > ul {
@@ -306,133 +404,191 @@ section#sectionEmployeur > article{
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 #BeauDiapo {
-    position: relative;
-	width: 60%;
-	margin:auto;
-	height: 400px;
-	overflow: hidden;
-    border: #D4603F solid;
-    border-radius: 5%;
-    left: 12%;
-    top: 5%;
-}
-#BeauDiapo .diapo img{
-	height: 400px;
-	width: 25%;
-}
-#BeauDiapo .diapo{
-	height: 400px;
-	width: 400%;
-	position: relative;
-	animation-name: diaporama;
-    animation-duration: 10s;
-    animation-iteration-count: infinite;
-	animation-direction:inherit;
-	animation-timing-function: linear;
+    /* le carrousel d'images, chic */
+    position: relative; /* placement flexible */
+    width: 60%; /* occupe 60% de la largeur */
+    margin: auto; /* centré horizontalement */
+    height: 400px; /* hauteur fixe */
+    overflow: hidden; /* les images dépassantes sont masquées */
+    border: #D4603F solid; /* bordure orange */
+    border-radius: 5%; /* coins arrondis */
+    left: 12%; /* légèrement décalé à gauche */
+    top: 5%; /* un peu d'espace au-dessus */
 }
 
-@keyframes diaporama {
-	from, 10% {
-		right: 0;
-	  }
-  
-	  30%, 40% {
-		right: 100%;
-	  }
-  
-	  60%, 70% {
-		right: 200%;
-	  }
-  
-	  90%, to {
-		right: 300%;
-	  }
+#BeauDiapo .diapo img {
+    /* les images à l'intérieur du carrousel */
+    height: 400px; /* même hauteur que le conteneur */
+    width: 25%; /* chaque image prend 25% du conteneur (elles défilent !) */
 }
-footer{
+
+#BeauDiapo .diapo {
+    /* conteneur des images qui défilent */
+    height: 400px; /* hauteur alignée avec les images */
+    width: 400%; /* largeur pour toutes les images côte à côte */
     position: relative;
-    display: flex;
-    background-color: var(--bleu-principal);
-    height: 200px;
-    border-top:1px solid var(--bleu-bordure);
+    animation-name: diaporama; /* animation de défilement */
+    animation-duration: 10s; /* ça dure 10 secondes */
+    animation-iteration-count: infinite; /* ça tourne en boucle */
+    animation-direction: inherit; /* même sens de lecture */
+    animation-timing-function: linear; /* vitesse constante */
 }
-footer >#conteneurfooter {
-    display: flex;
+
+/* animation pour le diaporama */
+@keyframes diaporama {
+    from, 10% {
+        right: 0; /* commence à la première image */
+    }
+    30%, 40% {
+        right: 100%; /* transition vers la deuxième */
+    }
+    60%, 70% {
+        right: 200%; /* puis la troisième */
+    }
+    90%, to {
+        right: 300%; /* et enfin la quatrième */
+    }
 }
+
+footer {
+    /* le bas de la page, propre et organisé */
+    position: relative; /* placement flexible */
+    display: flex; /* éléments alignés en rangée */
+    background-color: var(--bleu-principal); /* fond bleu principal */
+    height: 200px; /* hauteur fixe */
+    border-top: 1px solid var(--bleu-bordure); /* bordure bleue en haut */
+}
+
+footer > #conteneurfooter {
+    /* conteneur pour les éléments du footer */
+    display: flex; /* aligné en rangée */
+}
+
 footer #supportbouton {
-    position: absolute;
-    display: inline-block; 
-    right:40px;
-    bottom:30px;
-    font-weight: bold;
-    background-color: var(--orange);
-    border: 1px solid var(--bleu-bordure);
-    width: 120px;
-    height: 40px;
-    border-radius: 5px;
-    color: var(--gris-texte);
-    text-decoration: none;
-    margin-left: 20px;
-    cursor: pointer;
-    transition: transform 0.3s ease, background-color 0.3s ease;
+    /* bouton pour contacter le support */
+    position: absolute; /* indépendant des autres éléments */
+    display: inline-block; /* ne prend que l'espace nécessaire */
+    right: 40px; /* placé à droite */
+    bottom: 30px; /* un peu au-dessus du bas */
+    font-weight: bold; /* texte en gras */
+    background-color: var(--orange); /* couleur orange attirante */
+    border: 1px solid var(--bleu-bordure); /* bordure bleue */
+    width: 120px; /* largeur fixe */
+    height: 40px; /* hauteur fixe */
+    border-radius: 5px; /* coins arrondis */
+    color: var(--gris-texte); /* texte gris clair */
+    text-decoration: none; /* pas de soulignement */
+    margin-left: 20px; /* petit espace à gauche */
+    cursor: pointer; /* curseur en forme de main */
+    transition: transform 0.3s ease, background-color 0.3s ease; /* animation fluide */
 }
+
 footer #imagediscord img {
-    position: absolute;
-    margin: 0;          
-    padding: 0;
-    width: 50px;
-    height: 40px;
-    margin-right: 20px;
-    bottom:30px;
-    left:40px;
-    cursor: pointer;
-    transition: transform 0.3s ease;
+    /* icône Discord dans le footer */
+    position: absolute; /* placement spécifique */
+    margin: 0; /* pas d'espace autour */
+    padding: 0; /* pas d'espace interne */
+    width: 50px; /* largeur fixe */
+    height: 40px; /* hauteur fixe */
+    margin-right: 20px; /* espace à droite */
+    bottom: 30px; /* positionné près du bas */
+    left: 40px; /* décalé depuis la gauche */
+    cursor: pointer; /* interaction possible */
+    transition: transform 0.3s ease; /* effet de zoom fluide */
 }
 
 footer #imagediscord img:hover {
-    transform: scale(1.1);
+    /* effet au survol sur l'icône Discord */
+    transform: scale(1.1); /* zoom léger */
 }
+
 footer #imagegithub img {
+    /* icône GitHub dans le footer */
     position: absolute;
-    margin: 0;          
+    margin: 0;
     padding: 0;
-    width: 42.5px;
-    height: 42.5px;
+    width: 42.5px; /* un peu plus petit que Discord */
+    height: 42.5px; /* hauteur proportionnelle */
     margin-right: 20px;
-    bottom:30px;
-    left:110px;
+    bottom: 30px;
+    left: 110px; /* décalé un peu plus loin que Discord */
     cursor: pointer;
     transition: transform 0.3s ease;
 }
 
 footer #imagegithub img:hover {
+    /* effet au survol sur l'icône GitHub */
     transform: scale(1.1);
 }
-footer a #liensupport{
+
+footer a #liensupport {
+    /* lien support dans le footer */
     position: absolute;
     width: 120px;
     height: 40px;
     cursor: pointer;
-    bottom:2%;
-    right:3%;
+    bottom: 2%; /* près du bas */
+    right: 3%; /* légèrement décalé à droite */
 }
+
 footer #supportbouton:hover {
-        transform: scale(1.1);
-        background-color: var(--bleu-fond);
-        color: var(--orange);
-        animation-name: survol2;
-        animation-duration: 0.25s;
-        animation-fill-mode: forwards;
-        animation-direction: alternate;
-}
-footer #supportbouton:not(:hover) {
-    cursor: pointer;
-    border: 1px solid var(--bleu-bordure);
-    background-color: var(--bleu-fond);
-    animation-name: retour2;
+    /* effet au survol sur le bouton de support */
+    transform: scale(1.1); /* agrandissement */
+    background-color: var(--bleu-fond); /* couleur de fond bleue */
+    color: var(--orange); /* texte devient orange */
+    animation-name: survol2; /* animation de survol */
     animation-duration: 0.25s;
     animation-fill-mode: forwards;
     animation-direction: alternate;
 }
+<<<<<<< HEAD
+
+footer #supportbouton:not(:hover) {
+    /* style quand le bouton n'est pas survolé */
+    cursor: pointer;
+    border: 1px solid var(--bleu-bordure); /* bordure bleue */
+    background-color: var(--bleu-fond); /* fond bleu clair */
+    animation-name: retour2; /* animation retour */
+    animation-duration: 0.25s;
+    animation-fill-mode: forwards;
+    animation-direction: alternate;
+}
+
+/* animations pour les effets sur le bouton de support */
+@keyframes survol2 {
+    from {
+        font-weight: bold;
+        background-color: var(--orange);
+        border: 1px solid var(--bleu-bordure);
+        margin: 10px;
+        border-radius: 5px;
+        color: var(--gris-texte);
+        text-decoration: none;
+    }
+    to {
+        border: 1px solid var(--bleu-bordure);
+        background-color: var(--bleu-fond);
+        color: var(--orange);
+    }
+}
+
+@keyframes retour2 {
+    from {
+        border: 1px solid var(--bleu-bordure);
+        background-color: var(--bleu-fond);
+        color: var(--orange);
+    }
+    to {
+        font-weight: bold;
+        background-color: var(--orange);
+        border: 1px solid var(--bleu-bordure);
+        margin: 10px;
+        border-radius: 5px;
+        color: var(--gris-texte);
+        text-decoration: none;
+    }
+}
+=======
         
         @keyframes survol2 {
             from {
@@ -600,3 +756,4 @@ footer #supportbouton:not(:hover) {
                 font-size: 12px;
             }
         }
+>>>>>>> 64e00696d5682f7494dd3ecf58d188445b3edc93

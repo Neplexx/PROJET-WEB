@@ -18,6 +18,10 @@
     .noms{
         color:var(--gris-texte);
     }
+    .grid-item:hover > p {
+        color:var(--gris-texte);
+        margin-bottom: 15px;
+    }
 }
 *{
     font-family: Roboto, sans-serif;

@@ -159,6 +159,7 @@ h1 {
 p {
     text-align: center;
     color: #555;
+    padding-top: 20px;
     padding-bottom: 30px;
     margin: 0;
 }

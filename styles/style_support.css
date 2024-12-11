@@ -4,7 +4,7 @@
     --bleu-texte-1:#79B5EA;
     --bleu-fond:#BFCBE8;
     --orange:#D4603F;
-    --gris-texte:#E0E0E0;
+    --gris-texte:#333;
 }
 @media (prefers-color-scheme: dark) {
     :root {
@@ -13,7 +13,7 @@
         --bleu-texte-1: #4A90E2;
         --bleu-fond: #0d1933;
         --orange: #FF5733;
-        --gris-texte: #B0B0B0;
+        --gris-texte: #E0E0E0;
     }
 }
 *{
@@ -155,7 +155,7 @@ h1 {
 }
 p {
     text-align: center;
-    color: #555;
+    color: var(--gris-texte);
     padding-top: 20px;
     padding-bottom: 30px;
     margin: 0;
@@ -163,7 +163,7 @@ p {
 #supportForm {
     max-width: 600px;
     margin: 0 auto;
-    background: var(--gris-texte);
+    background: #E0E0E0;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);

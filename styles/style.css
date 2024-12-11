@@ -322,7 +322,8 @@ section#sectionEmployeur > article{
     padding: 20px;
     background-color: var(--bleu-fond);
     border-radius: 10px;
-    height: 420px;
+    min-height: 420px;
+    overflow: hidden;
 }
 .grid-item {
     background-color: var(--gris-texte);

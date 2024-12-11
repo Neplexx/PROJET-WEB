@@ -342,7 +342,6 @@ section#sectionEmployeur > article{
 
 .grid-item h2 {
     color: var(--orange);
-    margin-bottom: 10px;
 }
 
 .grid-item p {
@@ -394,21 +393,18 @@ section#sectionEmployeur > article{
 }
 
 @keyframes diaporama {
-	from, 10% {
-		right: 0;
-	  }
-  
-	  30%, 40% {
-		right: 100%;
-	  }
-  
-	  60%, 70% {
-		right: 200%;
-	  }
-  
-	  90%, to {
-		right: 300%;
-	  }
+    0%, 10% {
+        right: 0;
+    }
+    25%, 35% {
+        right: 100%;
+    }
+    50%, 60% {
+        right: 200%;
+    }
+    100% {
+        right: 0;
+    }
 }
 footer{
     position: relative;

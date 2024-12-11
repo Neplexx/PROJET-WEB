@@ -15,6 +15,10 @@
         --orange: #FF5733;
         --gris-texte: #B0B0B0;
     }
+    .grid-item p {
+        color: var(--gris-texte);
+        margin-bottom: 15px;
+    }
 }
 *{
     font-family: Roboto, sans-serif;
@@ -142,60 +146,8 @@ main{
     display: flex;
     height: 438px;
     }
-    .commentaire {
-        position: relative;
-        background: rgb(238, 167, 167);
-        padding: 20px 30px;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        text-align: center;
-        height: 250px;
-        width: 700px;
-        left: 2%;
-        margin-top: 2%;
-    }
-    .commentaire2 {
-        position: relative;
-        background: var(--gris-texte);
-        padding: 20px 30px;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        height: 200px;
-        width: 700px;
-        left: 5%;
-        margin-top: 2%;
-    }
-    .commentaire3 {
-        position: relative;
-        background: var(--gris-texte);
-        padding: 20px 30px;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        height: 200px;
-        width: 600px;
-        left: 6%;
-        margin-top: 2%;
-    }
-    .commentaire4 {
-        position: relative;
-        background: var(--gris-texte);
-        padding: 20px 30px;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        height: 200px;
-        width: 600px;
-        left: 7%;
-        margin-top: 2%;
-    }
 .conteneur {
     display: flex;
-}
-#sectionRecherche {
-    display: flex;
-    flex-wrap: wrap; 
-    justify-content: center;
-    gap: 20px; 
-    padding: 30px;
 }
 h1{
     text-align: center;
@@ -204,144 +156,6 @@ h1{
     text-decoration: underline;
     padding: 30px;
     margin:0;
-}
-#sectionRecherche > article{
-    position: relative;
-    margin: 50px;
-    width: 600px;
-    height: 170px;
-    overflow: hidden;
-    background: var(--gris-texte);
-    padding: 20px 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-#sectionRecherche > article > label {
-    text-align: center;
-}
-#sectionRecherche > article > label > p:first-of-type {
-    font-style: italic;
-    color: rgba(0, 0, 0, 0.7);
-}
-.afficheCheckbox{
-    position: absolute;
-    color: var(--orange);
-    font-style: italic;
-    left: 25px;
-    bottom: 5px;
-}
-.afficheCheckbox:hover{
-    cursor: pointer;
-    text-decoration: underline;
-}
-.noms {
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: top;
-    top: 0;
-    left: 0;
-    width: 95%;
-    height: 80%;
-    margin-top: 3%;
-    margin-left: 2.5%;
-    max-height: 0;
-    line-height: 20px;
-    overflow: hidden;        
-}
-.noms > ul {
-    display : grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 30px 100px;
-    padding: 0;
-    margin-top: 15px;
-}
-.noms > ul > li:hover {
-    color: var(--orange);
-    text-decoration: underline;
-    cursor: pointer;
-}
-.noms > label {
-    position: absolute;
-    bottom:10px;
-    left: 15px;
-    color:var(--orange);
-    font-style: italic;
-}
-.noms > label:hover{
-    cursor: pointer;
-    text-decoration: underline;
-    font-style: italic;
-}
-input[type="checkbox"]:checked + .noms{
-    transition: max-height 0.3s ease-out;
-    max-height: 200px;
-    border: 1px solid var(--bleu-bordure);
-    padding:10px;
-    border-radius: 5px;
-    background-color: var(--bleu-fond);
-    pointer-events: all;
-}
-section#sectionEmployeur{
-    display: flex;
-    flex-wrap: wrap; 
-    justify-content: center;
-    gap: 20px; 
-    padding: 30px;
-}
-section#sectionEmployeur > article{
-    position: relative;
-    margin: 50px;
-    width: 600px;
-    height: 170px;
-    overflow: hidden;
-    background: var(--gris-texte);
-    padding: 20px 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-#BeauDiapo {
-    position: relative;
-	width: 60%;
-	margin:auto;
-	height: 400px;
-	overflow: hidden;
-    border: #D4603F solid;
-    border-radius: 5%;
-    left: 12%;
-    top: 5%;
-}
-#BeauDiapo .diapo img{
-	height: 400px;
-	width: 25%;
-}
-#BeauDiapo .diapo{
-	height: 400px;
-	width: 400%;
-	position: relative;
-	animation-name: diaporama;
-    animation-duration: 10s;
-    animation-iteration-count: infinite;
-	animation-direction:inherit;
-	animation-timing-function: linear;
-}
-
-@keyframes diaporama {
-	from, 10% {
-		right: 0;
-	  }
-  
-	  30%, 40% {
-		right: 100%;
-	  }
-  
-	  60%, 70% {
-		right: 200%;
-	  }
-  
-	  90%, to {
-		right: 300%;
-	  }
 }
 footer{
     position: relative;

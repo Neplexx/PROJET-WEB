@@ -11,9 +11,12 @@
         --bleu-principal: #1E3A5F;
         --bleu-bordure: #162D49;
         --bleu-texte-1: #4A90E2;
-        --bleu-fond: #1A1A1A;
+        --bleu-fond: #0d1933;
         --orange: #FF5733;
         --gris-texte: #B0B0B0;
+    }
+    .noms{
+        color:var(--gris-texte);
     }
 }
 *{
@@ -221,6 +224,7 @@ h1{
 }
 #sectionRecherche > article > label {
     text-align: center;
+    cursor: pointer;
 }
 #sectionRecherche > article > label > p:first-of-type {
     font-style: italic;
@@ -278,7 +282,9 @@ h1{
     overflow: hidden;
     transition: max-height 0.3s ease, border 0.3s ease, background-color 0.3s ease; /* Animation ajoutée */
 }
-
+input[type="checkbox"] {
+    display: none;
+}
 input[type="checkbox"]:checked + .noms {
     max-height: 200px;
     border: 1px solid var(--bleu-bordure);

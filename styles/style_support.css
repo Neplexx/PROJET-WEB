@@ -4,7 +4,7 @@
     --bleu-texte-1:#79B5EA;
     --bleu-fond:#BFCBE8;
     --orange:#D4603F;
-    --gris-texte:#333;
+    --gris-texte:#272727;
 }
 @media (prefers-color-scheme: dark) {
     :root {
@@ -155,7 +155,7 @@ h1 {
 }
 p {
     text-align: center;
-    color: var(--gris-texte);
+    color: #555;
     padding-top: 20px;
     padding-bottom: 30px;
     margin: 0;
@@ -163,7 +163,7 @@ p {
 #supportForm {
     max-width: 600px;
     margin: 0 auto;
-    background: #E0E0E0;
+    background: var(--gris-texte);
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);

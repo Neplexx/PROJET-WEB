@@ -15,9 +15,6 @@
         --orange: #FF5733;
         --gris-texte: #B0B0B0;
     }
-    p {
-        color: var(--gris-texte);
-    }
 }
 *{
     font-family: Roboto, sans-serif;

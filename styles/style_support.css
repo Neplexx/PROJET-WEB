@@ -244,7 +244,7 @@ footer #conteneurfooter {
     display: flex;
 }
 footer #supportbouton {
-    position: relative;
+    position: absolute;
     display: inline-block; 
     font-weight: bold;
     background-color: var(--orange);
@@ -257,18 +257,18 @@ footer #supportbouton {
     margin-left: 19px;
     cursor: pointer;
     transition: transform 0.3s ease, background-color 0.3s ease;
-    left: 970%;
-    top: 60%;
+    right:50px;
+    bottom: 30px;
 }
 footer #imagediscord img {
-    position: relative;
+    position: absolute;
     margin: 0;          
     padding: 0;
     width: 50px;
     height: 40px;
     margin-right: 20px;
-    top: 72%;
-    right: 170%;
+    bottom:30px;
+    left:40px;
     cursor: pointer;
     transition: transform 0.3s ease;
 }
@@ -277,14 +277,14 @@ footer #imagediscord img:hover {
     transform: scale(1.1);
 }
 footer #imagegithub img {
-    position: relative;
+    position: absolute;
     margin: 0;          
     padding: 0;
     width: 50px;
     height: 50px;
     margin-right: 20px;
-    top: 70%;
-    right: 175%;
+    bottom:30px;
+    left:110px;
     cursor: pointer;
     transition: transform 0.3s ease;
 }

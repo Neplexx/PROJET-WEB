@@ -151,51 +151,51 @@ main{
 #conteneurfooter p {
 color: #518CC4;
 }
-    .commentaire { /* style de chacun des commentaires */
-        position: relative;
-        background: rgb(238, 167, 167);
-        padding: 20px 30px;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        text-align: center;
-        height: 250px;
-        width: 700px;
-        left: 2%;
-        margin-top: 2%;
-    }
-    .commentaire2 {
-        position: relative;
-        background: var(--gris-texte);
-        padding: 20px 30px;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        height: 200px;
-        width: 700px;
-        left: 5%;
-        margin-top: 2%;
-    }
-    .commentaire3 {
-        position: relative;
-        background: var(--gris-texte);
-        padding: 20px 30px;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        height: 200px;
-        width: 600px;
-        left: 6%;
-        margin-top: 2%;
-    }
-    .commentaire4 {
-        position: relative;
-        background: var(--gris-texte);
-        padding: 20px 30px;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        height: 200px;
-        width: 600px;
-        left: 7%;
-        margin-top: 2%;
-    }
+.commentaire { /* style de chacun des commentaires */
+    position: relative;
+    background: rgb(238, 167, 167);
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    height: 250px;
+    width: 700px;
+    left: 2%;
+    margin-top: 2%;
+}
+.commentaire2 {
+    position: relative;
+    background: var(--gris-texte);
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    height: 200px;
+    width: 700px;
+    left: 5%;
+    margin-top: 2%;
+}
+.commentaire3 {
+    position: relative;
+    background: var(--gris-texte);
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    height: 200px;
+    width: 600px;
+    left: 6%;
+    margin-top: 2%;
+}
+.commentaire4 {
+    position: relative;
+    background: var(--gris-texte);
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    height: 200px;
+    width: 600px;
+    left: 7%;
+    margin-top: 2%;
+}
 .conteneur {
     display: flex;
 }
@@ -321,7 +321,7 @@ section#sectionEmployeur > article{ /* style de chaque article en lui meme de la
     padding: 20px;
     background-color: var(--bleu-fond);
     border-radius: 10px;
-    min-height: 420px;
+    min-height: 440px;
     overflow: hidden;
 }
 .grid-item { /* mise en place de la grille */

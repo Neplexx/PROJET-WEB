@@ -1,4 +1,4 @@
-:root {
+:root { /* Définition des couleurs principales */
     --bleu-principal: #518CC4;
     --bleu-bordure: #1F5A92;
     --bleu-texte-1: #79B5EA;
@@ -8,7 +8,7 @@
     --blanc-texte: #FFFFFF;
     --gris-fond: #E6E9F0;
 }
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: dark) { /* Mode sombre */
     :root {
         --bleu-principal: #1E3A5F;
         --bleu-bordure: #162D49;
@@ -19,7 +19,7 @@
     }
 }
 
-body {
+body { 
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
@@ -27,10 +27,10 @@ body {
     color: var(--gris-texte);
     line-height: 1.6;
 }
-.bigconteneur {
+.bigconteneur { /* Conteneur principal flexible */
     display: flex;
 }
-#logo {
+#logo { /* Logo vers l'index */
     position: relative;
     right: 50%;
     width: 75px;
@@ -39,14 +39,14 @@ body {
     top: 0.5%;
     transition: transform 0.3s ease, width 0.3s ease, height 0.3s ease;
 }
-#logo:hover {
+#logo:hover { /* Animation de survol */
     content: url("../pictures/deco.png");
     position: relative;
     height: 75px;
     transform: scale(1.1);
     width: 75px;
 }
-h1 {
+h1 { /* Style des différents titres d'articles */
     text-align: left;
     padding-left: 20px;
     margin: 30px 0 15px;
@@ -56,7 +56,7 @@ h1 {
     padding-left: 15px;
 }
 
-h1:first-of-type {
+h1:first-of-type { /* Style du titre principal */
     text-align: center;
     padding-top: 20px;
     font-weight: bold;
@@ -103,17 +103,7 @@ a:hover {
     text-decoration: underline;
 }
 
-footer {
-    text-align: center;
-    margin-top: 30px;
-    padding: 20px 0;
-    background-color: var(--bleu-bordure);
-    color: var(--blanc-texte);
-    font-size: 14px;
-    border-top: 4px solid var(--bleu-principal);
-}
-
-.conteneur {
+.conteneur { /* style global des différents éléments */
     position: relative;
     right: 2%;
     max-width: 800px;

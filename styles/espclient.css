@@ -1,4 +1,4 @@
-:root{
+:root{ /* Définition des variables de couleurs */
     --bleu-principal:#518CC4;
     --bleu-bordure:#1F5A92;
     --bleu-texte-1:#79B5EA;
@@ -6,7 +6,7 @@
     --orange:#D4603F;
     --gris-texte:#E0E0E0;
 }
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: dark) { /* Mode sombre */
     :root {
         --bleu-principal: #1E3A5F;
         --bleu-bordure: #162D49;
@@ -16,25 +16,25 @@
         --gris-texte: #B0B0B0;
     }
 }
-*{
+*{ /* paramètres de bases pour tous les éléments */
     font-family: Roboto, sans-serif;
     box-sizing: border-box;
     text-decoration: none;
     list-style-type: none;
 }
-body {
+body { 
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     background-color: var(--bleu-fond);
 }
 
-.conteneur {
+.conteneur { /* Conteneur principal flexible */
     display: flex;
     width: 100%;
 }
 
-.sidebar {
+.sidebar { /* Barre latérale */
     width: 250px;
     background-color: var(--bleu-bordure);
     color: var(--gris-texte);
@@ -53,7 +53,7 @@ body {
     border-radius: 50%;
 }
 
-.sidebar h2 {
+.sidebar h2 { /* style général de la sidebar */
     margin: 10px 0;
     font-size: 1.2em;
 }
@@ -82,7 +82,7 @@ body {
     padding: 20px;
 }
 
-header {
+header { /* style général du header */
     background-color: var(--bleu-principal);
     padding: 10px;
     color: var(--gris-texte);;
@@ -121,7 +121,7 @@ header nav ul li a:hover {
     font-size: 1.5em;
 }
 
-.profil-details table {
+.profil-details table { /* utilise d'un tableau pour la mise en page des informations */
     width: 100%;
     border-collapse: collapse;
 }
@@ -136,7 +136,7 @@ header nav ul li a:hover {
 }
 
 
-.projets-recents {
+.projets-recents { /* Utilisation d'une liste non ordonnée pour les projets récents */
     background-color: var(--gris-texte);;
     padding: 20px;
     margin-top: 20px;

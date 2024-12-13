@@ -1,4 +1,4 @@
-:root{
+:root{ /* Définition des variables de couleurs */
     --bleu-principal:#518CC4;
     --bleu-bordure:#1F5A92;
     --bleu-texte-1:#79B5EA;
@@ -6,7 +6,7 @@
     --orange:#D4603F;
     --gris-texte:#E0E0E0;
 }
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: dark) { /* Mode sombre */
     :root {
         --bleu-principal: #1E3A5F;
         --bleu-bordure: #162D49;
@@ -16,7 +16,7 @@
         --gris-texte: #B0B0B0;
     }
 }
-body {
+body { /* Mise en place de Body en mise en page flexible*/
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
@@ -27,17 +27,15 @@ body {
     justify-content: center;
     min-height: 100vh;
 }
-
 header {
     margin-bottom: 20px;
     text-align: center;
 }
-.logo {
+.logo { /* Logo principal */
     width: 100px;
     height: auto;
 }
-
-.container {
+.container { /* Conteneur principal */
     background: #ffffff;
     padding: 20px 30px;
     border-radius: 10px;
@@ -45,31 +43,24 @@ header {
     max-width: 400px;
     text-align: center;
 }
-
-h2 {
+h2 { /*Style général de la page*/
     color: black;
 }
-
 p, h3 {
     margin: 10px 0;
 }
-
 a {
     color: var(--bleu-texte-1);
     text-decoration: none;
 }
-
 a:hover {
     text-decoration: underline;
 }
-
 .checkbox-container {
     margin: 20px 0;
     text-align: left;
 }
-
-
-button {
+button { /* Bouton vers le site principal */
     background-color: #3498db;
     color: white;
     border: none;
@@ -78,19 +69,14 @@ button {
     cursor: pointer;
     font-size: 16px;
 }
-
-
-
 button a {
     text-decoration: none;
     color: white;
 }
-
 button:hover {
     background-color: #2980b9;
 }
-
-footer {
+footer { /* Pied de page */
     margin-top: 20px;
     font-size: 12px;
     color: #7f8c8d;

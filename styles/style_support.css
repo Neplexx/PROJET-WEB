@@ -1,4 +1,4 @@
-:root{
+:root{ /* Définition des variables de couleurs */
     --bleu-principal:#518CC4;
     --bleu-bordure:#1F5A92;
     --bleu-texte-1:#79B5EA;
@@ -6,7 +6,7 @@
     --orange:#D4603F;
     --gris-texte:#272727;
 }
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: dark) { /* Mode sombre */
     :root {
         --bleu-principal: #1E3A5F;
         --bleu-bordure: #162D49;
@@ -20,19 +20,22 @@
         background-color: var(--bleu-fond);
     }
 }
-*{
+*{ /* paramètres de bases pour tous les éléments */
     font-family: Roboto, sans-serif;
     box-sizing: border-box;
     text-decoration: none;
     list-style-type: none;
 }
-
-header {
+header { /* Header est utilisé comme un conteneur flexible*/
     display: flex;
     align-items: center;
     position: relative;
+    padding:10px;
+    height: 40px;
+    background-color: var(--bleu-principal);
+    z-index: 1;
 }
-header #index {
+header #index { /* Logo menant à l'index */
     position: absolute;
     bottom:0;
     left:1%;
@@ -46,7 +49,7 @@ header #index img:hover {
     content: url("../pictures/deco.png");
     transform: scale(1.1);
 }
-header #espaceClient {
+header #espaceClient { /* Logo menant à l'espace client */
     position: absolute;
     right: 1%;
     top: 0;
@@ -54,20 +57,11 @@ header #espaceClient {
 header #espaceClient img {
     width: 90px;
     height: 90px;
-    transition: transform 0.3s ease, width 0.3s ease, height 0.3s ease;
+    transition: transform 0.3s ease, width 0.3s ease, height 0.3s ease; /* Animation de survol fluide */
 }
 header #espaceClient:hover img {
-    content: url("../pictures/photoDeProfil2.png");
+    content: url("../pictures/photoDeProfil2.png"); /* Changement de l'image au survol */
     transform: scale(1.1);
-}
-
-header{
-    align-items: center;
-    padding:10px;
-    position: relative;
-    height: 40px;
-    background-color: var(--bleu-principal);
-    z-index: 1;
 }
 header > a {
     float: right;
@@ -75,7 +69,7 @@ header > a {
     top:20%;
     right:10%;
 }
-nav{
+nav{ /* Barre de navigation */
     display: flex;
     background-color: var(--bleu-principal);
     padding: 1px;
@@ -102,7 +96,7 @@ nav > ul > li > a {
     animation-direction: alternate;
 }
     
-.pageNonActive:not(:hover) {
+.pageNonActive:not(:hover) { /* Animation de changement de couleurs */
     animation-name: retour;
     animation-duration: 0.25s;
     animation-fill-mode: forwards;
@@ -126,7 +120,7 @@ nav > ul > li > a {
             color: white;
         }
     }
-#pageActive{
+#pageActive{ /* Page actuellement active pour faire l'effet d'onglet */
     color: var(--orange);
     background-color:var(--bleu-fond);
     border-top-left-radius: 10px;
@@ -140,11 +134,10 @@ main{
     background-color: var(--bleu-fond);
     margin:0;
 }
-.bigconteneur {
+.bigconteneur { /*Flexbox une fois de plus comme mise en page*/
     display: flex;
     height: 438px;
 }
-
 body {
     font-family: Arial, sans-serif;
     background-color: #BFCBE8;
@@ -164,7 +157,7 @@ p {
     padding-bottom: 30px;
     margin: 0;
 }
-#supportForm {
+#supportForm { /* toute la mise en place du formulaire de contact */
     max-width: 600px;
     margin: 0 auto;
     background: #E0E0E0;
@@ -179,8 +172,7 @@ label {
     margin-bottom: 5px;
 }
 input[type="text"],
-input[type="email"],
-textarea {
+input[type="email"], textarea {
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;
@@ -191,9 +183,7 @@ textarea {
     background-color: #d1d1d1;
     transition: all 0.3s;
 }
-input[type="text"]:focus,
-input[type="email"]:focus,
-textarea:focus {
+input[type="text"]:focus, input[type="email"]:focus, textarea:focus {
     border-color: #007bff;
     background-color: #ffffff;
     outline: none;
@@ -202,7 +192,7 @@ textarea:focus {
 textarea {
     resize: none;
 }
-button {
+button { /* boutons globales */
     background-color: var(--orange);
     color: #fff;
     padding: 10px 20px;
@@ -223,11 +213,15 @@ button:hover {
     border: 1px solid var(--bleu-bordure);
     border-radius: 5px;
 }
-footer {
+footer { /* Footer est un conteneur flexible aussi */
     text-align: center;
     padding: 20px;
-    background-color:var(--orange);
     color: #fff;
+    display: flex;
+    position: relative;
+    background-color: var(--bleu-principal);
+    height: 200px;
+    border-top:1px solid var(--bleu-bordure);
 }
 footer a img {
     margin: 0 10px;
@@ -237,18 +231,10 @@ footer a img {
 footer a img:hover {
     transform: scale(1.2);
 }
-
-footer{
-    display: flex;
-    position: relative;
-    background-color: var(--bleu-principal);
-    height: 200px;
-    border-top:1px solid var(--bleu-bordure);
-}
 footer #conteneurfooter {
     display: flex;
 }
-footer #supportbouton {
+footer #supportbouton { /* Bouton relier à la page d'accueil */
     position: absolute;
     display: inline-block; 
     font-weight: bold;
@@ -265,7 +251,7 @@ footer #supportbouton {
     right:50px;
     bottom: 30px;
 }
-footer #imagediscord img {
+footer #imagediscord img { /* lien vers le discord*/
     position: absolute;
     margin: 0;          
     padding: 0;
@@ -281,7 +267,7 @@ footer #imagediscord img {
 footer #imagediscord img:hover {
     transform: scale(1.1);
 }
-footer #imagegithub img {
+footer #imagegithub img { /* lien vers le github */
     position: absolute;
     margin: 0;          
     padding: 0;
@@ -316,136 +302,136 @@ footer #supportbouton:not(:hover) {
     background-color: var(--orange);
 }
 
-        @media screen and (max-width: 768px) {
-            header {
-                flex-direction: column;
-                height: auto;
-                padding: 10px;
-                text-align: center;
-            }
-            header #index {
-                display: block;
-                position: absolute;
-                bottom:0;
-                left:0%;
-                width: 40px;
-                height: 40px;
-            }
-            header #espaceClient img {
-                width: 60px;
-                height: 60px;
-            }
-        
-            nav {
-                flex-direction: column;
-                padding: 10px 0;
-            }
-        
-            nav > ul {
-                padding: 0;
-                margin: 0 auto;
-            }
-        
-            nav > ul > li {
-                margin: 10px 0;
-                left: 0;
-            }
-        
-            main {
-                padding: 10px;
-            }
-        
-            .bigconteneur {
-                flex-direction: column;
-                height: auto;
-                margin: 10px 0;
-            }
-        
-            .commentaire,
-            .commentaire2,
-            .commentaire3,
-            .commentaire4 {
-                width: 90%;
-                height: auto;
-                margin: 10px auto;
-            }
-        
-            #sectionRecherche {
-                flex-direction: column;
-                gap: 10px;
-            }
-        
-            #sectionRecherche > article {
-                width: 90%;
-                margin: 20px auto;
-            }
-        
-            #BeauDiapo {
-                width: 50%;
-                left: 0;
-            }
-        
-            #BeauDiapo .diapo img {
-                width: 50%;
-            }
-        
-            footer {
-                flex-direction: column;
-                height: 150px;
-                text-align: center;
-                padding: 10px;
-            }
-        
-            footer #imagediscord img,
-            footer #imagegithub img {
-                width: 40px;
-                height: 35px;
-                margin: 5px auto;
-            }
-        
-            footer #supportbouton {
-                width: 100px;
-                height: 35px;
-                margin: 10px auto;
-            }
-        }
-        
-        @media screen and (max-width: 480px) {
-            header #index {
-                position: absolute;
-                bottom:0;
-                left:0%;
-                width: 40px;
-                height: 40px;
-            }
-            header #espaceClient img {
-                width: 50px;
-                height: 50px;
-            }
-        
-            h1 {
-                font-size: 24px;
-                padding: 15px;
-            }
-        
-            .commentaire,
-            .commentaire2,
-            .commentaire3,
-            .commentaire4 {
-                padding: 15px;
-            }
-        
-            nav > ul > li > a {
-                font-size: 14px;
-            }
-        
-            footer #imagediscord img,
-            footer #imagegithub img {
-                width: 35px;
-                height: 30px;
-            }
-        
-            footer #supportbouton {
-                font-size: 12px;
-            }
-        }
+@media screen and (max-width: 768px) { /* Adaptation pour les écrans plus petits */
+    header {
+        flex-direction: column;
+        height: auto;
+        padding: 10px;
+        text-align: center;
+    }
+    header #index {
+        display: block;
+        position: absolute;
+        bottom:0;
+        left:0%;
+        width: 40px;
+        height: 40px;
+    }
+    header #espaceClient img {
+        width: 60px;
+        height: 60px;
+    }
+
+    nav {
+        flex-direction: column;
+        padding: 10px 0;
+    }
+
+    nav > ul {
+        padding: 0;
+        margin: 0 auto;
+    }
+
+    nav > ul > li {
+        margin: 10px 0;
+        left: 0;
+    }
+
+    main {
+        padding: 10px;
+    }
+
+    .bigconteneur {
+        flex-direction: column;
+        height: auto;
+        margin: 10px 0;
+    }
+
+    .commentaire,
+    .commentaire2,
+    .commentaire3,
+    .commentaire4 {
+        width: 90%;
+        height: auto;
+        margin: 10px auto;
+    }
+
+    #sectionRecherche {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    #sectionRecherche > article {
+        width: 90%;
+        margin: 20px auto;
+    }
+
+    #BeauDiapo {
+        width: 50%;
+        left: 0;
+    }
+
+    #BeauDiapo .diapo img {
+        width: 50%;
+    }
+
+    footer {
+        flex-direction: column;
+        height: 150px;
+        text-align: center;
+        padding: 10px;
+    }
+
+    footer #imagediscord img,
+    footer #imagegithub img {
+        width: 40px;
+        height: 35px;
+        margin: 5px auto;
+    }
+
+    footer #supportbouton {
+        width: 100px;
+        height: 35px;
+        margin: 10px auto;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    header #index {
+        position: absolute;
+        bottom:0;
+        left:0%;
+        width: 40px;
+        height: 40px;
+    }
+    header #espaceClient img {
+        width: 50px;
+        height: 50px;
+    }
+
+    h1 {
+        font-size: 24px;
+        padding: 15px;
+    }
+
+    .commentaire,
+    .commentaire2,
+    .commentaire3,
+    .commentaire4 {
+        padding: 15px;
+    }
+
+    nav > ul > li > a {
+        font-size: 14px;
+    }
+
+    footer #imagediscord img,
+    footer #imagegithub img {
+        width: 35px;
+        height: 30px;
+    }
+
+    footer #supportbouton {
+        font-size: 12px;
+    }
+}

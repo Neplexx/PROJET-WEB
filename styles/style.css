@@ -22,6 +22,10 @@
         color:var(--gris-texte);
         margin-bottom: 15px;
     }
+    footer #supportbouton:not(:hover) {
+        border: 1px solid var(--bleu-bordure);
+        background-color: var(--bleu-fond);
+    }
 }
 *{ /* on définit les paramètres de bases pour tous les élements */
     font-family: Roboto, sans-serif;
@@ -421,7 +425,7 @@ footer #supportbouton { /* bouton menant à la page support */
     width: 120px;
     height: 40px;
     border-radius: 5px;
-    color: var(--gris-texte);
+    color: #E0E0E0;
     text-decoration: none;
     margin-left: 20px;
     cursor: pointer;
@@ -471,19 +475,11 @@ footer #supportbouton:hover {
         transform: scale(1.1);
         background-color: var(--bleu-fond);
         color: var(--orange);
-        animation-name: survol2;
-        animation-duration: 0.25s;
-        animation-fill-mode: forwards;
-        animation-direction: alternate;
 }
 footer #supportbouton:not(:hover) {
     cursor: pointer;
     border: 1px solid var(--bleu-bordure);
-    background-color: var(--bleu-fond);
-    animation-name: retour2;
-    animation-duration: 0.25s;
-    animation-fill-mode: forwards;
-    animation-direction: alternate;
+    background-color: var(--orange);
 }
 @media screen and (max-width: 768px) { /* changements en fonction de la taille de l'écran */
     header {

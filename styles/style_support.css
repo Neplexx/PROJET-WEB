@@ -15,6 +15,10 @@
         --orange: #FF5733;
         --gris-texte: #E0E0E0;
     }
+    footer #supportbouton:not(:hover) {
+        border: 1px solid var(--bleu-bordure);
+        background-color: var(--bleu-fond);
+    }
 }
 *{
     font-family: Roboto, sans-serif;
@@ -236,6 +240,7 @@ footer a img:hover {
 
 footer{
     display: flex;
+    position: relative;
     background-color: var(--bleu-principal);
     height: 200px;
     border-top:1px solid var(--bleu-bordure);
@@ -252,7 +257,7 @@ footer #supportbouton {
     width: 120px;
     height: 40px;
     border-radius: 5px;
-    color: var(--gris-texte);
+    color: #E0E0E0;
     text-decoration: none;
     margin-left: 19px;
     cursor: pointer;
@@ -301,56 +306,15 @@ footer a #liensupport{
     right:3%;
 }
 footer #supportbouton:hover {
-        transform: scale(1.1);
-        background-color: var(--bleu-fond);
-        color: var(--orange);
-        animation-name: survol2;
-        animation-duration: 0.25s;
-        animation-fill-mode: forwards;
-        animation-direction: alternate;
+    transform: scale(1.1);
+    background-color: var(--bleu-fond);
+    color: var(--orange);
 }
 footer #supportbouton:not(:hover) {
     cursor: pointer;
     border: 1px solid var(--bleu-bordure);
-    background-color: var(--bleu-fond);
-    animation-name: retour2;
-    animation-duration: 0.25s;
-    animation-fill-mode: forwards;
-    animation-direction: alternate;
+    background-color: var(--orange);
 }
-        
-        @keyframes survol2 {
-            from {
-                font-weight: bold;
-                background-color: var(--orange);
-                border: 1px solid var(--bleu-bordure);
-                margin: 10px;
-                border-radius: 5px;
-                color: var(--gris-texte);
-                text-decoration: none;
-            }
-            to {
-                border: 1px solid var(--bleu-bordure);
-                background-color: var(--bleu-fond);
-                color: var(--orange);
-            }
-        }
-        @keyframes retour2 {
-            from {
-                border: 1px solid var(--bleu-bordure);
-                background-color: var(--bleu-fond);
-                color: var(--orange);
-            }
-            to {
-                font-weight: bold;
-                background-color: var(--orange);
-                border: 1px solid var(--bleu-bordure);
-                margin: 10px;
-                border-radius: 5px;
-                color: var(--gris-texte);
-                text-decoration: none;
-            }
-        }
 
         @media screen and (max-width: 768px) {
             header {

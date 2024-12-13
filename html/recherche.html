@@ -5,48 +5,48 @@
         <meta name="description" content="page de recherche de services en tout genre">
         <meta name="keywords" content="Junia, ISEN, école d'ingénieur">
         <meta name="author" content="Detalle Mattéo, ajoutez vos noms au commit">
-        <link rel="icon" type="image/x-icon" href="../pictures/logo.ico">
-        <link rel="stylesheet" type="text/css" href="../styles/style.css">
-        <title>Recherche | CTM</title>
+        <link rel="icon" type="image/x-icon" href="../pictures/logo.ico">  <!-- icone logo du site sur la fenêtre -->
+        <link rel="stylesheet" type="text/css" href="../styles/style.css">  <!-- style css appliqué -->
+        <title>Recherche | CTM</title>  <!-- titre recherche -->
     </head>
     <body>
         <header>
-            <a id= "index" href="../index.html"><img id="indexImage" href="../index.html" src="../pictures/logorond.png" alt="Logo CTM"></a>
-            <a id="espaceClient" href="espclient.html"><img id="espaceClientImage" src="../pictures/photoDeProfil.png" alt="Photo de profil" ></a>
+            <a id= "index" href="../index.html"><img id="indexImage" href="../index.html" src="../pictures/logorond.png" alt="Logo CTM"></a>  <!-- bouton pour retourner à l'accueil -->
+            <a id="espaceClient" href="espclient.html"><img id="espaceClientImage" src="../pictures/photoDeProfil.png" alt="Photo de profil" ></a>  <!-- bouton pour aller sur la page de profile-->
         </header>
         <nav>
             <ul>
-                <li><a class= "pageNonActive" href="accueil.html">Accueil</a></li>
-                <li><a id="pageActive" href="recherche.html">Recherche</a></li>
-                <li><a class="pageNonActive" href="Employeur.html">Employeur</a></li>
-                <li><a class="pageNonActive" href="projet.html">Projet</a></li>
+                <li><a class= "pageNonActive" href="accueil.html">Accueil</a></li>  <!-- dans la barre de navigatio, bouton pour aller à l'accueil-->
+                <li><a id="pageActive" href="recherche.html">Recherche</a></li> <!-- dans la barre de navigatio, bouton pour aller sur la page de recherche-->
+                <li><a class="pageNonActive" href="Employeur.html">Employeur</a></li> <!-- dans la barre de navigatio, bouton pour aller sur la page de l'employeur -->
+                <li><a class="pageNonActive" href="projet.html">Projet</a></li> <!-- dans la barre de navigatio, bouton pour aller sur la page de projet-->
             </ul>
         </nav>
         <main>
-            <h1>Nos Services Disponibles</h1>
+            <h1>Nos Services Disponibles</h1>  <!-- grand titre service -->
             <section id="sectionRecherche">
-                <article>
+                <article>  <!-- création d'articles -->
                     <label for="afficher-monteur"> <!-- permet un lien avec le checkbox spécifique de l'id -->
-                        <h2>Monteur</h2>
-                        <p>Un expert en montage vidéo pour vos projets</p>
-                        <p class="afficheCheckbox">Voir plus</p>
+                        <h2>Monteur</h2>  <!-- grand titre moins grand que le premier -->
+                        <p>Un expert en montage vidéo pour vos projets</p>  <!-- description -->
+                        <p class="afficheCheckbox">Voir plus</p>  <!-- un voir plus sous forme de checkbox, qui, si cliqué, affiche : -->
                     </label>
-                    <input type="checkbox" id="afficher-monteur"/>
+                    <input type="checkbox" id="afficher-monteur"/>  <!-- ça -->
                     <div class="noms">
-                        <ul>
-                            <li>Max Castagne</li>
+                        <ul>  <!-- liste non ordonné de noms de personnes -->
+                            <li>Max Castagne</li>  
                             <li>Jack Chrass</li>
                             <li>Pierre Calvasse</li>
                             <li>Quentin Michel</li>
                         </ul>
                         <label for="afficher-monteur">
-                            Fermer
+                            Fermer  <!-- pour revenir en arrière sur la page de recherche : fermer l'arcticle -->
                         </label>
                     </div>
                 </article>               
                 <article>
                     <label for="afficher-graphiste">
-                        <h2>Graphiste</h2>
+                        <h2>Graphiste</h2>  <!-- Même chose là -->
                         <p>Un expert en design graphique pour vos projets</p>
                         <p class="afficheCheckbox">Voir plus</p>
                     </label>
@@ -65,7 +65,7 @@
                 </article>
                 <article>
                     <label for="afficher-manager">
-                        <h2>Manager</h2>
+                        <h2>Manager</h2>  <!-- Même chose ici  -->
                         <p>Un expert en gestion de projet pour vous assister dans votre propre travail</p>
                         <p class="afficheCheckbox">Voir plus</p>
                     </label>
@@ -84,7 +84,7 @@
                 </article>
                 <article>
                     <label for="afficher-developpeur">
-                        <h2>Développeur</h2>
+                        <h2>Développeur</h2>  <!-- Même chose ici aussi -->
                         <p>Un expert dans le design et le développement de sites webs / logiciels </p>
                         <p class="afficheCheckbox">Voir plus</p>
                     </label>
@@ -103,7 +103,7 @@
                 </article> 
                 <article>
                     <label for="afficher-beatmaker">
-                        <h2>Beatmaker</h2>
+                        <h2>Beatmaker</h2>  <!-- etc... -->
                         <p>Un expert en composition musicale pour tout vos styles de musiques</p>
                         <p class="afficheCheckbox">Voir plus</p>
                     </label>
@@ -124,12 +124,12 @@
         </main>
         <footer>
             <div id="conteneurfooter">
-                <a href="../html/support.html"><button id="supportbouton">Contacter Support</button></a>
+                <a href="../html/support.html"><button id="supportbouton">Contacter Support</button></a>  <!-- bouton pour accéder à la page de support-->
                 <a id="imagediscord" href="https://discord.gg/q6Fd6tJCaY" target="_blank">
-                    <img src="../pictures/discord.png" alt="Logo Discord">
+                    <img src="../pictures/discord.png" alt="Logo Discord">  <!-- bouton pour accéder au serveur discord -->
                 </a>
                 <a id="imagegithub" href="https://github.com/Neplexx/PROJET-WEB" target="_blank">
-                    <img src="../pictures/github.png" alt="Logo GitHub">
+                    <img src="../pictures/github.png" alt="Logo GitHub">  <!-- bouton pour accéder au dépot github -->
                 </a>
         </footer>
     </body>

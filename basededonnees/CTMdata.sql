@@ -4,7 +4,7 @@ USE ctm_platform;
 CREATE TABLE users (
     user_id INT AUTO_INCREMENT PRIMARY KEY,
     email VARCHAR(100) NOT NULL UNIQUE,
-    password_hash VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL,
     first_name VARCHAR(50) NOT NULL,
     last_name VARCHAR(50) NOT NULL,
     phone VARCHAR(20),
@@ -151,11 +151,11 @@ INSERT INTO skills (skill_name, category) VALUES
 
 
 
-INSERT INTO users (email, password_hash, first_name, last_name, phone, profile_picture, bio, user_type) VALUES
-('monteur1@example.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Jean', 'Dupont', '0612345678', 'profile1.jpg', 'Monteur professionnel avec 5 ans d\'expérience dans le documentaire et la publicité.', 'monteur'),
-('monteur2@example.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Marie', 'Martin', '0698765432', 'profile2.jpg', 'Spécialisée en motion design et montage créatif pour les réseaux sociaux.', 'monteur'),
-('employeur1@example.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Pierre', 'Durand', '0687654321', 'company1.jpg', 'Producteur indépendant de courts-métrages et documentaires.', 'employeur'),
-('employeur2@example.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Sophie', 'Leroy', '0678912345', 'company2.jpg', 'Directrice de production dans une agence de publicité.', 'employeur');
+INSERT INTO users (email, password, first_name, last_name, phone, profile_picture, bio, user_type) VALUES
+('monteur1@example.com', 'salutlesmecs', 'Jean', 'Dupont', '0612345678', 'profile1.jpg', 'Monteur professionnel avec 5 ans d\'expérience dans le documentaire et la publicité.', 'monteur'),
+('monteur2@example.com', 'jenesaispas', 'Marie', 'Martin', '0698765432', 'profile2.jpg', 'Spécialisée en motion design et montage créatif pour les réseaux sociaux.', 'monteur'),
+('employeur1@example.com', 'motdepassetemporaire', 'Pierre', 'Durand', '0687654321', 'company1.jpg', 'Producteur indépendant de courts-métrages et documentaires.', 'employeur'),
+('employeur2@example.com', 'oiseau', 'Sophie', 'Leroy', '0678912345', 'company2.jpg', 'Directrice de production dans une agence de publicité.', 'employeur');
 
 
 INSERT INTO editors (editor_id, user_id, years_experience, daily_rate, availability) VALUES

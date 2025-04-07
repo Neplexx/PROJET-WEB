@@ -65,7 +65,7 @@ header {
         }
 
         .form-group {
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             position: relative;
         }
 
@@ -95,7 +95,7 @@ header {
             padding: 12px;
             border: none;
             border-radius: 5px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #E74C3C 0%, #E74C2F 100%);
             color: white;
             font-size: 16px;
             font-weight: bold;
@@ -110,10 +110,12 @@ header {
         .forgot-password {
             text-align: center;
             margin-top: 15px;
+            color:#E74C3C;
+            font-size: 14px;
         }
 
         .forgot-password a {
-            color: #667eea;
+            color: #E74C3C;
             text-decoration: none;
             font-size: 14px;
         }

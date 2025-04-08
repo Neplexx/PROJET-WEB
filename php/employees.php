@@ -16,7 +16,7 @@ try {
                 FROM users u
                 LEFT JOIN editors e ON u.user_id = e.user_id
                 LEFT JOIN employers emp ON u.user_id = emp.user_id
-                WHERE CONCAT(u.first_name, ' ', u.last_name) LIKE :keyword";
+                WHERE CONCAT(u.first_name, ' ', u.last_name) LIKE :keyword COLLATE utf8_general_ci";
 
         $stmt = $conn->prepare($sql);
         $stmt->bindValue(':keyword', '%' . $keyword . '%', PDO::PARAM_STR);
@@ -24,7 +24,7 @@ try {
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 } catch(PDOException $e) {
-    echo "Erreur de connexion: " . $e->getMessage();
+    echo "Erreur : " . $e->getMessage();
 }
 ?>
 <!DOCTYPE html>

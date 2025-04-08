@@ -1,5 +1,5 @@
-CREATE DATABASE IF NOT EXISTS ctm_platform;
-USE ctm_platform;
+CREATE DATABASE IF NOT EXISTS ctmdata;
+USE ctmdata;
 
 CREATE TABLE users (
     user_id INT AUTO_INCREMENT PRIMARY KEY,

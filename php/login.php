@@ -3,7 +3,7 @@ require_once 'connexion.php';
 session_start();
 
 if (isset($_SESSION['user_id'])) {
-    header("Location: ../index.php");
+    header("Location: ../index.html");
     exit();
 }
 
@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $_SESSION['user_type'] = $user['user_type'];
                 
                 // Redirection vers la page d'accueil
-                header("Location: ../index.php");
+                header("Location: ../accueil.html");
                 exit();
             } else {
                 $error = "Email ou mot de passe incorrect.";

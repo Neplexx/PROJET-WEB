@@ -47,12 +47,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if ($stmt->fetchColumn() > 0) {
                 $errors[] = "Cet email est déjà utilisé.";
             } else {
-                // Hachage du mot de passe
-                $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-                
                 // Insertion
                 $stmt = $pdo->prepare("INSERT INTO users (email, password, first_name, last_name, user_type) VALUES (?, ?, ?, ?, ?)");
-                $stmt->execute([$email, $hashedPassword, $firstName, $lastName, $userType]);
+                $stmt->execute([$email, $password, $firstName, $lastName, $userType]);
                 
                 // Connexion automatique
                 $userId = $pdo->lastInsertId();
@@ -63,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $_SESSION['user_type'] = $userType;
                 
                 // Redirection
-                header("Location: ../index.php");
+                header("Location: login.php");
                 exit();
             }
         } catch (PDOException $e) {

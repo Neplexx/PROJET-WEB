@@ -1,136 +1,154 @@
 <!DOCTYPE html>
 <html lang="fr">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="description" content="page de recherche de services en tout genre">
-        <meta name="keywords" content="Junia, ISEN, école d'ingénieur">
-        <meta name="author" content="Detalle Mattéo, ajoutez vos noms au commit">
-        <link rel="icon" type="image/x-icon" href="../pictures/logo.ico">  <!-- icone logo du site sur la fenêtre -->
-        <link rel="stylesheet" type="text/css" href="../styles/style.css">  <!-- style css appliqué -->
-        <title>Recherche | CTM</title>  <!-- titre recherche -->
-    </head>
-    <body>
-        <header>
-            <a id= "index" href="../index.html"><img id="indexImage" href="../index.html" src="../pictures/logorond.png" alt="Logo CTM"></a>  <!-- bouton pour retourner à l'accueil -->
-            <a id="espaceClient" href="espclient.html"><img id="espaceClientImage" src="../pictures/photoDeProfil.png" alt="Photo de profil" ></a>  <!-- bouton pour aller sur la page de profile-->
-        </header>
-        <nav>
-            <ul>
-                <li><a class= "pageNonActive" href="accueil.html">Accueil</a></li>  <!-- dans la barre de navigatio, bouton pour aller à l'accueil-->
-                <li><a id="pageActive" href="recherche.html">Recherche</a></li> <!-- dans la barre de navigatio, bouton pour aller sur la page de recherche-->
-                <li><a class="pageNonActive" href="Employeur.html">Employeur</a></li> <!-- dans la barre de navigatio, bouton pour aller sur la page de l'employeur -->
-                <li><a class="pageNonActive" href="projet.html">Projet</a></li> <!-- dans la barre de navigatio, bouton pour aller sur la page de projet-->
-            </ul>
-        </nav>
-        <main>
-            <h1>Nos Services Disponibles</h1>  <!-- grand titre service -->
-            <section id="sectionRecherche">
-                <article>  <!-- création d'articles -->
-                    <label for="afficher-monteur"> <!-- permet un lien avec le checkbox spécifique de l'id -->
-                        <h2>Monteur</h2>  <!-- grand titre moins grand que le premier -->
-                        <p>Un expert en montage vidéo pour vos projets</p>  <!-- description -->
-                        <p class="afficheCheckbox">Voir plus</p>  <!-- un voir plus sous forme de checkbox, qui, si cliqué, affiche : -->
-                    </label>
-                    <input type="checkbox" id="afficher-monteur"/>  <!-- ça -->
-                    <div class="noms">
-                        <ul>  <!-- liste non ordonné de noms de personnes -->
-                            <li><a href="../php/employees.php?keyword=Max+Castagne">Max Castagne</a></li>
-                            <li><a href="../php/employees.php?keyword=Jack+Chrass">Jack Chrass</a></li>
-                            <li><a href="../php/employees.php?keyword=Pierre+Calvasse">Pierre Calvasse</a></li>
-                            <li><a href="../php/employees.php?keyword=Quentin+Michel">Quentin Michel</a></li>
-                        </ul>
-                        <label for="afficher-monteur">
-                            Fermer  <!-- pour revenir en arrière sur la page de recherche : fermer l'arcticle -->
-                        </label>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Page de recherche de services en tout genre">
+    <meta name="keywords" content="Junia, ISEN, école d'ingénieur">
+    <meta name="author" content="Detalle Mattéo, ajoutez vos noms au commit">
+    <link rel="icon" type="image/x-icon" href="../pictures/logo.ico">
+    <link rel="stylesheet" type="text/css" href="../styles/recherche.css">
+    <title>Recherche | CTM</title>
+</head>
+<body>
+    <header>
+        <a id="index" href="../index.html"><img id="indexImage" src="../pictures/logorond.png" alt="Logo CTM"></a>
+        <a id="espaceClient" href="espclient.html"><img id="espaceClientImage" src="../pictures/photoDeProfil.png" alt="Photo de profil"></a>
+    </header>
+    <nav>
+        <ul>
+            <li><a class="pageNonActive" href="accueil.html">Accueil</a></li>
+            <li><a id="pageActive" href="recherche.html">Recherche</a></li>
+            <li><a class="pageNonActive" href="Employeur.html">Employeur</a></li>
+            <li><a class="pageNonActive" href="projet.html">Projet</a></li>
+        </ul>
+    </nav>
+    <main>
+        <h1>Nos Services Disponibles</h1>
+        <section id="sectionRecherche">
+            <article>
+                <label for="afficher-monteur">
+                    <div class="service-header">
+                        <i class="fas fa-film service-icon"></i>
+                        <h2>Monteur</h2>
+                        <p>Un expert en montage vidéo pour vos projets</p>
+                        <span class="afficheCheckbox">Voir plus <i class="fas fa-chevron-down"></i></span>
                     </div>
-                </article>               
-                <article>
-                    <label for="afficher-graphiste">
-                        <h2>Graphiste</h2>  <!-- Même chose là -->
+                </label>
+                <input type="checkbox" id="afficher-monteur" class="service-checkbox"/>
+                <div class="noms">
+                    <ul>
+                        <li><a href="../php/employees.php?keyword=Max+Castagne"><i class="fas fa-user"></i> Max Castagne</a></li>
+                        <li><a href="../php/employees.php?keyword=Jack+Chrass"><i class="fas fa-user"></i> Jack Chrass</a></li>
+                        <li><a href="../php/employees.php?keyword=Pierre+Calvasse"><i class="fas fa-user"></i> Pierre Calvasse</a></li>
+                        <li><a href="../php/employees.php?keyword=Quentin+Michel"><i class="fas fa-user"></i> Quentin Michel</a></li>
+                    </ul>
+                    <label for="afficher-monteur" class="close-btn">
+                        <i class="fas fa-times"></i> Fermer
+                    </label>
+                </div>
+            </article>               
+            <article>
+                <label for="afficher-graphiste">
+                    <div class="service-header">
+                        <i class="fas fa-paint-brush service-icon"></i>
+                        <h2>Graphiste</h2>
                         <p>Un expert en design graphique pour vos projets</p>
-                        <p class="afficheCheckbox">Voir plus</p>
-                    </label>
-                    <input type="checkbox" id="afficher-graphiste"/>
-                    <div class="noms">
-                        <ul>
-                            <li><a href="../php/employees.php?keyword=Luc+Pliuc">Luc Pliuc</a></li>
-                            <li><a href="../php/employees.php?keyword=Khaled+Prime">Khaled Prime</a></li>
-                            <li><a href="../php/employees.php?keyword=Martin+Jiopo">Martin Jiopo</a></li>
-                            <li><a href="../php/employees.php?keyword=Lucien+Dekune">Lucien Dekune</a></li>
-                        </ul>
-                        <label for="afficher-graphiste">
-                            Fermer
-                        </label>
+                        <span class="afficheCheckbox">Voir plus <i class="fas fa-chevron-down"></i></span>
                     </div>
-                </article>
-                <article>
-                    <label for="afficher-manager">
-                        <h2>Manager</h2>  <!-- Même chose ici  -->
-                        <p>Un expert en gestion de projet pour vous assister dans votre propre travail</p>
-                        <p class="afficheCheckbox">Voir plus</p>
+                </label>
+                <input type="checkbox" id="afficher-graphiste" class="service-checkbox"/>
+                <div class="noms">
+                    <ul>
+                        <li><a href="../php/employees.php?keyword=Luc+Pliuc"><i class="fas fa-user"></i> Luc Pliuc</a></li>
+                        <li><a href="../php/employees.php?keyword=Khaled+Prime"><i class="fas fa-user"></i> Khaled Prime</a></li>
+                        <li><a href="../php/employees.php?keyword=Martin+Jiopo"><i class="fas fa-user"></i> Martin Jiopo</a></li>
+                        <li><a href="../php/employees.php?keyword=Lucien+Dekune"><i class="fas fa-user"></i> Lucien Dekune</a></li>
+                    </ul>
+                    <label for="afficher-graphiste" class="close-btn">
+                        <i class="fas fa-times"></i> Fermer
                     </label>
-                    <input type="checkbox" id="afficher-manager"/>
-                    <div class="noms">
-                        <ul>
-                            <li><a href="../php/employees.php?keyword=Julien+Martin">Julien Martin</a></li>
-                            <li><a href="../php/employees.php?keyword=Élodie+Dupont">Élodie Dupont</a></li>
-                            <li><a href="../php/employees.php?keyword=Antoine+Bernard">Antoine Bernard</a></li>
-                            <li><a href="../php/employees.php?keyword=Claire+Lefèvre">Claire Lefèvre</a></li>
-                        </ul>
-                        <label for="afficher-manager">
-                            Fermer
-                        </label>
+                </div>
+            </article>
+            <article>
+                <label for="afficher-manager">
+                    <div class="service-header">
+                        <i class="fas fa-briefcase service-icon"></i>
+                        <h2>Manager</h2>
+                        <p>Un expert en gestion de projet pour vous assister</p>
+                        <span class="afficheCheckbox">Voir plus <i class="fas fa-chevron-down"></i></span>
                     </div>
-                </article>
-                <article>
-                    <label for="afficher-developpeur">
-                        <h2>Développeur</h2>  <!-- Même chose ici aussi -->
-                        <p>Un expert dans le design et le développement de sites webs / logiciels </p>
-                        <p class="afficheCheckbox">Voir plus</p>
+                </label>
+                <input type="checkbox" id="afficher-manager" class="service-checkbox"/>
+                <div class="noms">
+                    <ul>
+                        <li><a href="../php/employees.php?keyword=Julien+Martin"><i class="fas fa-user"></i> Julien Martin</a></li>
+                        <li><a href="../php/employees.php?keyword=Élodie+Dupont"><i class="fas fa-user"></i> Élodie Dupont</a></li>
+                        <li><a href="../php/employees.php?keyword=Antoine+Bernard"><i class="fas fa-user"></i> Antoine Bernard</a></li>
+                        <li><a href="../php/employees.php?keyword=Claire+Lefèvre"><i class="fas fa-user"></i> Claire Lefèvre</a></li>
+                    </ul>
+                    <label for="afficher-manager" class="close-btn">
+                        <i class="fas fa-times"></i> Fermer
                     </label>
-                    <input type="checkbox" id="afficher-developpeur"/>
-                    <div class="noms">
-                        <ul>
-                            <li><a href="../php/employees.php?keyword=Lucas+Girard">Lucas Girard</a></li>
-                            <li><a href="../php/employees.php?keyword=Camille+Moreau">Camille Moreau</a></li>
-                            <li><a href="../php/employees.php?keyword=Thomas+Dubois">Thomas Dubois</a></li>
-                            <li><a href="../php/employees.php?keyword=Sophie+Laurent">Sophie Laurent</a></li>
-                        </ul>
-                        <label for="afficher-developpeur">
-                            Fermer
-                        </label>
+                </div>
+            </article>
+            <article>
+                <label for="afficher-developpeur">
+                    <div class="service-header">
+                        <i class="fas fa-code service-icon"></i>
+                        <h2>Développeur</h2>
+                        <p>Expert en développement de sites webs/logiciels</p>
+                        <span class="afficheCheckbox">Voir plus <i class="fas fa-chevron-down"></i></span>
                     </div>
-                </article> 
-                <article>
-                    <label for="afficher-beatmaker">
-                        <h2>Beatmaker</h2>  <!-- etc... -->
-                        <p>Un expert en composition musicale pour tout vos styles de musiques</p>
-                        <p class="afficheCheckbox">Voir plus</p>
+                </label>
+                <input type="checkbox" id="afficher-developpeur" class="service-checkbox"/>
+                <div class="noms">
+                    <ul>
+                        <li><a href="../php/employees.php?keyword=Lucas+Girard"><i class="fas fa-user"></i> Lucas Girard</a></li>
+                        <li><a href="../php/employees.php?keyword=Camille+Moreau"><i class="fas fa-user"></i> Camille Moreau</a></li>
+                        <li><a href="../php/employees.php?keyword=Thomas+Dubois"><i class="fas fa-user"></i> Thomas Dubois</a></li>
+                        <li><a href="../php/employees.php?keyword=Sophie+Laurent"><i class="fas fa-user"></i> Sophie Laurent</a></li>
+                    </ul>
+                    <label for="afficher-developpeur" class="close-btn">
+                        <i class="fas fa-times"></i> Fermer
                     </label>
-                    <input type="checkbox" id="afficher-beatmaker"/>
-                    <div class="noms">
-                        <ul>
-                            <li><a href="../php/employees.php?keyword=Antoine+Perrot">Antoine Perrot</a></li>
-                            <li><a href="../php/employees.php?keyword=Julie+Barbier">Julie Barbier</a></li>
-                            <li><a href="../php/employees.php?keyword=Maxime+Richard">Maxime Richard</a></li>
-                            <li><a href="../php/employees.php?keyword=Sarah+Gauthier">Sarah Gauthier</a></li>
-                        </ul>
-                        <label for="afficher-beatmaker">
-                            Fermer
-                        </label>
+                </div>
+            </article> 
+            <article>
+                <label for="afficher-beatmaker">
+                    <div class="service-header">
+                        <i class="fas fa-music service-icon"></i>
+                        <h2>Beatmaker</h2>
+                        <p>Expert en composition musicale pour tout style</p>
+                        <span class="afficheCheckbox">Voir plus <i class="fas fa-chevron-down"></i></span>
                     </div>
-                </article>        
-            </section>
-        </main>
-        <footer>
-            <div id="conteneurfooter">
-                <a href="../html/support.html"><button id="supportbouton">Contacter Support</button></a>  <!-- bouton pour accéder à la page de support-->
-                <a id="imagediscord" href="https://discord.gg/q6Fd6tJCaY" target="_blank">
-                    <img src="../pictures/discord.png" alt="Logo Discord">  <!-- bouton pour accéder au serveur discord -->
-                </a>
-                <a id="imagegithub" href="https://github.com/Neplexx/PROJET-WEB" target="_blank">
-                    <img src="../pictures/github.png" alt="Logo GitHub">  <!-- bouton pour accéder au dépot github -->
-                </a>
-        </footer>
-    </body>
+                </label>
+                <input type="checkbox" id="afficher-beatmaker" class="service-checkbox"/>
+                <div class="noms">
+                    <ul>
+                        <li><a href="../php/employees.php?keyword=Antoine+Perrot"><i class="fas fa-user"></i> Antoine Perrot</a></li>
+                        <li><a href="../php/employees.php?keyword=Julie+Barbier"><i class="fas fa-user"></i> Julie Barbier</a></li>
+                        <li><a href="../php/employees.php?keyword=Maxime+Richard"><i class="fas fa-user"></i> Maxime Richard</a></li>
+                        <li><a href="../php/employees.php?keyword=Sarah+Gauthier"><i class="fas fa-user"></i> Sarah Gauthier</a></li>
+                    </ul>
+                    <label for="afficher-beatmaker" class="close-btn">
+                        <i class="fas fa-times"></i> Fermer
+                    </label>
+                </div>
+            </article>        
+        </section>
+    </main>
+    <footer>
+        <div id="conteneurfooter">
+            <a href="../html/support.html"><button id="supportbouton"><i class="fas fa-headset"></i> Contacter Support</button></a>
+            <a id="imagediscord" href="https://discord.gg/q6Fd6tJCaY" target="_blank">
+                <img src="../pictures/discord.png" alt="Logo Discord">
+            </a>
+            <a id="imagegithub" href="https://github.com/Neplexx/PROJET-WEB" target="_blank">
+                <img src="../pictures/github.png" alt="Logo GitHub">
+            </a>
+        </div>
+    </footer>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</body>
 </html>

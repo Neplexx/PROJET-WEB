@@ -4,9 +4,18 @@ $keyword = isset($_GET['keyword']) ? $_GET['keyword'] : '';
 $keyword = str_replace('+', ' ', $keyword);
 
 try {
-    require("connexion.php");
+    $servername ='localhost'; 
+    $username ='root'; 
+    $password ='root'; 
+    $dbname='ctmdata';
+
+try{
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
+}
+catch(Exception $e){
+    die('Erreur : ' . $e->getMessage());
+}
 
     if (!empty($keyword)) {
         $sql = "SELECT u.first_name, u.last_name, u.email, u.phone, u.profile_picture, u.bio, u.user_type, 
@@ -38,7 +47,7 @@ try {
 <body>
     <div class="search-container">
         <header class="search-header">
-            <a href="../index.html" class="logo-link">
+            <a href="../html/recherche.html" class="logo-link">
                 <img src="../pictures/logorond.png" alt="Logo CTM" class="logo">
             </a>
             <h1>Trouvez le professionnel idéal</h1>

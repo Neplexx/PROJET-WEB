@@ -1,59 +1,139 @@
 <!DOCTYPE html>
 <html lang="fr">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="description" content="tatata">
-        <meta name="keywords" content="Junia, ISEN, école d'ingénieur">
-        <meta name="author" content="Detalle Mattéo, ajoutez vos noms au commit">
-        <link rel="icon" type="image/x-icon" href="../pictures/logo.ico">
-        <link rel="stylesheet" type="text/css" href="../styles/style.css">  <!-- style style.css dans le dossier styles-->
-        <title>Projet | CTM</title>  <!-- titre Projet sur la fenêtre-->
-    </head>
-    <body>
-        <header>
-            <a id= "index" href="../index.html"><img id="indexImage" href="../index.html" src="../pictures/logorond.png" alt="Logo CTM"></a>  <!-- bouton logo pour retourner à l'index -->
-            <a id="espaceClient" href="espclient.html"><img id="espaceClientImage" src="../pictures/photoDeProfil.png" alt="Photo de profil" ></a>  <!-- même chose mais pour la page de profile-->
-        </header>
-        <nav>
-            <ul>
-                <li><a class= "pageNonActive" href="accueil.html">Accueil</a></li>  <!-- dans la barre de navigatio, bouton pour aller à l'accueil-->
-                <li><a class="pageNonActive" href="recherche.html">Recherche</a></li> <!-- dans la barre de navigatio, bouton pour aller sur la page de recherche-->
-                <li><a class="pageNonActive" href="Employeur.html">Employeur</a></li> <!-- dans la barre de navigatio, bouton pour aller sur la page de l'employeur -->
-                <li><a id="pageActive" href="projet.html">Projet</a></li> <!-- dans la barre de navigatio, bouton pour aller sur la page de projet-->
-            </ul>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Gestion des projets CTM">
+    <meta name="keywords" content="Junia, ISEN, école d'ingénieur">
+    <meta name="author" content="Detalle Mattéo">
+    <link rel="icon" type="image/x-icon" href="../pictures/logo.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="../styles/projet.css">
+    <title>Projet | CTM</title>
+</head>
+<body>
+    <header class="main-header">
+        <div class="logo-container">
+            <a href="../index.html" class="logo-link">
+                <img src="../pictures/logorond.png" alt="Logo CTM" class="logo">
+            </a>
+        </div>
+        <nav class="user-nav">
+            <a href="espclient.html" class="user-profile">
+                <img src="../pictures/photoDeProfil.png" alt="Photo de profil" class="user-avatar">
+                <span class="user-name">Mon compte</span>
+            </a>
         </nav>
-        <main>
-            <div class="projetconteneur"> <!-- conteneur -->
-                <div class="grid-item" id="item1"> <!-- disposition sous forme de grille grâce au css-->
-                    <h2>Projet 1: Sérieux</h2> <!-- titre projet-->
-                    <p>Description : "Projet Sérieux avec personnes sérieuses"</p> <!-- une description-->
-                    <button class="btn">En savoir plus</button> <!-- un bouton non cliquable pour le moment-->
+    </header>
+
+    <nav class="main-nav">
+        <ul class="nav-list">
+            <li class="nav-item"><a href="accueil.html" class="nav-link">Accueil</a></li>
+            <li class="nav-item"><a href="recherche.html" class="nav-link">Recherche</a></li>
+            <li class="nav-item"><a href="Employeur.html" class="nav-link">Employeur</a></li>
+            <li class="nav-item"><a href="projet.html" class="nav-link active">Projet</a></li>
+        </ul>
+    </nav>
+
+    <main class="main-content">
+        <h1 class="page-title">Mes Projets</h1>
+        
+        <div class="projects-container">
+            <div class="project-card">
+                <div class="project-header">
+                    <span class="project-status in-progress">En cours</span>
+                    <h2>Projet Sérieux</h2>
+                    <p class="project-client">Client: Entreprise XYZ</p>
                 </div>
-                <div class="grid-item" id="item2">
-                    <h2>Projet 2: Amicale</h2>
-                    <p>Description : "Projet avec mes amis"</p> <!-- Même chose de ce côté -->
-                    <button class="btn">En savoir plus</button>
+                <div class="project-body">
+                    <p class="project-description">Projet sérieux avec personnes sérieuses pour un résultat professionnel.</p>
+                    <div class="project-meta">
+                        <span><i class="far fa-calendar-alt"></i> Date limite: 15/12/2024</span>
+                        <span><i class="fas fa-euro-sign"></i> Budget: 2,500€</span>
+                    </div>
                 </div>
-                <div class="grid-item" id="item3">
-                    <h2>Projet 3: YouTube</h2> 
-                    <p>Description : "Montage pour YouTube"</p> <!-- Même chose ici aussi -->
-                    <button class="btn">En savoir plus</button>
-                </div>
-                <div class="grid-item" id="item4">
-                    <h2>Ajouter un nouveau Projet</h2>
-                    <img id="plus" alt="Ajouter un Projet" src="../pictures/plus.png">  <!-- au lieu d'avoir du texte ici, on a une image "+" -->
+                <div class="project-footer">
+                    <button class="btn btn-primary">
+                        <i class="fas fa-info-circle"></i> Détails
+                    </button>
+                    <button class="btn btn-secondary">
+                        <i class="fas fa-pencil-alt"></i> Modifier
+                    </button>
                 </div>
             </div>
-        </main>
-        <footer>
-            <div id="conteneurfooter">
-                <a href="../html/support.html"><button id="supportbouton">Contacter Support</button></a>  <!-- bouton pour accéder à la page de support-->
-                <a id="imagediscord" href="https://discord.gg/q6Fd6tJCaY" target="_blank">
-                    <img src="../pictures/discord.png" alt="Logo Discord">  <!-- bouton pour accéder au serveur discord -->
+
+            <div class="project-card">
+                <div class="project-header">
+                    <span class="project-status on-hold">En attente</span>
+                    <h2>Projet Amicale</h2>
+                    <p class="project-client">Client: Amis Personnels</p>
+                </div>
+                <div class="project-body">
+                    <p class="project-description">Projet collaboratif avec mes amis pour une création plus décontractée.</p>
+                    <div class="project-meta">
+                        <span><i class="far fa-calendar-alt"></i> Date limite: Flexible</span>
+                        <span><i class="fas fa-euro-sign"></i> Budget: Échange de services</span>
+                    </div>
+                </div>
+                <div class="project-footer">
+                    <button class="btn btn-primary">
+                        <i class="fas fa-info-circle"></i> Détails
+                    </button>
+                    <button class="btn btn-secondary">
+                        <i class="fas fa-pencil-alt"></i> Modifier
+                    </button>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <span class="project-status completed">Terminé</span>
+                    <h2>Projet YouTube</h2>
+                    <p class="project-client">Client: Chaîne YouTube</p>
+                </div>
+                <div class="project-body">
+                    <p class="project-description">Montage vidéo pour une chaîne YouTube avec des effets dynamiques.</p>
+                    <div class="project-meta">
+                        <span><i class="far fa-calendar-alt"></i> Livré le: 05/11/2024</span>
+                        <span><i class="fas fa-star"></i> Note: 4.8/5</span>
+                    </div>
+                </div>
+                <div class="project-footer">
+                    <button class="btn btn-primary">
+                        <i class="fas fa-info-circle"></i> Détails
+                    </button>
+                    <button class="btn btn-secondary">
+                        <i class="fas fa-pencil-alt"></i> Modifier
+                    </button>
+                </div>
+            </div>
+
+            <div class="project-card add-project">
+                <div class="add-project-content">
+                    <i class="fas fa-plus-circle add-icon"></i>
+                    <h2>Nouveau Projet</h2>
+                    <p>Cliquez pour créer un nouveau projet</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="../html/support.html" class="support-btn">
+                    <i class="fas fa-headset"></i> Contacter le support
                 </a>
-                <a id="imagegithub" href="https://github.com/Neplexx/PROJET-WEB" target="_blank">
-                    <img src="../pictures/github.png" alt="Logo GitHub">  <!-- bouton pour accéder au dépot github -->
-                </a>
-        </footer>
-    </body>
+                <div class="social-links">
+                    <a href="https://discord.gg/q6Fd6tJCaY" target="_blank" class="social-link">
+                        <i class="fab fa-discord"></i>
+                    </a>
+                    <a href="https://github.com/Neplexx/PROJET-WEB" target="_blank" class="social-link">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
 </html>

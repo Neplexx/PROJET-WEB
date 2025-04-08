@@ -1,15 +1,11 @@
 <?php
-// Connexion à la base de données et traitement des données
-$servername = "localhost";
-$username = "root";
-$password = "root";
-$dbname = "ctm_platform";
 
 $results = [];
 $keyword = isset($_GET['keyword']) ? $_GET['keyword'] : '';
 $keyword = str_replace('+', ' ', $keyword);
 
 try {
+    require("connexion.php");
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 

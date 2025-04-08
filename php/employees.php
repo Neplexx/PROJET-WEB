@@ -100,6 +100,5 @@ try {
 </body>
 </html>
 <?php
-// Fermer la connexion
 $conn = null;
 ?>

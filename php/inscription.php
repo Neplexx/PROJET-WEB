@@ -12,7 +12,6 @@ catch(Exception $e){
     die('Erreur : ' . $e->getMessage());
 }
 session_start();
-// Traitement du formulaire
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $fullName = trim($_POST['full_name']);
     $email = trim($_POST['email']);
@@ -20,7 +19,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $confirmPassword = $_POST['confirm_password'];
     $userType = $_POST['user_type'];
     
-    // Validation
     $errors = [];
     
     if (empty($fullName)) {
@@ -43,25 +41,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $errors[] = "Veuillez sélectionner un type d'utilisateur.";
     }
     
-    // Séparation prénom/nom
     $nameParts = explode(' ', $fullName, 2);
     $firstName = $nameParts[0];
     $lastName = isset($nameParts[1]) ? $nameParts[1] : '';
     
     if (empty($errors)) {
         try {
-            // Vérifier si email existe déjà
             $stmt = $conn->prepare("SELECT COUNT(*) FROM users WHERE email = ?");
             $stmt->execute([$email]);
             
             if ($stmt->fetchColumn() > 0) {
                 $errors[] = "Cet email est déjà utilisé.";
             } else {
-                // Insertion
                 $stmt = $conn->prepare("INSERT INTO users (email, password, first_name, last_name, user_type) VALUES (?, ?, ?, ?, ?)");
                 $stmt->execute([$email, $password, $firstName, $lastName, $userType]);
                 
-                // Connexion automatique
                 $userId = $conn->lastInsertId();
                 $_SESSION['user_id'] = $userId;
                 $_SESSION['email'] = $email;
@@ -69,7 +63,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $_SESSION['last_name'] = $lastName;
                 $_SESSION['user_type'] = $userType;
                 
-                // Redirection
                 header("Location: login.php");
                 exit();
             }

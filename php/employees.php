@@ -3,7 +3,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "root";
-$dbname = "CTMdata";
+$dbname = "ctm_platform";
 
 $results = [];
 $keyword = isset($_GET['keyword']) ? $_GET['keyword'] : '';

@@ -1,74 +1,163 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
-    <link rel="icon" type="image/x-icon" href="../pictures/logo.ico" />  <!-- icone du site -->
-    <link rel="stylesheet" type="text/css" href="../styles/conditionsstyle.css"> <!-- style conditionsstyles -->
-    <title>Termes et Conditions | CTM</title> <!-- le titre -->
+    <link rel="icon" type="image/x-icon" href="../pictures/logo.ico" />
+    <title>Termes et Conditions | CTM</title>
     <meta name="author" content="Un-named" />
-
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #1a252f;
+            --text: #333;
+            --text-light: #777;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            margin: 0;
+            padding: 0;
+            background-color:var(--primary) ;
+        }
+        
+        .bigconteneur {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        
+        #logo {
+            display: block;
+            height: 80px;
+            margin: 0 auto 2rem;
+            transition: transform 0.3s;
+        }
+        
+        #logo:hover {
+            transform: scale(1.05);
+        }
+        
+        .conteneur {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            padding: 3rem;
+            margin-top: 2rem;
+        }
+        
+        h1 {
+            color: var(--primary);
+            margin: 2rem 0 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--secondary);
+            font-size: 1.8rem;
+        }
+        
+        p {
+            margin-bottom: 1.2rem;
+            color: var(--text);
+        }
+        
+        ul {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+        }
+        
+        li {
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+        
+        li::before {
+            content: "•";
+            color: var(--secondary);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+        
+        .date {
+            text-align: center;
+            color: var(--text-light);
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .conteneur {
+                padding: 2rem 1.5rem;
+            }
+            
+            h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="bigconteneur"> <!--conteneur -->
-    <a href="../index.html"><img id="logo" src="../pictures/logorond.png" alt="Logo CTM"></a> <!-- affichage du logo qui, lorsqu'on le clique, on revient à l'index -->
-    <div class="conteneur">
-    <h1>Conditions générales d'utilisation</h1> <!-- grand titre -->
-    <p></p>
-    <p>En vigueur au 15/06/2025</p> <!-- en dessous, affichage de la date -->
-    <p></p>
+    <div class="bigconteneur">
+        <a href="../index.html"><img id="logo" src="../pictures/logorond.png" alt="Logo CTM"></a>
+        
+        <div class="conteneur">
+            <h1 style="text-align: center; border-bottom: none;">Conditions générales d'utilisation</h1>
+            <p class="date">En vigueur au 15/06/2025</p>
 
-    <h1>Article 1 : Les mentions légales</h1> <!-- article 1 en grand-->
-    <p>
-        L’édition et la direction de la publication du site https://www.cherchetonmonteur.fr sont assurées par Badis, domicilié à l’adresse: 41 Bd Vauban, 59800 Lille. Numéro de téléphone : 03 20 30 40 50. Adresse e-mail : badis.dahi@student.junia.com. <!-- paragraphe-->
-    </p>
+            <h1>Article 1 : Les mentions légales</h1>
+            <p>
+                L'édition et la direction de la publication du site https://www.cherchetonmonteur.fr sont assurées par Badis, domicilié à l'adresse: 41 Bd Vauban, 59800 Lille. Numéro de téléphone : 03 20 30 40 50. Adresse e-mail : badis.dahi@student.junia.com.
+            </p>
 
-    <h1>Article 2 : Accès au site</h1> <!-- article 2 en grand-->
-    <p>
-        Le site https://www.cherchetonmonteur.fr permet à l'Utilisateur un accès gratuit aux services suivants :
-        <ul>
-            <li>Recherche de monteurs professionnels.</li>
-            <li>Consultation des profils de monteurs.</li> <!--liste non ordonnée de texte-->
-            <li>Ressources et articles spécialisés.</li>
-        </ul>
-    </p>
-    <p> <!-- POUR TOUT LE RESTE DU DOCUMENT, LES COMMENTAIRES ASSIGNES RESTENT LES MÊMES (PAR EXEMPLE, POUR UN H1, CE SERA UN TITRE EN GRAND PARTOUT DANS TOUT LE DOCUMENT)-->
-        Le site est accessible gratuitement à tout utilisateur disposant d’un accès à Internet. Tous les frais supportés par l’Utilisateur pour accéder au service (matériel informatique, logiciels, connexion Internet, etc.) sont à sa charge.
-    </p>
+            <h1>Article 2 : Accès au site</h1>
+            <p>
+                Le site https://www.cherchetonmonteur.fr permet à l'Utilisateur un accès gratuit aux services suivants :
+            </p>
+            <ul>
+                <li>Recherche de monteurs professionnels.</li>
+                <li>Consultation des profils de monteurs.</li>
+                <li>Ressources et articles spécialisés.</li>
+            </ul>
+            <p>
+                Le site est accessible gratuitement à tout utilisateur disposant d'un accès à Internet. Tous les frais supportés par l'Utilisateur pour accéder au service (matériel informatique, logiciels, connexion Internet, etc.) sont à sa charge.
+            </p>
 
-    <h1>Article 3 : Collecte des données</h1>
-    <p>
-        Les informations collectées sur le site https://www.cherchetonmonteur.fr sont nécessaires pour assurer le fonctionnement des services. L’Utilisateur dispose d’un droit d’accès, de rectification et de suppression des données qui le concernent, conformément aux dispositions de la loi « Informatique et Libertés » du 6 janvier 1978 modifiée.
-    </p>
+            <h1>Article 3 : Collecte des données</h1>
+            <p>
+                Les informations collectées sur le site https://www.cherchetonmonteur.fr sont nécessaires pour assurer le fonctionnement des services. L'Utilisateur dispose d'un droit d'accès, de rectification et de suppression des données qui le concernent, conformément aux dispositions de la loi « Informatique et Libertés » du 6 janvier 1978 modifiée.
+            </p>
 
-    <h1>Article 4 : Propriété intellectuelle</h1>
-    <p>
-        Les marques, logos, signes et tout autre contenu du site font l’objet d’une protection par le Code de la propriété intellectuelle et plus particulièrement par le droit d’auteur.
-    </p>
-    <p>
-        Toute reproduction, distribution ou utilisation des contenus sans l’autorisation écrite préalable de l’éditeur est strictement interdite.
-    </p>
+            <h1>Article 4 : Propriété intellectuelle</h1>
+            <p>
+                Les marques, logos, signes et tout autre contenu du site font l'objet d'une protection par le Code de la propriété intellectuelle et plus particulièrement par le droit d'auteur.
+            </p>
+            <p>
+                Toute reproduction, distribution ou utilisation des contenus sans l'autorisation écrite préalable de l'éditeur est strictement interdite.
+            </p>
 
-    <h1>Article 5 : Responsabilité</h1>
-    <p>
-        L’éditeur ne peut être tenu pour responsable des éventuelles interruptions ou bugs du site. L’Utilisateur reconnaît utiliser les services sous sa propre responsabilité.
-    </p>
+            <h1>Article 5 : Responsabilité</h1>
+            <p>
+                L'éditeur ne peut être tenu pour responsable des éventuelles interruptions ou bugs du site. L'Utilisateur reconnaît utiliser les services sous sa propre responsabilité.
+            </p>
 
-    <h1>Article 6 : Liens hypertextes</h1>
-    <p>
-        Le site peut contenir des liens hypertextes vers d’autres sites web. L’éditeur n’a pas le contrôle sur ces sites et ne saurait être tenu pour responsable de leur contenu.
-    </p>
+            <h1>Article 6 : Liens hypertextes</h1>
+            <p>
+                Le site peut contenir des liens hypertextes vers d'autres sites web. L'éditeur n'a pas le contrôle sur ces sites et ne saurait être tenu pour responsable de leur contenu.
+            </p>
 
-    <h1>Article 7 : Droit applicable et juridiction compétente</h1>
-    <p>
-        Les présentes CGU sont régies par la loi française. En cas de litige, et à défaut de résolution amiable, les tribunaux français seront seuls compétents.
-    </p>
+            <h1>Article 7 : Droit applicable et juridiction compétente</h1>
+            <p>
+                Les présentes CGU sont régies par la loi française. En cas de litige, et à défaut de résolution amiable, les tribunaux français seront seuls compétents.
+            </p>
 
-    <h1>Article 8 : Durée du contrat</h1>
-    
-    <p>
-        Les présentes CGU sont valables pour une durée indéterminée. Elles produisent leurs effets à l’égard de l’Utilisateur à compter de l’utilisation du service.
-    </p>
-</div>
-</div>
+            <h1>Article 8 : Durée du contrat</h1>
+            <p>
+                Les présentes CGU sont valables pour une durée indéterminée. Elles produisent leurs effets à l'égard de l'Utilisateur à compter de l'utilisation du service.
+            </p>
+        </div>
+    </div>
 </body>
 </html>

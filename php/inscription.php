@@ -1,5 +1,16 @@
 <?php
-require_once 'connexion.php';
+    $servername ='localhost'; 
+    $username ='root'; 
+    $password ='root'; 
+    $dbname='ctmdata';
+
+try{
+    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
+}
+catch(Exception $e){
+    die('Erreur : ' . $e->getMessage());
+}
 session_start();
 
 // Traitement du formulaire
@@ -41,18 +52,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (empty($errors)) {
         try {
             // Vérifier si email existe déjà
-            $stmt = $pdo->prepare("SELECT COUNT(*) FROM users WHERE email = ?");
+            $stmt = $conn->prepare("SELECT COUNT(*) FROM users WHERE email = ?");
             $stmt->execute([$email]);
             
             if ($stmt->fetchColumn() > 0) {
                 $errors[] = "Cet email est déjà utilisé.";
             } else {
                 // Insertion
-                $stmt = $pdo->prepare("INSERT INTO users (email, password, first_name, last_name, user_type) VALUES (?, ?, ?, ?, ?)");
+                $stmt = $conn->prepare("INSERT INTO users (email, password, first_name, last_name, user_type) VALUES (?, ?, ?, ?, ?)");
                 $stmt->execute([$email, $password, $firstName, $lastName, $userType]);
                 
                 // Connexion automatique
-                $userId = $pdo->lastInsertId();
+                $userId = $conn->lastInsertId();
                 $_SESSION['user_id'] = $userId;
                 $_SESSION['email'] = $email;
                 $_SESSION['first_name'] = $firstName;
@@ -270,10 +281,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <select id="user-type" name="user_type" required>
                             <option value="">Sélectionnez un type</option>
                             <option value="monteur" <?php echo (isset($_POST['user_type']) && $_POST['user_type'] === 'monteur') ? 'selected' : ''; ?>>Monteur</option>
-                            <option value="graphiste" <?php echo (isset($_POST['user_type']) && $_POST['user_type'] === 'graphiste') ? 'selected' : ''; ?>>Graphiste</option>
-                            <option value="manager" <?php echo (isset($_POST['user_type']) && $_POST['user_type'] === 'manager') ? 'selected' : ''; ?>>Manager</option>
-                            <option value="développeur" <?php echo (isset($_POST['user_type']) && $_POST['user_type'] === 'développeur') ? 'selected' : ''; ?>>Développeur</option>
-                            <option value="beatmaker" <?php echo (isset($_POST['user_type']) && $_POST['user_type'] === 'beatmaker') ? 'selected' : ''; ?>>Beatmaker</option>
+                            <option value="employeur" <?php echo (isset($_POST['user_type']) && $_POST['user_type'] === 'employeur') ? 'selected' : ''; ?>>Employeur</option>
                         </select>
                     </div>
                     

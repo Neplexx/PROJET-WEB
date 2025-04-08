@@ -1,9 +1,20 @@
 <?php
-require_once 'connexion.php';
+    $servername ='localhost'; 
+    $username ='root'; 
+    $password ='root'; 
+    $dbname='ctmdata';
+
+try{
+    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
+}
+catch(Exception $e){
+    die('Erreur : ' . $e->getMessage());
+}
 session_start();
 
 if (isset($_SESSION['user_id'])) {
-    header("Location: ../index.html");
+    header("Location: ../html/accueil.html");
     exit();
 }
 
@@ -12,17 +23,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = trim($_POST['email']);
     $password = $_POST['password'];
     
-    // Validation basique
     if (empty($email) || empty($password)) {
         $error = "Veuillez remplir tous les champs.";
     } else {
         try {
-            // Recherche de l'utilisateur
-            $stmt = $pdo->prepare("SELECT * FROM users WHERE email = ?");
-            $stmt->execute([$email]);
+            // Requête utilisateur
+            $stmt = $conn->prepare("SELECT * FROM users WHERE email = ? AND password = ?");
+            $stmt->execute([$email, $password]);
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
-            
-            if ($user && password_verify($password, $user['password'])) {
+
+            if ($user) {
                 // Connexion réussie
                 $_SESSION['user_id'] = $user['user_id'];
                 $_SESSION['email'] = $user['email'];
@@ -30,8 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $_SESSION['last_name'] = $user['last_name'];
                 $_SESSION['user_type'] = $user['user_type'];
                 
-                // Redirection vers la page d'accueil
-                header("Location: ../accueil.html");
+                header("Location: ../html/accueil.html");
                 exit();
             } else {
                 $error = "Email ou mot de passe incorrect.";

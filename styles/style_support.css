@@ -1,437 +1,211 @@
-:root{ /* Définition des variables de couleurs */
-    --bleu-principal:#518CC4;
-    --bleu-bordure:#1F5A92;
-    --bleu-texte-1:#79B5EA;
-    --bleu-fond:#BFCBE8;
-    --orange:#D4603F;
-    --gris-texte:#272727;
+:root {
+    --primary: #2c3e50;
+    --secondary: #e74c3c;
+    --light: #ecf0f1;
+    --dark: #1a252f;
+    --text: #333;
+    --text-light: #777;
+    --white: #ffffff;
 }
-@media (prefers-color-scheme: dark) { /* Mode sombre */
-    :root {
-        --bleu-principal: #1E3A5F;
-        --bleu-bordure: #162D49;
-        --bleu-texte-1: #4A90E2;
-        --bleu-fond: #0d1933;
-        --orange: #FF5733;
-        --gris-texte: #E0E0E0;
-    }
-    footer #supportbouton:not(:hover) {
-        border: 1px solid var(--bleu-bordure);
-        background-color: var(--bleu-fond);
-    }
-}
-*{ /* paramètres de bases pour tous les éléments */
-    font-family: Roboto, sans-serif;
-    box-sizing: border-box;
-    text-decoration: none;
-    list-style-type: none;
-}
-header { /* Header est utilisé comme un conteneur flexible*/
-    display: flex;
-    align-items: center;
-    position: relative;
-    padding:10px;
-    height: 40px;
-    background-color: var(--bleu-principal);
-    z-index: 1;
-}
-header #index { /* Logo menant à l'index */
-    position: absolute;
-    bottom:0;
-    left:1%;
-}
-header #index img{
-    width: 75px;
-    height: 75px;
-    transition: transform 0.3s ease, width 0.3s ease, height 0.3s ease;
-}
-header #index img:hover {
-    content: url("../pictures/deco.png");
-    transform: scale(1.1);
-}
-header #espaceClient { /* Logo menant à l'espace client */
-    position: absolute;
-    right: 1%;
-    top: 0;
-}
-header #espaceClient img {
-    width: 90px;
-    height: 90px;
-    transition: transform 0.3s ease, width 0.3s ease, height 0.3s ease; /* Animation de survol fluide */
-}
-header #espaceClient:hover img {
-    content: url("../pictures/photoDeProfil2.png"); /* Changement de l'image au survol */
-    transform: scale(1.1);
-}
-header > a {
-    float: right;
-    position: absolute;
-    top:20%;
-    right:10%;
-}
-nav{ /* Barre de navigation */
-    display: flex;
-    background-color: var(--bleu-principal);
-    padding: 1px;
-    top:0px;
-	position:sticky;
-    z-index: 0;
-}
-nav > ul > li{
-    position: relative;
-    left: 20%;
-    margin-left: 30px;
-    display: inline;
-    
-}
-nav > ul > li > a {
-    color:var(--gris-texte);
-    font-weight: bold;
-    text-transform: uppercase;
-}
-.pageNonActive:hover {
-    animation-name: survol;
-    animation-duration: 0.25s;
-    animation-fill-mode: forwards;
-    animation-direction: alternate;
-}
-    
-.pageNonActive:not(:hover) { /* Animation de changement de couleurs */
-    animation-name: retour;
-    animation-duration: 0.25s;
-    animation-fill-mode: forwards;
-    animation-direction: alternate;
-}
-    
-    @keyframes survol {
-        from {
-            color: white;
-        }
-        to {
-            color: var(--orange);
-        }
-    }
-    
-    @keyframes retour {
-        from {
-            color: var(--orange);
-        }
-        to {
-            color: white;
-        }
-    }
-#pageActive{ /* Page actuellement active pour faire l'effet d'onglet */
-    color: var(--orange);
-    background-color:var(--bleu-fond);
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    padding: 18px;
-}
+
 body {
-    margin:0;
-}
-main{
-    background-color: var(--bleu-fond);
-    margin:0;
-}
-.bigconteneur { /*Flexbox une fois de plus comme mise en page*/
-    display: flex;
-    height: 438px;
-}
-body {
-    font-family: Arial, sans-serif;
-    background-color: #BFCBE8;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text);
     margin: 0;
     padding: 0;
+    background-color: var(--light);
 }
-h1 {
-    text-align: center;
-    color: var(--orange);
-    margin: 0;
-    padding-top: 20px;
-}
-p {
-    text-align: center;
-    color: var(--gris-texte);
-    padding-top: 20px;
-    padding-bottom: 30px;
-    margin: 0;
-}
-#supportForm { /* toute la mise en place du formulaire de contact */
-    max-width: 600px;
-    margin: 0 auto;
-    background: #E0E0E0;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-label {
-    font-weight: bold;
-    color: var(--bleu-bordure);
-    display: block;
-    margin-bottom: 5px;
-}
-input[type="text"],
-input[type="email"], textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 16px;
-    color: #333;
-    background-color: #d1d1d1;
-    transition: all 0.3s;
-}
-input[type="text"]:focus, input[type="email"]:focus, textarea:focus {
-    border-color: #007bff;
-    background-color: #ffffff;
-    outline: none;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-}
-textarea {
-    resize: none;
-}
-button { /* boutons globales */
-    background-color: var(--orange);
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: all 0.3s ease;
-    border: 1px solid var(--bleu-bordure);
-    border-radius: 5px;
-}
-button:hover {
-    background-color: var(--bleu-fond); 
-    transform: scale(1.1); 
-    color: var(--orange);
-    font-weight: bold;
-    border: 1px solid var(--bleu-bordure);
-    border-radius: 5px;
-}
-footer { /* Footer est un conteneur flexible aussi */
-    text-align: center;
-    padding: 20px;
-    color: #fff;
+
+header {
+    background-color: var(--primary);
+    padding: 1rem;
     display: flex;
-    position: relative;
-    background-color: var(--bleu-principal);
-    height: 200px;
-    border-top:1px solid var(--bleu-bordure);
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
-footer a img {
-    margin: 0 10px;
-    height: 30px;
+
+#indexImage, #espaceClientImage {
+    height: 50px;
+    width: auto;
     transition: transform 0.3s;
 }
-footer a img:hover {
-    transform: scale(1.2);
+
+#indexImage:hover, #espaceClientImage:hover {
+    transform: scale(1.1);
 }
-footer #conteneurfooter {
+
+nav {
+    background-color: var(--dark);
+    padding: 0.8rem 0;
+}
+
+nav ul {
     display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
-footer #supportbouton { /* Bouton relier à la page d'accueil */
-    position: absolute;
-    display: inline-block; 
-    font-weight: bold;
-    background-color: var(--orange);
-    border: 1px solid var(--bleu-bordure);
-    width: 120px;
-    height: 40px;
-    border-radius: 5px;
-    color: #E0E0E0;
+
+nav li {
+    margin: 0 1.5rem;
+}
+
+nav a {
+    color: var(--white);
     text-decoration: none;
-    margin-left: 19px;
-    cursor: pointer;
-    transition: transform 0.3s ease, background-color 0.3s ease;
-    right:50px;
-    bottom: 30px;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: all 0.3s;
 }
-footer #imagediscord img { /* lien vers le discord*/
-    position: absolute;
-    margin: 0;          
-    padding: 0;
-    width: 50px;
+
+nav a:hover {
+    background-color: var(--secondary);
+    color: var(--white);
+}
+
+main {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+}
+
+h1 {
+    color: var(--primary);
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 2.2rem;
+}
+
+p {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--text);
+}
+
+section {
+    background-color: var(--white);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+#supportForm {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--primary);
+}
+
+input, textarea {
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border-color: var(--secondary);
+}
+
+textarea {
+    resize: vertical;
+    min-height: 150px;
+}
+
+button[type="submit"] {
+    background-color: var(--secondary);
+    color: var(--white);
+    border: none;
+    padding: 1rem;
+    font-size: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+button[type="submit"]:hover {
+    background-color: #c0392b;
+    transform: translateY(-2px);
+}
+
+.spacer {
+    margin: 2rem 0;
+}
+
+footer {
+    background-color: var(--dark);
+    padding: 1.5rem 0;
+    margin-top: 2rem;
+}
+
+#conteneurfooter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+#supportbouton {
+    background-color: var(--secondary);
+    color: var(--white);
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#supportbouton:hover {
+    background-color: #c0392b;
+}
+
+#imagediscord img, #imagegithub img {
     height: 40px;
-    margin-right: 20px;
-    bottom:30px;
-    left:40px;
-    cursor: pointer;
-    transition: transform 0.3s ease;
+    width: auto;
+    transition: transform 0.3s;
 }
 
-footer #imagediscord img:hover {
+#imagediscord img:hover, #imagegithub img:hover {
     transform: scale(1.1);
-}
-footer #imagegithub img { /* lien vers le github */
-    position: absolute;
-    margin: 0;          
-    padding: 0;
-    width: 50px;
-    height: 50px;
-    margin-right: 20px;
-    bottom:30px;
-    left:110px;
-    cursor: pointer;
-    transition: transform 0.3s ease;
 }
 
-footer #imagegithub img:hover {
-    transform: scale(1.1);
-}
-footer a #liensupport{
-    position: absolute;
-    width: 120px;
-    height: 40px;
-    cursor: pointer;
-    bottom:2%;
-    right:3%;
-}
-footer #supportbouton:hover {
-    transform: scale(1.1);
-    background-color: var(--bleu-fond);
-    color: var(--orange);
-}
-footer #supportbouton:not(:hover) {
-    cursor: pointer;
-    border: 1px solid var(--bleu-bordure);
-    background-color: var(--orange);
-}
-
-@media screen and (max-width: 768px) { /* Adaptation pour les écrans plus petits */
-    header {
+@media (max-width: 768px) {
+    nav ul {
         flex-direction: column;
-        height: auto;
-        padding: 10px;
-        text-align: center;
+        align-items: center;
     }
-    header #index {
-        display: block;
-        position: absolute;
-        bottom:0;
-        left:0%;
-        width: 40px;
-        height: 40px;
+    
+    nav li {
+        margin: 0.5rem 0;
     }
-    header #espaceClient img {
-        width: 60px;
-        height: 60px;
-    }
-
-    nav {
-        flex-direction: column;
-        padding: 10px 0;
-    }
-
-    nav > ul {
-        padding: 0;
-        margin: 0 auto;
-    }
-
-    nav > ul > li {
-        margin: 10px 0;
-        left: 0;
-    }
-
+    
     main {
-        padding: 10px;
+        padding: 0 1rem;
     }
-
-    .bigconteneur {
+    
+    section {
+        padding: 1.5rem;
+    }
+    
+    #conteneurfooter {
         flex-direction: column;
-        height: auto;
-        margin: 10px 0;
-    }
-
-    .commentaire,
-    .commentaire2,
-    .commentaire3,
-    .commentaire4 {
-        width: 90%;
-        height: auto;
-        margin: 10px auto;
-    }
-
-    #sectionRecherche {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    #sectionRecherche > article {
-        width: 90%;
-        margin: 20px auto;
-    }
-
-    #BeauDiapo {
-        width: 50%;
-        left: 0;
-    }
-
-    #BeauDiapo .diapo img {
-        width: 50%;
-    }
-
-    footer {
-        flex-direction: column;
-        height: 150px;
-        text-align: center;
-        padding: 10px;
-    }
-
-    footer #imagediscord img,
-    footer #imagegithub img {
-        width: 40px;
-        height: 35px;
-        margin: 5px auto;
-    }
-
-    footer #supportbouton {
-        width: 100px;
-        height: 35px;
-        margin: 10px auto;
-    }
-}
-
-@media screen and (max-width: 480px) {
-    header #index {
-        position: absolute;
-        bottom:0;
-        left:0%;
-        width: 40px;
-        height: 40px;
-    }
-    header #espaceClient img {
-        width: 50px;
-        height: 50px;
-    }
-
-    h1 {
-        font-size: 24px;
-        padding: 15px;
-    }
-
-    .commentaire,
-    .commentaire2,
-    .commentaire3,
-    .commentaire4 {
-        padding: 15px;
-    }
-
-    nav > ul > li > a {
-        font-size: 14px;
-    }
-
-    footer #imagediscord img,
-    footer #imagegithub img {
-        width: 35px;
-        height: 30px;
-    }
-
-    footer #supportbouton {
-        font-size: 12px;
+        gap: 1rem;
     }
 }

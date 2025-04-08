@@ -12,7 +12,10 @@ catch(Exception $e){
     die('Erreur : ' . $e->getMessage());
 }
 session_start();
-
+if (isset($_SESSION['user_id'])) {
+    header("Location: ../html/accueil.html");
+    exit();
+}
 // Traitement du formulaire
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $fullName = trim($_POST['full_name']);

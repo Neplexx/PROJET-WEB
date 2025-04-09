@@ -4,12 +4,23 @@ $servername ='localhost';
 $username ='root'; 
 $password ='root'; 
 $dbname='ctmdata';
+$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 
-if(isset($_SESSION['user_id'])){
-    $requser=$conn->prepare('SELECT *FROM users WHERE user_id)?');
-    $requser->execute(array($_SESSION['user_id']));
-    $user_info=$requser->fetch();
+try {
+    $conn = new PDO("mysql:host=$servername;dbname=$dbname;charset=utf8mb4", $username, $password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+    if (isset($_SESSION['user_id'])) {
+        $requser = $conn->prepare('SELECT * FROM users WHERE user_id = ?');
+        $requser->execute(array($_SESSION['user_id']));
+        $user_info = $requser->fetch();
+    } else {
+        header("Location: ../index.html");
+        exit();
+    }
+} catch (PDOException $e) {
+    echo "Erreur de connexion : " . $e->getMessage();
+    exit();
 }
 
 ?>
@@ -33,7 +44,7 @@ if(isset($_SESSION['user_id'])){
                 <div class="profile-header">
                     <img src="../pictures/photo de profil neutre.png" alt="Photo de profil" class="profile-avatar">
                     <div class="profile-info">
-                        <h2><?php echo $user_info['fisrt_name']; ?></h2>
+                        <h2><?php echo $user_info['first_name']; ?></h2>
                         <p class="profile-role">Client</p>
                         <div class="profile-rating">
                             <i class="fas fa-star"></i>
@@ -94,7 +105,7 @@ if(isset($_SESSION['user_id'])){
                     <div class="info-grid">
                         <div class="info-item">
                             <span class="info-label">Nom Complet</span>
-                            <span class="info-value"><?php echo $user_info['fist_name']. ' ' . $user_info['last_name']; ?></span>
+                            <span class="info-value"><?php echo $user_info['first_name']. ' ' . $user_info['last_name']; ?></span>
                         </div>
                         <div class="info-item">
                             <span class="info-label">Email</span>

@@ -94,23 +94,23 @@ if(isset($_SESSION['user_id'])){
                     <div class="info-grid">
                         <div class="info-item">
                             <span class="info-label">Nom Complet</span>
-                            <span class="info-value">Le visiteur</span>
+                            <span class="info-value"><?php echo $user_info['fist_name']. ' ' . $user_info['last_name']; ?></span>
                         </div>
                         <div class="info-item">
                             <span class="info-label">Email</span>
-                            <span class="info-value">abc@gmail.com</span>
+                            <span class="info-value"><?php echo $user_info['email'];?></span>
                         </div>
                         <div class="info-item">
                             <span class="info-label">Téléphone</span>
-                            <span class="info-value">+33601020304</span>
+                            <span class="info-value"><?php echo $user_info['phone'];?></span>
                         </div>
                         <div class="info-item">
                             <span class="info-label">Adresse</span>
-                            <span class="info-value">11 Rue 13.113</span>
+                            <span class="info-value"><?php $user_info['address'];?></span>
                         </div>
                         <div class="info-item">
                             <span class="info-label">Date d'inscription</span>
-                            <span class="info-value">15 juin 2024</span>
+                            <span class="info-value"><?php echo $user_info['created_at'];?></span>
                         </div>
                         <div class="info-item">
                             <span class="info-label">Type de compte</span>

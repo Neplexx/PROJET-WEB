@@ -1,7 +1,25 @@
 <?php
 session_start();
-session_unset();
+
+// Détruire toutes les données de session
+$_SESSION = array();
+
+// Supprimer le cookie de session
+if (ini_get("session.use_cookies")) {
+    $params = session_get_cookie_params();
+    setcookie(session_name(), '', time() - 42000,
+        $params["path"], $params["domain"],
+        $params["secure"], $params["httponly"]
+    );
+}
+
+// Supprimer le cookie personnalisé
+setcookie('user_auth', '', time() - 3600, '/');
+
+// Détruire la session
 session_destroy();
-header("Location: ../index.html");
+
+// Rediriger vers la page de connexion
+header("Location: login.php");
 exit();
 ?>

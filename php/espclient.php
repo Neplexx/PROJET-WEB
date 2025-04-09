@@ -33,7 +33,7 @@ try {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Profil utilisateur CTM">
     <meta name="author" content="GLONOU Stefen">
-    <title>Profil | iTM</title>
+    <title>Profil | CTM</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="../styles/espclient.css">
 </head>
@@ -59,7 +59,7 @@ try {
                 <nav class="profile-menu">
                     <ul>
                         <li>
-                            <a href="accueil.html" class="menu-item">
+                            <a href="../html/accueil.html" class="menu-item">
                                 <i class="fas fa-home"></i>
                                 <span>Accueil</span>
                             </a>
@@ -71,7 +71,7 @@ try {
                             </a>
                         </li>
                         <li>
-                            <a href="../index.html" class="menu-item logout">
+                            <a href="logout.php" class="menu-item logout">
                                 <i class="fas fa-sign-out-alt"></i>
                                 <span>Déconnexion</span>
                             </a>
@@ -86,8 +86,8 @@ try {
                 <h1>Mon Profil</h1>
                 <nav class="content-nav">
                     <ul>
-                        <li><a href="accueil.html">Accueil</a></li>
-                        <li><a href="recherche.html">Recherche</a></li>
+                        <li><a href="../html/accueil.html">Accueil</a></li>
+                        <li><a href="../html/recherche.html">Recherche</a></li>
                         <li><a href="../index.html" class="logout-link">Déconnexion</a></li>
                     </ul>
                 </nav>

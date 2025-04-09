@@ -22,7 +22,7 @@ if(isset($_SESSION['user_id'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Profil utilisateur CTM">
     <meta name="author" content="GLONOU Stefen">
-    <title>Profil | CTM</title>
+    <title>Profil | iTM</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="../styles/espclient.css">
 </head>
@@ -33,7 +33,7 @@ if(isset($_SESSION['user_id'])){
                 <div class="profile-header">
                     <img src="../pictures/photo de profil neutre.png" alt="Photo de profil" class="profile-avatar">
                     <div class="profile-info">
-                        <h2><?php echo $user_info['fisrt_name']; ?></h2>
+                        <h2><?php echo $user_info['first_name']; ?></h2>
                         <p class="profile-role">Client</p>
                         <div class="profile-rating">
                             <i class="fas fa-star"></i>

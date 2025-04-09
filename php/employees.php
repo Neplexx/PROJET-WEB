@@ -156,9 +156,9 @@ catch(Exception $e){
                                         <button class="btn btn-contact">
                                             <i class="fas fa-envelope"></i> Contacter
                                         </button>
-                                        <button class="btn btn-view">
-                                            <i class="fas fa-eye"></i> Voir le profil
-                                        </button>
+                                            <a href="profile.php?id=<?php echo $row['user_id']; ?>" class="btn btn-view">
+                                                <i class="fas fa-eye"></i> Voir le profil
+                                            </a>
                                     </div>
                                 </article>
                             <?php endforeach; ?>

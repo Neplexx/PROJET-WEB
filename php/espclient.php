@@ -117,7 +117,7 @@ try {
                         </div>
                         <div class="info-item">
                             <span class="info-label">Adresse</span>
-                            <span class="info-value"><?php $user_info['address'];?></span>
+                            <span class="info-value"><?php echo  $user_info['address'];?></span>
                         </div>
                         <div class="info-item">
                             <span class="info-label">Date d'inscription</span>

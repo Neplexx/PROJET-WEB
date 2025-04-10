@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : mar. 08 avr. 2025 à 21:43
+-- Généré le : jeu. 10 avr. 2025 à 12:49
 -- Version du serveur : 5.7.24
 -- Version de PHP : 8.3.1
 
@@ -322,27 +322,27 @@ INSERT INTO `users` (`user_id`, `email`, `password`, `first_name`, `last_name`, 
 (2, 'monteur2@example.com', 'jenesaispas', 'Marie', 'Martin', '0698765432', 'profile2.jpg', 'Spécialisée en motion design et montage créatif pour les réseaux sociaux.', 'monteur', '2025-04-07 18:19:08', '2025-04-07 18:19:08'),
 (3, 'employeur1@example.com', 'motdepassetemporaire', 'Pierre', 'Durand', '0687654321', 'company1.jpg', 'Producteur indépendant de courts-métrages et documentaires.', 'employeur', '2025-04-07 18:19:08', '2025-04-07 18:19:08'),
 (4, 'employeur2@example.com', 'oiseau', 'Sophie', 'Leroy', '0678912345', 'company2.jpg', 'Directrice de production dans une agence de publicité.', 'employeur', '2025-04-07 18:19:08', '2025-04-07 18:19:08'),
-(5, 'englishbadisdahi@gmail.com', 'motdepasse', 'dahi', 'badis', NULL, NULL, NULL, 'monteur', '2025-04-08 17:47:46', '2025-04-08 17:47:46'),
+(5, 'englishbadisdahi@gmail.com', 'motdepasse', 'dahi', 'badis', '454', NULL, '5454\r\n', 'monteur', '2025-04-08 17:47:46', '2025-04-09 17:34:30'),
 (6, 'max.castagne@example.com', 'maxpass23', 'Max', 'Castagne', '0678452310', 'profile1.jpg', 'Spécialiste du montage court-métrage avec un sens aigu du rythme.', 'monteur', '2025-04-08 13:42:52', '2025-04-08 13:42:52'),
 (7, 'jack.chrass@example.com', 'jackedit99', 'Jack', 'Chrass', '0770213456', 'profile1.jpg', 'Monteur avec une grande expérience dans le clip musical et les transitions dynamiques.', 'monteur', '2025-04-08 13:42:52', '2025-04-08 13:42:52'),
 (8, 'pierre.calvasse@example.com', 'pierrevideo88', 'Pierre', 'Calvasse', '0679981203', 'profile1.jpg', 'Expert en storytelling vidéo, adepte des logiciels Adobe Premiere et DaVinci.', 'monteur', '2025-04-08 13:42:52', '2025-04-08 13:42:52'),
 (9, 'pierre.calvasse@example.com', 'quentinpro', 'Quentin', 'Michel', '0765123498', 'profile1.jpg', 'Monteur passionné par le documentaire, toujours à la recherche de l’émotion juste.', 'monteur', '2025-04-08 13:42:52', '2025-04-08 13:42:52'),
-(10, 'graphiste1@example.com', 'lucdesign', 'Luc', 'Pliuc', '0670012398', 'profile1.jpg', 'Graphiste expert en branding et création d’identités visuelles fortes.', 'graphiste', '2025-04-08 13:42:52', '2025-04-08 13:42:52'),
-(11, 'graphiste2@example.com', 'khaledart77', 'Khaled', 'Prime', '0679981123', 'profile1.jpg', 'Spécialisé en motion design, j’anime vos idées avec fluidité et style.', 'graphiste', '2025-04-08 13:42:52', '2025-04-08 13:42:52'),
-(12, 'graphiste3@example.com', 'martinviz', 'Martin', 'Jiopo', '0776542312', 'profile1.jpg', 'Graphiste polyvalent avec un œil affuté pour le détail et la composition.', 'graphiste', '2025-04-08 13:42:52', '2025-04-08 13:42:52'),
-(13, 'graphiste4@example.com', 'luciencrea', 'Lucien', 'Dekune', '0678459901', 'profile1.jpg', 'Illustrateur et graphiste, je donne vie à vos projets avec originalité.', 'graphiste', '2025-04-08 13:42:52', '2025-04-08 13:42:52'),
-(14, 'manager1@example.com', 'julienlead', 'Julien', 'Martin', '0670034567', 'profile1.jpg', 'Manager expérimenté, je coordonne les talents pour des projets efficaces.', 'manager', '2025-04-08 13:42:52', '2025-04-08 13:42:52'),
-(15, 'manager2@example.com', 'elodiemgmt', 'Élodie', 'Dupont', '0778234510', 'profile1.jpg', 'Experte en gestion de production, je fais le lien entre la vision et l’exécution.', 'manager', '2025-04-08 13:42:52', '2025-04-08 13:42:52'),
-(16, 'manager3@example.com', 'antoineorga', 'Antoine', 'Bernard', '0678945623', 'profile1.jpg', 'Chef de projet rigoureux, j’assure la qualité et le respect des délais.', 'manager', '2025-04-08 13:42:52', '2025-04-08 13:42:52'),
-(17, 'manager4@example.com', 'claireboss', 'Claire', 'Lefèvre', '0767894501', 'profile1.jpg', 'Manager créative, j’encourage la collaboration et l’innovation.', 'manager', '2025-04-08 13:42:52', '2025-04-08 13:42:52'),
-(18, 'dev1@example.com', 'lucasdev', 'Lucas', 'Girard', '0671123987', 'profile1.jpg', 'Développeur full-stack spécialisé en React et Node.js, passionné de tech.', 'développeur', '2025-04-08 13:42:52', '2025-04-08 13:42:52'),
-(19, 'dev2@example.com', 'camillecode', 'Camille', 'Moreau', '0770034598', 'profile1.jpg', 'Développeuse web amoureuse du clean code et des expériences fluides.', 'développeur', '2025-04-08 13:42:52', '2025-04-08 13:42:52'),
-(20, 'dev3@example.com', 'thomasroot', 'Thomas', 'Dubois', '0678324590', 'profile1.jpg', 'Backend dev orienté performance et sécurité, avec une touche DevOps.', 'développeur', '2025-04-08 13:42:52', '2025-04-08 13:42:52'),
-(21, 'dev4@example.com', 'sophiehtml', 'Sophie', 'Laurent', '0765432109', 'profile1.jpg', 'Développeuse front-end, experte UI/UX avec une sensibilité design.', 'développeur', '2025-04-08 13:42:52', '2025-04-08 13:42:52'),
-(22, 'beatmaker1@example.com', 'antoinebeat', 'Antoine', 'Perrot', '0678912345', 'profile1.jpg', 'Beatmaker influencé par le boom bap et les textures vintage.', 'beatmaker', '2025-04-08 13:42:52', '2025-04-08 13:42:52'),
-(23, 'beatmaker2@example.com', 'juliebass', 'Julie', 'Barbier', '0778891234', 'profile1.jpg', 'Productrice musicale, je crée des sons doux et percutants à la fois.', 'beatmaker', '2025-04-08 13:42:52', '2025-04-08 13:42:52'),
-(24, 'beatmaker3@example.com', 'maximeloop', 'Maxime', 'Richard', '0670098765', 'profile1.jpg', 'Spécialiste des instrumentales trap et RnB, je façonne des hits sur mesure.', 'beatmaker', '2025-04-08 13:42:52', '2025-04-08 13:42:52'),
-(25, 'beatmaker4@example.com', 'sarahprod', 'Sarah', 'Gauthier', '0767801234', 'profile1.jpg', 'Beatmakeuse polyvalente, de l’électro chill au hip-hop expérimental.', 'beatmaker', '2025-04-08 13:42:52', '2025-04-08 13:42:52');
+(10, 'graphiste1@example.com', 'lucdesign', 'Luc', 'Pliuc', '0670012398', 'profile1.jpg', 'Graphiste expert en branding et création d’identités visuelles fortes.', '', '2025-04-08 13:42:52', '2025-04-08 13:42:52'),
+(11, 'graphiste2@example.com', 'khaledart77', 'Khaled', 'Prime', '0679981123', 'profile1.jpg', 'Spécialisé en motion design, j’anime vos idées avec fluidité et style.', '', '2025-04-08 13:42:52', '2025-04-08 13:42:52'),
+(12, 'graphiste3@example.com', 'martinviz', 'Martin', 'Jiopo', '0776542312', 'profile1.jpg', 'Graphiste polyvalent avec un œil affuté pour le détail et la composition.', '', '2025-04-08 13:42:52', '2025-04-08 13:42:52'),
+(13, 'graphiste4@example.com', 'luciencrea', 'Lucien', 'Dekune', '0678459901', 'profile1.jpg', 'Illustrateur et graphiste, je donne vie à vos projets avec originalité.', '', '2025-04-08 13:42:52', '2025-04-08 13:42:52'),
+(14, 'manager1@example.com', 'julienlead', 'Julien', 'Martin', '0670034567', 'profile1.jpg', 'Manager expérimenté, je coordonne les talents pour des projets efficaces.', '', '2025-04-08 13:42:52', '2025-04-08 13:42:52'),
+(15, 'manager2@example.com', 'elodiemgmt', 'Élodie', 'Dupont', '0778234510', 'profile1.jpg', 'Experte en gestion de production, je fais le lien entre la vision et l’exécution.', '', '2025-04-08 13:42:52', '2025-04-08 13:42:52'),
+(16, 'manager3@example.com', 'antoineorga', 'Antoine', 'Bernard', '0678945623', 'profile1.jpg', 'Chef de projet rigoureux, j’assure la qualité et le respect des délais.', '', '2025-04-08 13:42:52', '2025-04-08 13:42:52'),
+(17, 'manager4@example.com', 'claireboss', 'Claire', 'Lefèvre', '0767894501', 'profile1.jpg', 'Manager créative, j’encourage la collaboration et l’innovation.', '', '2025-04-08 13:42:52', '2025-04-08 13:42:52'),
+(18, 'dev1@example.com', 'lucasdev', 'Lucas', 'Girard', '0671123987', 'profile1.jpg', 'Développeur full-stack spécialisé en React et Node.js, passionné de tech.', '', '2025-04-08 13:42:52', '2025-04-08 13:42:52'),
+(19, 'dev2@example.com', 'camillecode', 'Camille', 'Moreau', '0770034598', 'profile1.jpg', 'Développeuse web amoureuse du clean code et des expériences fluides.', '', '2025-04-08 13:42:52', '2025-04-08 13:42:52'),
+(20, 'dev3@example.com', 'thomasroot', 'Thomas', 'Dubois', '0678324590', 'profile1.jpg', 'Backend dev orienté performance et sécurité, avec une touche DevOps.', '', '2025-04-08 13:42:52', '2025-04-08 13:42:52'),
+(21, 'dev4@example.com', 'sophiehtml', 'Sophie', 'Laurent', '0765432109', 'profile1.jpg', 'Développeuse front-end, experte UI/UX avec une sensibilité design.', '', '2025-04-08 13:42:52', '2025-04-08 13:42:52'),
+(22, 'beatmaker1@example.com', 'antoinebeat', 'Antoine', 'Perrot', '0678912345', 'profile1.jpg', 'Beatmaker influencé par le boom bap et les textures vintage.', '', '2025-04-08 13:42:52', '2025-04-08 13:42:52'),
+(23, 'beatmaker2@example.com', 'juliebass', 'Julie', 'Barbier', '0778891234', 'profile1.jpg', 'Productrice musicale, je crée des sons doux et percutants à la fois.', '', '2025-04-08 13:42:52', '2025-04-08 13:42:52'),
+(24, 'beatmaker3@example.com', 'maximeloop', 'Maxime', 'Richard', '0670098765', 'profile1.jpg', 'Spécialiste des instrumentales trap et RnB, je façonne des hits sur mesure.', '', '2025-04-08 13:42:52', '2025-04-08 13:42:52'),
+(25, 'beatmaker4@example.com', 'sarahprod', 'Sarah', 'Gauthier', '0767801234', 'profile1.jpg', 'Beatmakeuse polyvalente, de l’électro chill au hip-hop expérimental.', '', '2025-04-08 13:42:52', '2025-04-08 13:42:52');
 
 --
 -- Index pour les tables déchargées
@@ -429,13 +429,6 @@ ALTER TABLE `skills`
   ADD UNIQUE KEY `skill_name` (`skill_name`);
 
 --
--- Index pour la table `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`user_id`),
-  ADD UNIQUE KEY `email` (`email`);
-
---
 -- AUTO_INCREMENT pour les tables déchargées
 --
 
@@ -492,79 +485,6 @@ ALTER TABLE `reviews`
 --
 ALTER TABLE `skills`
   MODIFY `skill_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
-
---
--- AUTO_INCREMENT pour la table `users`
---
-ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
-
---
--- Contraintes pour les tables déchargées
---
-
---
--- Contraintes pour la table `applications`
---
-ALTER TABLE `applications`
-  ADD CONSTRAINT `applications_ibfk_1` FOREIGN KEY (`project_id`) REFERENCES `projects` (`project_id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `applications_ibfk_2` FOREIGN KEY (`editor_id`) REFERENCES `editors` (`editor_id`) ON DELETE CASCADE;
-
---
--- Contraintes pour la table `editors`
---
-ALTER TABLE `editors`
-  ADD CONSTRAINT `editors_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE;
-
---
--- Contraintes pour la table `editor_skills`
---
-ALTER TABLE `editor_skills`
-  ADD CONSTRAINT `editor_skills_ibfk_1` FOREIGN KEY (`editor_id`) REFERENCES `editors` (`editor_id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `editor_skills_ibfk_2` FOREIGN KEY (`skill_id`) REFERENCES `skills` (`skill_id`) ON DELETE CASCADE;
-
---
--- Contraintes pour la table `employers`
---
-ALTER TABLE `employers`
-  ADD CONSTRAINT `employers_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE;
-
---
--- Contraintes pour la table `messages`
---
-ALTER TABLE `messages`
-  ADD CONSTRAINT `messages_ibfk_1` FOREIGN KEY (`project_id`) REFERENCES `projects` (`project_id`) ON DELETE SET NULL;
-
---
--- Contraintes pour la table `notifications`
---
-ALTER TABLE `notifications`
-  ADD CONSTRAINT `notifications_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE;
-
---
--- Contraintes pour la table `portfolios`
---
-ALTER TABLE `portfolios`
-  ADD CONSTRAINT `portfolios_ibfk_1` FOREIGN KEY (`editor_id`) REFERENCES `editors` (`editor_id`) ON DELETE CASCADE;
-
---
--- Contraintes pour la table `projects`
---
-ALTER TABLE `projects`
-  ADD CONSTRAINT `projects_ibfk_1` FOREIGN KEY (`employer_id`) REFERENCES `employers` (`employer_id`) ON DELETE CASCADE;
-
---
--- Contraintes pour la table `project_requirements`
---
-ALTER TABLE `project_requirements`
-  ADD CONSTRAINT `project_requirements_ibfk_1` FOREIGN KEY (`project_id`) REFERENCES `projects` (`project_id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `project_requirements_ibfk_2` FOREIGN KEY (`skill_id`) REFERENCES `skills` (`skill_id`) ON DELETE CASCADE;
-
---
--- Contraintes pour la table `reviews`
---
-ALTER TABLE `reviews`
-  ADD CONSTRAINT `reviews_ibfk_1` FOREIGN KEY (`project_id`) REFERENCES `projects` (`project_id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

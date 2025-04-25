@@ -1,4 +1,5 @@
 <?php 
+include '../php/theme.php';
 session_start();
 $servername ='localhost'; 
 $username ='root'; 
@@ -63,7 +64,7 @@ try {
 ?>
 
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="<?php echo htmlspecialchars($current_theme); ?>">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -87,7 +88,62 @@ try {
             --info: #3498db;
             --danger: #e74c3c;
         }
+        /* Styles pour le thème clair */
+        html.light, .container.light {
+            --background-color: #f8f9fa;
+            --text-color: #202124;
+            --section-background: #ffffff;
+            --button-background: #2ecc71;
+            --button-hover: #27ae60;
+        }
 
+        /* Styles pour le thème sombre */
+        html.dark, .container.dark {
+            --background-color: #202124;
+            --text-color: #f8f9fa;
+            --section-background: #2e2e2e;
+            --button-background: #34495e;
+            --button-hover: #2c3e50;
+        }
+
+        /* Styles pour le thème par défaut */
+        html.default, .container.default {
+            --background-color: #ffffff;
+            --text-color: #000000;
+            --section-background: #f0f0f0;
+            --button-background: #3498db;
+            --button-hover: #2980b9;
+        }
+
+        /* Application des variables */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            transition: background-color 0.4s, color 0.4s;
+        }
+
+        .section {
+            background-color: var(--section-background);
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+
+        .button {
+            background-color: var(--button-background);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: var(--button-hover);
+        }
         /* Base Styles */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -623,7 +679,7 @@ try {
     </style>
 </head>
 <body>
-    <div class="profile-container">
+    <div class="profile-container" <?php echo htmlspecialchars($current_theme); ?>>
         <div class="profile-sidebar">
             <div class="profile-card">
                 <div class="profile-header">
@@ -650,7 +706,7 @@ try {
                             </a>
                         </li>
                         <li>
-                            <a href="#" class="menu-item">
+                            <a href="../php/settings.php" class="menu-item">
                                 <i class="fas fa-cog"></i>
                                 <span>Paramètres</span>
                             </a>

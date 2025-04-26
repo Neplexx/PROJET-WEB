@@ -159,13 +159,25 @@ try {
                                             <div class="profile-details">
                                                 <h4><i class="fas fa-chart-line"></i> Spécificités</h4>
                                                 <ul class="details-list">
-                                                    <li><strong>Expérience :</strong> <?php echo htmlspecialchars($row['years_experience']); ?> ans</li>
-                                                    <li><strong>Taux journalier :</strong> <?php echo htmlspecialchars($row['daily_rate']); ?>€</li>
+                                                    <?php if (!empty($row['years_experience'])): ?>
+                                                    <li><strong>Expérience :</strong> 
+                                                        <?= htmlspecialchars($row['years_experience']) ?> ans
+                                                    </li>
+                                                    <?php endif; ?>
+                                                    
+                                                    <?php if (!empty($row['daily_rate'])): ?>
+                                                    <li><strong>Taux journalier :</strong> 
+                                                        <?= htmlspecialchars($row['daily_rate']) ?>€
+                                                    </li>
+                                                    <?php endif; ?>
+                                                    
+                                                    <?php if (!empty($row['availability'])): ?>
                                                     <li><strong>Disponibilité :</strong> 
-                                                        <span class="availability <?php echo htmlspecialchars($row['availability']); ?>">
-                                                            <?php echo htmlspecialchars($row['availability']); ?>
+                                                        <span class="availability <?= htmlspecialchars($row['availability']) ?>">
+                                                            <?= htmlspecialchars($row['availability']) ?>
                                                         </span>
                                                     </li>
+                                                    <?php endif; ?>
                                                 </ul>
                                             </div>
                                         <?php elseif ($row['user_type'] === 'employeur'): ?>

@@ -2,32 +2,55 @@
 $results = [];
 $keyword = isset($_GET['keyword']) ? $_GET['keyword'] : '';
 $keyword = str_replace('+', ' ', $keyword);
+$user_type = isset($_GET['user_type']) ? $_GET['user_type'] : '';
+$availability = isset($_GET['availability']) ? $_GET['availability'] : '';
 
 try {
-    $servername ='localhost'; 
-    $username ='root'; 
-    $password ='root'; 
-    $dbname='ctmdata';
+    $servername = 'localhost'; 
+    $username = 'root'; 
+    $password = 'root'; 
+    $dbname = 'ctmdata';
 
-try{
-    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
-}
-catch(Exception $e){
-    die('Erreur : ' . $e->getMessage());
-}
+    try {
+        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
+    } catch(Exception $e) {
+        die('Erreur : ' . $e->getMessage());
+    }
 
+    // Construire la requête dynamiquement
+    $sql = "SELECT u.user_id, u.first_name, u.last_name, u.email, u.phone, u.profile_picture, u.bio, u.user_type, 
+                   e.years_experience, e.daily_rate, e.availability, 
+                   emp.company_name, emp.company_size, emp.industry
+            FROM users u
+            LEFT JOIN editors e ON u.user_id = e.user_id
+            LEFT JOIN employers emp ON u.user_id = emp.user_id
+            WHERE 1=1"; // Condition toujours vraie pour faciliter l'ajout de conditions
+
+    $params = [];
+
+    // Ajouter les conditions en fonction des critères
     if (!empty($keyword)) {
-        $sql = "SELECT u.first_name, u.last_name, u.email, u.phone, u.profile_picture, u.bio, u.user_type, 
-                       e.years_experience, e.daily_rate, e.availability, 
-                       emp.company_name, emp.company_size, emp.industry
-                FROM users u
-                LEFT JOIN editors e ON u.user_id = e.user_id
-                LEFT JOIN employers emp ON u.user_id = emp.user_id
-                WHERE CONCAT(u.first_name, ' ', u.last_name) LIKE :keyword COLLATE utf8_general_ci";
+        $sql .= " AND CONCAT(u.first_name, ' ', u.last_name) LIKE :keyword COLLATE utf8_general_ci";
+        $params[':keyword'] = '%' . $keyword . '%';
+    }
 
+    if (!empty($user_type)) {
+        $sql .= " AND u.user_type = :user_type";
+        $params[':user_type'] = $user_type;
+    }
+
+    if (!empty($availability)) {
+        $sql .= " AND e.availability = :availability";
+        $params[':availability'] = $availability;
+    }
+
+    // Exécuter seulement si au moins un critère est sélectionné
+    if (!empty($keyword) || !empty($user_type) || !empty($availability)) {
         $stmt = $conn->prepare($sql);
-        $stmt->bindValue(':keyword', '%' . $keyword . '%', PDO::PARAM_STR);
+        foreach ($params as $key => $value) {
+            $stmt->bindValue($key, $value);
+        }
         $stmt->execute();
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -69,19 +92,19 @@ catch(Exception $e){
                             <label for="user_type">Type :</label>
                             <select id="user_type" name="user_type" class="filter-select">
                                 <option value="">Tous types</option>
-                                <option value="monteur">Monteur</option>
-                                <option value="graphiste">Graphiste</option>
-                                <option value="manager">Manager</option>
-                                <option value="développeur">Développeur</option>
-                                <option value="beatmaker">Beatmaker</option>
+                                <option value="monteur" <?php echo (isset($_GET['user_type']) && $_GET['user_type'] === 'monteur') ? 'selected' : ''; ?>>Monteur</option>
+                                <option value="graphiste" <?php echo (isset($_GET['user_type']) && $_GET['user_type'] === 'graphiste') ? 'selected' : ''; ?>>Graphiste</option>
+                                <option value="manager" <?php echo (isset($_GET['user_type']) && $_GET['user_type'] === 'manager') ? 'selected' : ''; ?>>Manager</option>
+                                <option value="développeur" <?php echo (isset($_GET['user_type']) && $_GET['user_type'] === 'développeur') ? 'selected' : ''; ?>>Développeur</option>
+                                <option value="beatmaker" <?php echo (isset($_GET['user_type']) && $_GET['user_type'] === 'beatmaker') ? 'selected' : ''; ?>>Beatmaker</option>
                             </select>
                         </div>
                         <div class="filter-group">
                             <label for="availability">Disponibilité :</label>
                             <select id="availability" name="availability" class="filter-select">
                                 <option value="">Toutes</option>
-                                <option value="disponible">Disponible</option>
-                                <option value="occupé">Occupé</option>
+                                <option value="disponible" <?php echo (isset($_GET['availability']) && $_GET['availability'] === 'disponible') ? 'selected' : ''; ?>>Disponible</option>
+                                <option value="occupé" <?php echo (isset($_GET['availability']) && $_GET['availability'] === 'occupé') ? 'selected' : ''; ?>>Occupé</option>
                             </select>
                         </div>
                     </div>
@@ -89,9 +112,14 @@ catch(Exception $e){
             </section>
             
             <section class="results-section">
-                <?php if (!empty($keyword)): ?>
+                <?php if (!empty($keyword) || !empty($user_type) || !empty($availability)): ?>
                     <div class="results-header">
-                        <h2>Résultats pour "<?php echo htmlspecialchars($keyword); ?>"</h2>
+                        <h2>
+                            Résultats 
+                            <?php if (!empty($keyword)): ?>pour "<?php echo htmlspecialchars($keyword); ?>"<?php endif; ?>
+                            <?php if (!empty($user_type)): ?>(Type: <?php echo htmlspecialchars($user_type); ?>)<?php endif; ?>
+                            <?php if (!empty($availability)): ?>(Dispo: <?php echo htmlspecialchars($availability); ?>)<?php endif; ?>
+                        </h2>
                         <span class="results-count"><?php echo count($results); ?> résultat(s)</span>
                     </div>
                     
@@ -156,9 +184,9 @@ catch(Exception $e){
                                         <button class="btn btn-contact">
                                             <i class="fas fa-envelope"></i> Contacter
                                         </button>
-                                            <a href="profile.php?id=<?php echo $row['user_id']; ?>" class="btn btn-view">
-                                                <i class="fas fa-eye"></i> Voir le profil
-                                            </a>
+                                        <a href="profile.php?id=<?php echo $row['user_id']; ?>" class="btn btn-view">
+                                            <i class="fas fa-eye"></i> Voir le profil
+                                        </a>
                                     </div>
                                 </article>
                             <?php endforeach; ?>
@@ -170,11 +198,11 @@ catch(Exception $e){
                             <p>Essayez avec d'autres termes de recherche ou élargissez vos critères.</p>
                         </div>
                     <?php endif; ?>
-                <?php elseif (empty($keyword) && isset($_GET['keyword'])): ?>
+                <?php elseif (empty($keyword) && empty($_GET['user_type']) && empty($_GET['availability']) && isset($_GET['keyword'])): ?>
                     <div class="no-keyword">
                         <i class="fas fa-search"></i>
-                        <h3>Veuillez entrer un terme de recherche</h3>
-                        <p>Utilisez le champ ci-dessus pour trouver des professionnels.</p>
+                        <h3>Veuillez entrer un critère de recherche</h3>
+                        <p>Utilisez le champ de texte ou les filtres pour trouver des professionnels.</p>
                     </div>
                 <?php else: ?>
                     <div class="search-prompt">

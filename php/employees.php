@@ -99,14 +99,6 @@ try {
                                 <option value="beatmaker" <?php echo (isset($_GET['user_type']) && $_GET['user_type'] === 'beatmaker') ? 'selected' : ''; ?>>Beatmaker</option>
                             </select>
                         </div>
-                        <div class="filter-group">
-                            <label for="availability">Disponibilité :</label>
-                            <select id="availability" name="availability" class="filter-select">
-                                <option value="">Toutes</option>
-                                <option value="disponible" <?php echo (isset($_GET['availability']) && $_GET['availability'] === 'disponible') ? 'selected' : ''; ?>>Disponible</option>
-                                <option value="occupé" <?php echo (isset($_GET['availability']) && $_GET['availability'] === 'occupé') ? 'selected' : ''; ?>>Occupé</option>
-                            </select>
-                        </div>
                     </div>
                 </form>
             </section>
@@ -224,6 +216,7 @@ try {
                     </div>
                 <?php endif; ?>
             </section>
+
         </main>
         
         <footer class="search-footer">

@@ -23,6 +23,107 @@
             <li><a class="pageNonActive" href="projet.html">Projet</a></li>
         </ul>
     </nav>
+<style>
+#search-section {
+    width: 90%;
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.search-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.search-container {
+    display: flex;
+    width: 100%;
+}
+
+.search-input {
+    flex: 1;
+    padding: 12px 20px;
+    border: 2px solid #ddd;
+    border-radius: 30px 0 0 30px;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.search-input:focus {
+    border-color: #4a6fa5;
+}
+
+.search-button {
+    padding: 12px 20px;
+    background-color: #4a6fa5;
+    color: white;
+    border: none;
+    border-radius: 0 30px 30px 0;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: background-color 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.search-button:hover {
+    background-color: #3a5a8a;
+}
+
+.filter-options {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.filter-select {
+    padding: 10px 15px;
+    border: 2px solid #ddd;
+    border-radius: 30px;
+    font-size: 14px;
+    outline: none;
+    background-color: white;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.filter-select:hover {
+    border-color: #4a6fa5;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .search-container {
+        flex-direction: column;
+    }
+    
+    .search-input {
+        border-radius: 30px;
+        margin-bottom: 10px;
+    }
+    
+    .search-button {
+        border-radius: 30px;
+    }
+    
+    .filter-options {
+        flex-direction: column;
+    }
+    
+    .filter-select {
+        width: 100%;
+    }
+}
+</style>
     <main>
         <h1>Nos Services Disponibles</h1>
         <section id="sectionRecherche">
@@ -137,6 +238,26 @@
                 </div>
             </article>        
         </section>
+<section id="search-section">
+    <form action="../php/employees.php" method="get" class="search-form">
+        <div class="search-container">
+            <input type="text" name="keyword" placeholder="Rechercher un professionnel..." class="search-input">
+            <button type="submit" class="search-button">
+                <i class="fas fa-search"></i> Rechercher
+            </button>
+        </div>
+        <div class="filter-options">
+            <select name="user_type" class="filter-select">
+                <option value="">Tous les métiers</option>
+                <option value="monteur">Monteur</option>
+                <option value="graphiste">Graphiste</option>
+                <option value="manager">Manager</option>
+                <option value="développeur">Développeur</option>
+                <option value="beatmaker">Beatmaker</option>
+            </select>
+        </div>
+    </form>
+</section>
     </main>
     <footer>
         <div id="conteneurfooter">

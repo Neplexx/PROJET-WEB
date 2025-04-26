@@ -30,8 +30,6 @@
         <ul class="nav-list">
             <li class="nav-item"><a href="accueil.html" class="nav-link active">Accueil</a></li>
             <li class="nav-item"><a href="recherche.html" class="nav-link">Recherche</a></li>
-            <li class="nav-item"><a href="Employeur.html" class="nav-link">Employeur</a></li>
-            <li class="nav-item"><a href="projet.html" class="nav-link">Projet</a></li>
         </ul>
     </nav>
 
@@ -128,7 +126,6 @@
     </main>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-    // Slider functionality
     const slider = document.querySelector('.slider');
     const slides = document.querySelectorAll('.slide');
     const prevBtn = document.querySelector('.prev-btn');
@@ -157,16 +154,13 @@
         goToSlide(currentSlide - 1);
     }
     
-    // Auto-slide every 5 seconds
     let slideInterval = setInterval(nextSlide, 5000);
     
-    // Reset interval when user clicks navigation
     function resetInterval() {
         clearInterval(slideInterval);
         slideInterval = setInterval(nextSlide, 5000);
     }
     
-    // Event listeners
     nextBtn.addEventListener('click', function() {
         nextSlide();
         resetInterval();
@@ -177,7 +171,6 @@
         resetInterval();
     });
     
-    // Keyboard navigation
     document.addEventListener('keydown', function(e) {
         if (e.key === 'ArrowRight') {
             nextSlide();
@@ -188,7 +181,6 @@
         }
     });
     
-    // Initialize slider
     goToSlide(0);
 });
     </script>

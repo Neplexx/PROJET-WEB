@@ -729,7 +729,7 @@ try {
                     <ul>
                         <li><a href="../html/accueil.html">Accueil</a></li>
                         <li><a href="../html/recherche.html">Recherche</a></li>
-                        <li><a href="../index.html" class="logout-link">Déconnexion</a></li>
+                        <li><a href="logout.php" class="logout-link">Déconnexion</a></li>
                     </ul>
                 </nav>
             </header>

@@ -16,8 +16,9 @@ if (ini_get("session.use_cookies")) {
 // Supprimer le cookie personnalisé
 setcookie('user_auth', '', time() - 3600, '/');
 
-// Détruire la session
-session_destroy();
+session_unset(); // Supprime toutes les variables de session
+session_destroy(); // Détruit la session
+session_write_close(); // Force l'écriture des données
 
 // Rediriger vers la page de connexion
 header("Location: login.php");

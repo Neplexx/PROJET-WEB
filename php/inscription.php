@@ -267,11 +267,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <label for="register-confirm-password">Confirmez le mot de passe</label>
                         <input type="password" id="register-confirm-password" name="confirm_password" placeholder="Confirmez votre mot de passe" required>
                     </div>
-                    
                     <div class="form-group">
                         <label for="user-type">Type d'utilisateur</label>
                         <select id="user-type" name="user_type" required>
                             <option value="">Sélectionnez un type</option>
+                            <option value="client" <?php echo (isset($_POST['user_type']) && $_POST['user_type'] === 'client') ? 'selected' : ''; ?>>Client</option>
+                            <option value="graphiste" <?php echo (isset($_POST['user_type']) && $_POST['user_type'] === 'graphiste') ? 'selected' : ''; ?>>Graphiste</option>
+                            <option value="manager" <?php echo (isset($_POST['user_type']) && $_POST['user_type'] === 'manager') ? 'selected' : ''; ?>>Manager</option>
+                            <option value="développeur" <?php echo (isset($_POST['user_type']) && $_POST['user_type'] === 'développeur') ? 'selected' : ''; ?>>Développeur</option>
+                            <option value="beatmaker" <?php echo (isset($_POST['user_type']) && $_POST['user_type'] === 'beatmaker') ? 'selected' : ''; ?>>Beatmaker</option>
                             <option value="monteur" <?php echo (isset($_POST['user_type']) && $_POST['user_type'] === 'monteur') ? 'selected' : ''; ?>>Monteur</option>
                             <option value="employeur" <?php echo (isset($_POST['user_type']) && $_POST['user_type'] === 'employeur') ? 'selected' : ''; ?>>Employeur</option>
                         </select>

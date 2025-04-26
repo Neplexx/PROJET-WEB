@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Apr 11, 2025 at 05:23 PM
+-- Generation Time: Apr 26, 2025 at 09:45 AM
 -- Server version: 5.7.24
 -- PHP Version: 8.3.1
 
@@ -429,6 +429,12 @@ ALTER TABLE `skills`
   ADD UNIQUE KEY `skill_name` (`skill_name`);
 
 --
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`user_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -485,6 +491,12 @@ ALTER TABLE `reviews`
 --
 ALTER TABLE `skills`
   MODIFY `skill_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

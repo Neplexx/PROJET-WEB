@@ -2,12 +2,82 @@
 <?php 
 session_start();
 require_once('verification.php');
-if (!isset($_SESSION['user_id'])) {
-    header("Location: ../index.html");
-    exit();
+
+// Configuration et connexion à la base de données
+$servername = 'localhost';
+$username = 'root';
+$password = 'root';
+$dbname = 'ctmdata';
+$charset = 'utf8mb4';
+
+$dsn = "mysql:host=$servername;dbname=$dbname;charset=$charset";
+$options = [
+    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+    PDO::ATTR_EMULATE_PREPARES   => false,
+];
+
+try {
+    $pdo = new PDO($dsn, $username, $password, $options);
+} catch (\PDOException $e) {
+    die("Erreur de connexion à la base de données: " . $e->getMessage());
+}
+
+// Vérification de la session
+if (!isset($_SESSION['user_id'])) {
+    header("Location: ../index.html");
+    exit();
+}
+
+// Récupération du rôle de l'utilisateur
+$user_id = $_SESSION['user_id'];
+$query = "SELECT user_type FROM users WHERE user_id = ?";
+$stmt = $pdo->prepare($query);
+$stmt->execute([$user_id]);
+$user = $stmt->fetch();
+
+if ($user) {
+    $user_role = $user['user_type'];
+    $role_translations = [
+        'client' => 'Client',
+        'graphiste' => 'Graphiste',
+        'manager' => 'Manager',
+        'développeur' => 'Développeur',
+        'beatmaker' => 'Beatmaker',
+        'monteur' => 'Monteur',
+        'employeur' => 'Employeur',
+        'admin' => 'Administrateur'
+    ];
+    $display_role = $role_translations[$user_role] ?? $user_role;
+} else {
+    $display_role = 'Utilisateur';
 }
 ?>
+<style>
+.user-profile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
 
+.user-profile, .user-role {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #333;
+    padding: 5px 0;
+}
+
+.user-role {
+    font-size: 0.9em;
+    color: #666;
+}
+
+.user-role:hover {
+    color: #000;
+    text-decoration: underline;
+}
+</style>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -28,14 +98,18 @@ if (!isset($_SESSION['user_id'])) {
             </a>
         </div>
         <nav class="user-nav">
-            <a href="../php/espclient.php" class="user-profile">
-                <img src="../pictures/photoDeProfil.png" alt="Photo de profil" class="user-avatar">
-                <span class="user-name">Mon compte</span>
-            </a>
+            <div class="user-profile-container">
+                <a href="../php/espclient.php" class="user-profile">
+                    <img src="../pictures/photoDeProfil.png" alt="Photo de profil" class="user-avatar">
+                    <span class="user-name">Mon compte</span>
+                </a>
+                <a href="../php/verifroles.php" class="user-role">
+                    <span>Votre espace <?php echo htmlspecialchars($display_role); ?></span>
+                </a>
+            </div>
         </nav>
-    </header>
-
-    <nav class="main-nav">
+    </header>   
+     <nav class="main-nav">
         <ul class="nav-list">
             <li class="nav-item"><a href="accueil.php" class="nav-link active">Accueil</a></li>
             <li class="nav-item"><a href="recherche.php" class="nav-link">Recherche</a></li>
@@ -133,69 +207,70 @@ if (!isset($_SESSION['user_id'])) {
             </div>
         </section>
     </main>
-<script>
+
+    <script>
     document.addEventListener('DOMContentLoaded', function() {
-    const slider = document.querySelector('.slider');
-    const slides = document.querySelectorAll('.slide');
-    const prevBtn = document.querySelector('.prev-btn');
-    const nextBtn = document.querySelector('.next-btn');
-    
-    let currentSlide = 0;
-    const slideCount = slides.length;
-    
-    function goToSlide(slideIndex) {
-        if (slideIndex < 0) {
-            currentSlide = slideCount - 1;
-        } else if (slideIndex >= slideCount) {
-            currentSlide = 0;
-        } else {
-            currentSlide = slideIndex;
+        const slider = document.querySelector('.slider');
+        const slides = document.querySelectorAll('.slide');
+        const prevBtn = document.querySelector('.prev-btn');
+        const nextBtn = document.querySelector('.next-btn');
+        
+        let currentSlide = 0;
+        const slideCount = slides.length;
+        
+        function goToSlide(slideIndex) {
+            if (slideIndex < 0) {
+                currentSlide = slideCount - 1;
+            } else if (slideIndex >= slideCount) {
+                currentSlide = 0;
+            } else {
+                currentSlide = slideIndex;
+            }
+            
+            slider.style.transform = `translateX(-${currentSlide * 100}%)`;
         }
         
-        slider.style.transform = `translateX(-${currentSlide * 100}%)`;
-    }
-    
-    function nextSlide() {
-        goToSlide(currentSlide + 1);
-    }
-    
-    function prevSlide() {
-        goToSlide(currentSlide - 1);
-    }
-    
-    let slideInterval = setInterval(nextSlide, 5000);
-    
-    function resetInterval() {
-        clearInterval(slideInterval);
-        slideInterval = setInterval(nextSlide, 5000);
-    }
-    
-    nextBtn.addEventListener('click', function() {
-        nextSlide();
-        resetInterval();
-    });
-    
-    prevBtn.addEventListener('click', function() {
-        prevSlide();
-        resetInterval();
-    });
-    
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'ArrowRight') {
+        function nextSlide() {
+            goToSlide(currentSlide + 1);
+        }
+        
+        function prevSlide() {
+            goToSlide(currentSlide - 1);
+        }
+        
+        let slideInterval = setInterval(nextSlide, 5000);
+        
+        function resetInterval() {
+            clearInterval(slideInterval);
+            slideInterval = setInterval(nextSlide, 5000);
+        }
+        
+        nextBtn.addEventListener('click', function() {
             nextSlide();
             resetInterval();
-        } else if (e.key === 'ArrowLeft') {
+        });
+        
+        prevBtn.addEventListener('click', function() {
             prevSlide();
             resetInterval();
-        }
+        });
+        
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowRight') {
+                nextSlide();
+                resetInterval();
+            } else if (e.key === 'ArrowLeft') {
+                prevSlide();
+                resetInterval();
+            }
+        });
+        
+        goToSlide(0);
     });
-    
-    goToSlide(0);
-});
     </script>
-<footer class="main-footer">
+
+    <footer class="main-footer">
         <div class="footer-content">
-            
             <div class="footer-links">
                 <a href="support.php" class="support-btn">
                     <i class="fas fa-headset"></i> Contacter le support
@@ -212,7 +287,5 @@ if (!isset($_SESSION['user_id'])) {
             </div>
         </div>
     </footer>
-        
 </body>
 </html>
-

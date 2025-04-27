@@ -15,7 +15,7 @@ try {
         $requser->execute(array($_SESSION['user_id']));
         $user_info = $requser->fetch();
     } else {
-        header("Location: ../index.html");
+        header("Location: login.php");
         exit();
     }
 } catch (PDOException $e) {

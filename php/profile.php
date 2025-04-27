@@ -6,6 +6,12 @@ $servername = 'localhost';
 $username = 'root'; 
 $password = 'root'; 
 $dbname = 'ctmdata';
+session_start();
+require_once('verification.php');
+if (!isset($_SESSION['user_id'])) {
+    header("Location: ../index.html");
+    exit();
+}
 
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
@@ -63,6 +69,7 @@ try {
 } catch(PDOException $e) {
     die("Erreur de connexion : " . $e->getMessage());
 }
+
 ?>
 
 <!DOCTYPE html>

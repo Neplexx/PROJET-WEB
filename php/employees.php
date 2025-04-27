@@ -57,6 +57,12 @@ try {
 } catch(PDOException $e) {
     echo "Erreur : " . $e->getMessage();
 }
+session_start();
+require_once('verification.php');
+if (!isset($_SESSION['user_id'])) {
+    header("Location: ../index.html");
+    exit();
+}
 ?>
 <!DOCTYPE html>
 <html lang="fr">

@@ -18,18 +18,16 @@ try {
         die('Erreur : ' . $e->getMessage());
     }
 
-    // Construire la requête dynamiquement
     $sql = "SELECT u.user_id, u.first_name, u.last_name, u.email, u.phone, u.profile_picture, u.bio, u.user_type, 
                    e.years_experience, e.daily_rate, e.availability, 
                    emp.company_name, emp.company_size, emp.industry
             FROM users u
             LEFT JOIN editors e ON u.user_id = e.user_id
             LEFT JOIN employers emp ON u.user_id = emp.user_id
-            WHERE 1=1"; // Condition toujours vraie pour faciliter l'ajout de conditions
+            WHERE 1=1"; 
 
     $params = [];
 
-    // Ajouter les conditions en fonction des critères
     if (!empty($keyword)) {
         $sql .= " AND CONCAT(u.first_name, ' ', u.last_name) LIKE :keyword COLLATE utf8_general_ci";
         $params[':keyword'] = '%' . $keyword . '%';
@@ -45,7 +43,6 @@ try {
         $params[':availability'] = $availability;
     }
 
-    // Exécuter seulement si au moins un critère est sélectionné
     if (!empty($keyword) || !empty($user_type) || !empty($availability)) {
         $stmt = $conn->prepare($sql);
         foreach ($params as $key => $value) {

@@ -3,7 +3,6 @@
 session_start();
 require_once('verification.php');
 
-// Configuration et connexion à la base de données
 $servername = 'localhost';
 $username = 'root';
 $password = 'root';
@@ -23,13 +22,11 @@ try {
     die("Erreur de connexion à la base de données: " . $e->getMessage());
 }
 
-// Vérification de la session
 if (!isset($_SESSION['user_id'])) {
     header("Location: ../index.html");
     exit();
 }
 
-// Récupération du rôle de l'utilisateur
 $user_id = $_SESSION['user_id'];
 $query = "SELECT user_type FROM users WHERE user_id = ?";
 $stmt = $pdo->prepare($query);
@@ -184,89 +181,7 @@ if ($user) {
             </div>
         </section>
 
-        <section class="slider-section">
-            <div class="slider-container">
-                <div class="slider">
-                    <div class="slide">
-                        <img src="../pictures/pro1.png" alt="Projet 1">
-                    </div>
-                    <div class="slide">
-                        <img src="../pictures/pro2.png" alt="Projet 2">
-                    </div>
-                    <div class="slide">
-                        <img src="../pictures/pro3.png" alt="Projet 3">
-                    </div>
-                    <div class="slide">
-                        <img src="../pictures/pro1.png" alt="Projet 4">
-                    </div>
-                </div>
-                <div class="slider-controls">
-                    <button class="slider-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
-                    <button class="slider-btn next-btn"><i class="fas fa-chevron-right"></i></button>
-                </div>
-            </div>
-        </section>
     </main>
-
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const slider = document.querySelector('.slider');
-        const slides = document.querySelectorAll('.slide');
-        const prevBtn = document.querySelector('.prev-btn');
-        const nextBtn = document.querySelector('.next-btn');
-        
-        let currentSlide = 0;
-        const slideCount = slides.length;
-        
-        function goToSlide(slideIndex) {
-            if (slideIndex < 0) {
-                currentSlide = slideCount - 1;
-            } else if (slideIndex >= slideCount) {
-                currentSlide = 0;
-            } else {
-                currentSlide = slideIndex;
-            }
-            
-            slider.style.transform = `translateX(-${currentSlide * 100}%)`;
-        }
-        
-        function nextSlide() {
-            goToSlide(currentSlide + 1);
-        }
-        
-        function prevSlide() {
-            goToSlide(currentSlide - 1);
-        }
-        
-        let slideInterval = setInterval(nextSlide, 5000);
-        
-        function resetInterval() {
-            clearInterval(slideInterval);
-            slideInterval = setInterval(nextSlide, 5000);
-        }
-        
-        nextBtn.addEventListener('click', function() {
-            nextSlide();
-            resetInterval();
-        });
-        
-        prevBtn.addEventListener('click', function() {
-            prevSlide();
-            resetInterval();
-        });
-        
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'ArrowRight') {
-                nextSlide();
-                resetInterval();
-            } else if (e.key === 'ArrowLeft') {
-                prevSlide();
-                resetInterval();
-            }
-        });
-        
-        goToSlide(0);
-    });
     </script>
 
     <footer class="main-footer">

@@ -1,6 +1,5 @@
 <?php
 session_start();
-// config.php
 $host = 'localhost';
 $db   = 'ctmdata';
 $user = 'root';
@@ -23,7 +22,6 @@ $allowed_themes = ['light', 'dark'];
 $error = '';
 $success = '';
 
-// Gestion du changement de thème
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['theme'])) {
     $theme = in_array($_POST['theme'], $allowed_themes) ? $_POST['theme'] : 'light';
     setcookie('theme', $theme, time() + (30 * 24 * 60 * 60), '/'); 
@@ -31,16 +29,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['theme'])) {
     exit();
 }
 
-// Lecture du thème actuel
 $current_theme = isset($_COOKIE['theme']) && in_array($_COOKIE['theme'], $allowed_themes) ? $_COOKIE['theme'] : 'light';
 
-// Vérification de l'authentification
 if (!isset($_SESSION['user_id'])) {
     header('Location: login.php');
     exit();
 }
 
-// Récupération des infos utilisateur
 $user_id = $_SESSION['user_id'];
 $user = [];
 try {
@@ -51,7 +46,6 @@ try {
     $error = "Erreur lors de la récupération des informations utilisateur.";
 }
 
-// Gestion du changement d'email
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['new_email'])) {
     $new_email = trim($_POST['new_email']);
     
@@ -59,18 +53,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['new_email'])) {
         $error = "L'adresse email n'est pas valide.";
     } else {
         try {
-            // Vérifier si l'email existe déjà
             $stmt = $pdo->prepare("SELECT user_id FROM users WHERE email = ? AND user_id != ?");
             $stmt->execute([$new_email, $user_id]);
             
             if ($stmt->fetch()) {
                 $error = "Cette adresse email est déjà utilisée par un autre compte.";
             } else {
-                // Mettre à jour l'email
                 $stmt = $pdo->prepare("UPDATE users SET email = ? WHERE user_id = ?");
                 $stmt->execute([$new_email, $user_id]);
                 $success = "Votre adresse email a été mise à jour avec succès.";
-                $user['email'] = $new_email; // Mettre à jour l'email dans le tableau user
+                $user['email'] = $new_email; 
             }
         } catch (PDOException $e) {
             $error = "Erreur lors de la mise à jour de l'adresse email.";
@@ -78,13 +70,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['new_email'])) {
     }
 }
 
-// Gestion du changement de mot de passe
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['current_password']) && isset($_POST['new_password'])) {
     $current_password = $_POST['current_password'];
     $new_password = $_POST['new_password'];
     $confirm_password = $_POST['confirm_password'];
     
-    // Vérifier le mot de passe actuel
     if (!password_verify($current_password, $user['password'])) {
         $error = "Le mot de passe actuel est incorrect.";
     } elseif (strlen($new_password) < 8) {
@@ -92,7 +82,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['current_password']) &
     } elseif ($new_password !== $confirm_password) {
         $error = "Les nouveaux mots de passe ne correspondent pas.";
     } else {
-        // Mettre à jour le mot de passe
         $hashed_password = password_hash($new_password, PASSWORD_DEFAULT);
         try {
             $stmt = $pdo->prepare("UPDATE users SET password = ? WHERE user_id = ?");
@@ -113,7 +102,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['current_password']) &
     <title>Paramètres | CTM</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* Styles généraux */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
@@ -144,7 +132,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['current_password']) &
             background-color: #1a252f;
         }
         
-        /* Header du profil */
         .profile-header {
             display: flex;
             align-items: center;
@@ -170,7 +157,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['current_password']) &
             font-size: 2rem;
         }
         
-        /* Sections */
         .profile-sections {
             display: grid;
             grid-template-columns: 1fr;
@@ -198,7 +184,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['current_password']) &
             color: #e74c3c;
         }
         
-        /* Formulaire */
         .settings-form {
             display: grid;
             gap: 1.5rem;
@@ -269,7 +254,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['current_password']) &
             box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
         }
         
-        /* Thèmes */
         .theme-preview {
             display: flex;
             align-items: center;
@@ -299,7 +283,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['current_password']) &
             transform: scale(1.05);
         }
         
-        /* Messages d'erreur/succès */
         .alert {
             padding: 1rem;
             border-radius: 4px;
@@ -318,7 +301,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['current_password']) &
             border: 1px solid #a5d6a7;
         }
         
-        /* Responsive */
         @media (max-width: 768px) {
             .profile-header {
                 flex-direction: column;

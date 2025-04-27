@@ -1,7 +1,5 @@
 <?php
-// profile_view.php
 
-// Connexion à la base de données
 $servername = 'localhost'; 
 $username = 'root'; 
 $password = 'root'; 
@@ -17,14 +15,12 @@ try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    // Récupérer l'ID de l'utilisateur depuis l'URL
     $user_id = isset($_GET['id']) ? intval($_GET['id']) : 0;
     
     if ($user_id <= 0) {
         die("ID utilisateur invalide");
     }
 
-    // Récupérer les infos de base de l'utilisateur
     $stmt = $conn->prepare("SELECT * FROM users WHERE user_id = ?");
     $stmt->execute([$user_id]);
     $user_info = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -33,13 +29,11 @@ try {
         die("Utilisateur non trouvé");
     }
 
-    // Récupérer les infos spécifiques selon le type d'utilisateur
     if ($user_info['user_type'] === 'monteur') {
         $stmt = $conn->prepare("SELECT * FROM editors WHERE user_id = ?");
         $stmt->execute([$user_id]);
         $specific_info = $stmt->fetch(PDO::FETCH_ASSOC);
         
-        // Récupérer les compétences
         $stmt = $conn->prepare("SELECT s.skill_name, s.category, es.proficiency_level 
                                FROM editor_skills es 
                                JOIN skills s ON es.skill_id = s.skill_id 
@@ -47,7 +41,6 @@ try {
         $stmt->execute([$specific_info['editor_id']]);
         $skills = $stmt->fetchAll(PDO::FETCH_ASSOC);
         
-        // Récupérer le portfolio
         $stmt = $conn->prepare("SELECT * FROM portfolios WHERE editor_id = ?");
         $stmt->execute([$specific_info['editor_id']]);
         $portfolio = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -58,7 +51,6 @@ try {
         $specific_info = $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    // Récupérer les avis
     $stmt = $conn->prepare("SELECT r.*, u.first_name, u.last_name 
                            FROM reviews r 
                            JOIN users u ON r.reviewer_id = u.user_id 
@@ -81,7 +73,6 @@ try {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="../styles/style_employees.css">
     <style>
-        /* Styles additionnels pour la page de profil */
         .profile-view-container {
             max-width: 1200px;
             margin: 0 auto;

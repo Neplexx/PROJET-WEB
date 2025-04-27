@@ -7,13 +7,11 @@ $password ='root';
 $dbname='ctmdata';
 $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 
-// Vérifier si le formulaire a été soumis
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_profile'])) {
     try {
         $conn = new PDO("mysql:host=$servername;dbname=$dbname;charset=utf8mb4", $username, $password);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        // Préparation de la requête de mise à jour
         $stmt = $conn->prepare("UPDATE users SET 
             first_name = :first_name, 
             last_name = :last_name, 
@@ -23,7 +21,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_profile'])) {
             updated_at = NOW()
             WHERE user_id = :user_id");
 
-        // Exécution avec les nouvelles valeurs
         $stmt->execute([
             ':first_name' => $_POST['first_name'],
             ':last_name' => $_POST['last_name'],
@@ -33,7 +30,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_profile'])) {
             ':user_id' => $_SESSION['user_id']
         ]);
 
-        // Rafraîchir les données utilisateur
         $requser = $conn->prepare('SELECT * FROM users WHERE user_id = ?');
         $requser->execute(array($_SESSION['user_id']));
         $user_info = $requser->fetch();
@@ -88,7 +84,6 @@ try {
             --info: #3498db;
             --danger: #e74c3c;
         }
-        /* Styles pour le thème clair */
         html.light, .container.light {
             --background-color: #f8f9fa;
             --text-color: #202124;
@@ -97,7 +92,6 @@ try {
             --button-hover: #27ae60;
         }
 
-        /* Styles pour le thème sombre */
         html.dark, .container.dark {
             --background-color: #202124;
             --text-color: #f8f9fa;
@@ -106,7 +100,6 @@ try {
             --button-hover: #2c3e50;
         }
 
-        /* Styles pour le thème par défaut */
         html.default, .container.default {
             --background-color: #ffffff;
             --text-color: #000000;
@@ -114,8 +107,6 @@ try {
             --button-background: #3498db;
             --button-hover: #2980b9;
         }
-
-        /* Application des variables */
         body {
             margin: 0;
             font-family: Arial, sans-serif;
@@ -144,7 +135,6 @@ try {
         .button:hover {
             background-color: var(--button-hover);
         }
-        /* Base Styles */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
@@ -154,13 +144,11 @@ try {
             background-color: #f5f7fa;
         }
 
-        /* Profile Container */
         .profile-container {
             display: flex;
             min-height: 100vh;
         }
 
-        /* Sidebar Styles */
         .profile-sidebar {
             width: 300px;
             background-color: var(--white);
@@ -249,7 +237,6 @@ try {
             background-color: rgba(231, 76, 60, 0.1);
         }
 
-        /* Main Content Styles */
         .profile-content {
             flex: 1;
             padding: 2rem;
@@ -294,7 +281,6 @@ try {
             color: var(--danger) !important;
         }
 
-        /* Profile Sections */
         .profile-sections {
             display: grid;
             grid-template-columns: 1fr;
@@ -343,8 +329,6 @@ try {
             margin-left: 0.5rem;
             font-size: 0.8rem;
         }
-
-        /* Personal Info Section */
         .info-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -371,7 +355,6 @@ try {
             color: var(--text);
         }
 
-        /* Form Styles */
         .form-control {
             width: 100%;
             padding: 0.5rem;
@@ -429,7 +412,6 @@ try {
             background-color: #c0392b;
         }
 
-        /* Alert Messages */
         .alert {
             padding: 1rem;
             margin-bottom: 1.5rem;
@@ -449,7 +431,6 @@ try {
             border-left: 4px solid var(--danger);
         }
 
-        /* Projects Section */
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -541,7 +522,6 @@ try {
             background-color: #c0392b;
         }
 
-        /* Activity Feed Section */
         .activity-list {
             background-color: var(--white);
             padding: 1.5rem;
@@ -578,7 +558,6 @@ try {
             display: block;
         }
 
-        /* Responsive Styles */
         @media (max-width: 992px) {
             .profile-container {
                 flex-direction: column;

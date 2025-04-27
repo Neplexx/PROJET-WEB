@@ -1,4 +1,13 @@
 <!DOCTYPE html>
+<?php 
+session_start();
+require_once('verification.php');
+if (!isset($_SESSION['user_id'])) {
+    header("Location: ../index.html");
+    exit();
+}
+?>
+
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -28,8 +37,8 @@
 
     <nav class="main-nav">
         <ul class="nav-list">
-            <li class="nav-item"><a href="accueil.html" class="nav-link active">Accueil</a></li>
-            <li class="nav-item"><a href="recherche.html" class="nav-link">Recherche</a></li>
+            <li class="nav-item"><a href="accueil.php" class="nav-link active">Accueil</a></li>
+            <li class="nav-item"><a href="recherche.php" class="nav-link">Recherche</a></li>
         </ul>
     </nav>
 
@@ -188,7 +197,7 @@
         <div class="footer-content">
             
             <div class="footer-links">
-                <a href="../html/support.html" class="support-btn">
+                <a href="support.php" class="support-btn">
                     <i class="fas fa-headset"></i> Contacter le support
                 </a>
                 
@@ -206,3 +215,4 @@
         
 </body>
 </html>
+

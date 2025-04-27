@@ -70,7 +70,7 @@ try {
 <body>
     <div class="search-container">
         <header class="search-header">
-            <a href="../html/recherche.html" class="logo-link">
+            <a href="recherche.php" class="logo-link">
                 <img src="../pictures/logorond.png" alt="Logo CTM" class="logo">
             </a>
             <h1>Trouvez le professionnel idéal</h1>
@@ -223,7 +223,7 @@ try {
             <div class="footer-content">
                 <p>&copy; <?php echo date('Y'); ?> CTM. Tous droits réservés.</p>
                 <div class="footer-links">
-                    <a href="../html/support.html"><i class="fas fa-question-circle"></i> Aide</a>
+                    <a href="support.php"><i class="fas fa-question-circle"></i> Aide</a>
                     <a href="../html/conditions.html"><i class="fas fa-file-alt"></i> Conditions</a>
                 </div>
             </div>

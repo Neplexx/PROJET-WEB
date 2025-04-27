@@ -14,7 +14,7 @@ catch(Exception $e){
 session_start();
 
 if (isset($_SESSION['user_id'])) {
-    header("Location: ../html/accueil.html");
+    header("Location: accueil.php");
     exit();
 }
 
@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $_SESSION['last_name'] = $user['last_name'];
                 $_SESSION['user_type'] = $user['user_type'];
                 
-                header("Location: ../html/accueil.html");
+                header("Location: accueil.php");
                 exit();
             } else {
                 $error = "Email ou mot de passe incorrect.";

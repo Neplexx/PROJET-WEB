@@ -1,4 +1,13 @@
 <!DOCTYPE html>
+<?php 
+session_start();
+require_once('verification.php');
+if (!isset($_SESSION['user_id'])) {
+    header("Location: ../index.html");
+    exit();
+}
+?>
+
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -13,11 +22,11 @@
 <body>
     <header>
         <a id="index" href="../index.html"><img id="indexImage" src="../pictures/logorond.png" alt="Logo CTM"></a>
-        <a id="espaceClient" href="../php/espclient.php"><img id="espaceClientImage" src="../pictures/photoDeProfil.png" alt="Photo de profil"></a>
+        <a id="espaceClient" href="espclient.php"><img id="espaceClientImage" src="../pictures/photoDeProfil.png" alt="Photo de profil"></a>
     </header>
     <nav>
         <ul>
-            <li><a class="pageNonActive" href="accueil.html">Accueil</a></li>
+            <li><a class="pageNonActive" href="accueil.php">Accueil</a></li>
             <li><a id="pageActive" href="recherche.html">Recherche</a></li>
         </ul>
     </nav>
@@ -259,7 +268,7 @@
     </main>
     <footer>
         <div id="conteneurfooter">
-            <a href="../html/support.html"><button id="supportbouton"><i class="fas fa-headset"></i> Contacter Support</button></a>
+            <a href="support.php"><button id="supportbouton"><i class="fas fa-headset"></i> Contacter Support</button></a>
             <a id="imagediscord" href="https://discord.gg/q6Fd6tJCaY" target="_blank">
                 <img src="../pictures/discord.png" alt="Logo Discord">
             </a>
@@ -271,3 +280,4 @@
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </body>
 </html>
+

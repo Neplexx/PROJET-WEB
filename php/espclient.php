@@ -700,7 +700,7 @@ try {
                 <nav class="profile-menu">
                     <ul>
                         <li>
-                            <a href="../html/accueil.html" class="menu-item">
+                            <a href="accueil.php" class="menu-item">
                                 <i class="fas fa-home"></i>
                                 <span>Accueil</span>
                             </a>
@@ -727,8 +727,8 @@ try {
                 <h1>Mon Profil</h1>
                 <nav class="content-nav">
                     <ul>
-                        <li><a href="../html/accueil.html">Accueil</a></li>
-                        <li><a href="../html/recherche.html">Recherche</a></li>
+                        <li><a href="accueil.php">Accueil</a></li>
+                        <li><a href="recherche.php">Recherche</a></li>
                         <li><a href="logout.php" class="logout-link">Déconnexion</a></li>
                     </ul>
                 </nav>

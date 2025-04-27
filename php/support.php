@@ -1,4 +1,12 @@
 <!DOCTYPE html>
+<?php 
+session_start();
+require_once('verification.php');
+if (!isset($_SESSION['user_id'])) {
+    header("Location: ../index.html");
+    exit();
+}
+?>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -17,10 +25,8 @@
     </header>
     <nav>
         <ul>
-            <li><a class="pageNonActive" href="accueil.html">Accueil</a></li>
-            <li><a class="pageNonActive" href="recherche.html">Recherche</a></li>
-            <li><a class="pageNonActive" href="Employeur.html">Employeur</a></li>
-            <li><a class="pageNonActive" href="projet.html">Projet</a></li>
+            <li><a class="pageNonActive" href="accueil.php">Accueil</a></li>
+            <li><a class="pageNonActive" href="recherche.php">Recherche</a></li>
         </ul>
     </nav>
     <main>
@@ -61,3 +67,4 @@
     </footer>
 </body>
 </html>
+

@@ -25,6 +25,15 @@ try {
     ");
     $stmt->execute([$user_id]);
     $monteur = $stmt->fetch();
+    $user_id = $_SESSION['user_id'];
+    $stmt = $pdo->prepare("SELECT user_type FROM users WHERE user_id = ?");
+    $stmt->execute([$user_id]);
+    $user = $stmt->fetch();
+
+    if (!$user || $user['user_type'] !== 'monteur') {
+        header("Location: ../login.php");
+        exit();
+    }
 
     $stmt = $pdo->prepare("
         SELECT s.skill_name, es.proficiency_level 

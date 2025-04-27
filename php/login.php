@@ -1,52 +1,108 @@
 <?php
-    $servername ='localhost'; 
-    $username ='root'; 
-    $password ='root'; 
-    $dbname='ctmdata';
+session_start();
 
-try{
+$servername = 'localhost'; 
+$username = 'root'; 
+$password = 'root'; 
+$dbname = 'ctmdata';
+
+try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
-}
-catch(Exception $e){
+} catch(Exception $e) {
     die('Erreur : ' . $e->getMessage());
 }
-session_start();
 
 if (isset($_SESSION['user_id'])) {
     header("Location: accueil.php");
     exit();
 }
+/* ce sont les clés de test de Google par défaut, réalisé par Badis */
+define('RECAPTCHA_SITE_KEY', '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI');
+define('RECAPTCHA_SECRET_KEY', '6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe');
+
+if (!isset($_SESSION['login_attempts'])) {
+    $_SESSION['login_attempts'] = 0;
+    $_SESSION['last_login_attempt'] = 0;
+}
+
+if (empty($_SESSION['csrf_token'])) {
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+}
 
 $error = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $email = trim($_POST['email']);
-    $password = $_POST['password'];
-    
-    if (empty($email) || empty($password)) {
-        $error = "Veuillez remplir tous les champs.";
+    if (!isset($_POST['csrf_token']) || !hash_equals($_SESSION['csrf_token'], $_POST['csrf_token'])) {
+        $error = "Erreur de sécurité. Veuillez réessayer.";
     } else {
-        try {
-            // Requête utilisateur
-            $stmt = $conn->prepare("SELECT * FROM users WHERE email = ? AND password = ?");
-            $stmt->execute([$email, $password]);
-            $user = $stmt->fetch(PDO::FETCH_ASSOC);
+        if (isset($_POST['g-recaptcha-response'])) {
+            $recaptcha_response = $_POST['g-recaptcha-response'];
+            $recaptcha_url = 'https://www.google.com/recaptcha/api/siteverify';
+            $recaptcha_data = [
+                'secret' => RECAPTCHA_SECRET_KEY,
+                'response' => $recaptcha_response,
+                'remoteip' => $_SERVER['REMOTE_ADDR']
+            ];
 
-            if ($user) {
-                // Connexion réussie
-                $_SESSION['user_id'] = $user['user_id'];
-                $_SESSION['email'] = $user['email'];
-                $_SESSION['first_name'] = $user['first_name'];
-                $_SESSION['last_name'] = $user['last_name'];
-                $_SESSION['user_type'] = $user['user_type'];
-                
-                header("Location: accueil.php");
-                exit();
-            } else {
-                $error = "Email ou mot de passe incorrect.";
+            $options = [
+                'http' => [
+                    'header' => "Content-type: application/x-www-form-urlencoded\r\n",
+                    'method' => 'POST',
+                    'content' => http_build_query($recaptcha_data)
+                ]
+            ];
+
+            $context = stream_context_create($options);
+            $recaptcha_result = file_get_contents($recaptcha_url, false, $context);
+            $recaptcha_json = json_decode($recaptcha_result);
+
+            if (!$recaptcha_json->success) {
+                $error = "Veuillez vérifier que vous n'êtes pas un robot.";
             }
-        } catch (PDOException $e) {
-            $error = "Erreur de connexion. Veuillez réessayer plus tard.";
+        } else {
+            $error = "CAPTCHA manquant. Veuillez réessayer.";
+        }
+
+        $current_time = time();
+        if ($_SESSION['login_attempts'] >= 5) {
+            if ($current_time - $_SESSION['last_login_attempt'] < 300) { // 5 minutes d'attente
+                $error = "Trop de tentatives de connexion. Veuillez patienter 5 minutes.";
+            } else {
+                $_SESSION['login_attempts'] = 0;
+            }
+        }
+
+        if (empty($error)) {
+            $email = trim($_POST['email']);
+            $password = $_POST['password'];
+            
+            if (empty($email) || empty($password)) {
+                $error = "Veuillez remplir tous les champs.";
+            } else {
+                try {
+                    $stmt = $conn->prepare("SELECT * FROM users WHERE email = ? AND password = ?");
+                    $stmt->execute([$email, $password]);
+                    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+                    if ($user) {
+                        $_SESSION['login_attempts'] = 0;
+                        $_SESSION['user_id'] = $user['user_id'];
+                        $_SESSION['email'] = $user['email'];
+                        $_SESSION['first_name'] = $user['first_name'];
+                        $_SESSION['last_name'] = $user['last_name'];
+                        $_SESSION['user_type'] = $user['user_type'];
+                        
+                        header("Location: accueil.php");
+                        exit();
+                    } else {
+                        $_SESSION['login_attempts']++;
+                        $_SESSION['last_login_attempt'] = $current_time;
+                        $error = "Email ou mot de passe incorrect. Tentatives restantes : " . (5 - $_SESSION['login_attempts']);
+                    }
+                } catch (PDOException $e) {
+                    $error = "Erreur de connexion. Veuillez réessayer plus tard.";
+                }
+            }
         }
     }
 }
@@ -58,6 +114,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Connexion - CTM Platform</title>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <style>
         * {
             box-sizing: border-box;
@@ -192,6 +249,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         .register-link a:hover {
             text-decoration: underline;
         }
+        
+        .g-recaptcha {
+            margin-bottom: 1.5rem;
+        }
     </style>
 </head>
 <body>
@@ -215,6 +276,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="form-container">
             <div id="login-form" class="form-content active">
                 <form action="login.php" method="post">
+                    <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>">
+                    
                     <div class="form-group">
                         <label for="login-email">Email</label>
                         <input type="email" id="login-email" name="email" placeholder="Entrez votre email" required
@@ -226,11 +289,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <input type="password" id="login-password" name="password" placeholder="Entrez votre mot de passe" required>
                     </div>
                     
+                    <div class="g-recaptcha" data-sitekey="<?php echo RECAPTCHA_SITE_KEY; ?>"></div>
+                    
                     <button type="submit" class="btn">Se connecter</button>
                     
-                    <div class="forgot-password">
-                        <a href="forgot_password.php">Mot de passe oublié ?</a>
-                    </div>
                 </form>
                 
                 <div class="register-link">

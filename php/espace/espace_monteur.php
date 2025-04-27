@@ -400,12 +400,12 @@ try {
 <body>
     <header class="main-header">
         <div class="logo-container">
-            <a href="../index.html" class="logo-link">
+            <a href="../../index.html" class="logo-link">
                 <img src="../../pictures/logorond.png" alt="Logo CTM" class="logo">
             </a>
         </div>
         <nav class="user-nav">
-            <a href="../php/espclient.php" class="user-profile">
+            <a href="../espclient.php" class="user-profile">
                 <img src="../../pictures/photoDeProfil.png" alt="Photo de profil" class="user-avatar">
                 <span class="user-name">Mon compte</span>
             </a>

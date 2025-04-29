@@ -51,78 +51,142 @@ try {
     padding: 0;
     background-color: #f5f7fa;
     color: #333;
-}
+    }
 
-.notifications-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-}
+    .notifications-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+    }
 
-.notifications-header {
-    text-align: center;
-    margin-bottom: 20px;
-}
+    .notifications-header {
+        text-align: center;
+        margin-bottom: 20px;
+    }
 
-.notifications-header h1 {
-    color: #2c3e50;
-    margin: 0;
-}
+    .notifications-header h1 {
+        color: #2c3e50;
+        margin: 0;
+    }
 
-.notifications-header p {
-    color: #7f8c8d;
-    margin: 5px 0 0;
-}
+    .notifications-header p {
+        color: #7f8c8d;
+        margin: 5px 0 0;
+    }
 
-.notifications-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
+    .notifications-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
 
-.notification-item {
-    background-color: #ffffff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
+    .notification-item {
+        background-color: #ffffff;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 15px;
+        margin-bottom: 15px;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .notification-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    .notification-header strong {
+        color: #2c3e50;
+    }
+
+    .notification-date {
+        color: #95a5a6;
+        font-size: 0.9rem;
+    }
+
+    .notification-content {
+        margin: 0;
+        color: #34495e;
+    }
+
+    .no-notifications {
+        text-align: center;
+        color: #95a5a6;
+    }
+
+    .no-notifications i {
+        font-size: 50px;
+        margin-bottom: 10px;
+        color: #bdc3c7;
+    }
+    .reply-form {
+        margin-top: 10px;
+    }
+
+    .reply-form textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        resize: none;
+        font-family: inherit;
+        font-size: 1rem;
+    }
+
+    .reply-btn {
+        margin-top: 5px;
+        background-color: #3498db;
+        color: white;
+        border: none;
+        padding: 8px 12px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 0.9rem;
+    }
+
+    .reply-btn:hover {
+        background-color: #2980b9;
+    }
+    .success-message {
+    background-color: #2ecc71; 
+    color: white;
     padding: 15px;
-    margin-bottom: 15px;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
-}
-
-.notification-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
-.notification-header strong {
-    color: #2c3e50;
-}
-
-.notification-date {
-    color: #95a5a6;
-    font-size: 0.9rem;
-}
-
-.notification-content {
-    margin: 0;
-    color: #34495e;
-}
-
-.no-notifications {
+    margin: 20px auto;
+    border-radius: 8px;
     text-align: center;
-    color: #95a5a6;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    max-width: 600px;
+    animation: fadeOut 5s forwards; 
 }
 
-.no-notifications i {
-    font-size: 50px;
-    margin-bottom: 10px;
-    color: #bdc3c7;
+.success-message i {
+    font-size: 20px;
+}
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        display: none;
+    }
 }
 </style>
 </head>
 <body>
+    <?php if (isset($_GET['reply_success']) && $_GET['reply_success'] == 1): ?>
+        <div class="success-message">Votre réponse a été envoyée avec succès.</div>
+    <?php endif; ?>
     <div class="notifications-container">
         <header class="notifications-header">
             <h1>Vos Notifications</h1>
@@ -139,6 +203,12 @@ try {
                                 <span class="notification-date"><?php echo date('d/m/Y H:i', strtotime($message['created_at'])); ?></span>
                             </div>
                             <p class="notification-content"><?php echo htmlspecialchars($message['content']); ?></p>
+
+                            <form method="POST" action="rep_message.php" class="reply-form">
+                                <input type="hidden" name="receiver_id" value="<?php echo isset($message['sender_id']) ? htmlspecialchars($message['sender_id']) : 0; ?>">
+                                <textarea name="reply_content" class="form-control" placeholder="Écrivez votre réponse..." required></textarea>
+                                <button type="submit" class="reply-btn">Envoyer</button>
+                            </form>
                         </li>
                     <?php endforeach; ?>
                 </ul>

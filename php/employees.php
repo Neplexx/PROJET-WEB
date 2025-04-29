@@ -86,6 +86,7 @@ if (!isset($_SESSION['user_id'])) {
     justify-content: center;
     gap: 10px;
     max-width: 600px;
+    animation: fadeOut 5s forwards; 
 }
 
 .success-message i {
@@ -104,9 +105,6 @@ if (!isset($_SESSION['user_id'])) {
     }
 }
 
-.success-message {
-    animation: fadeOut 5s forwards; 
-}
 </style>
 <script>
         function showContactForm(userId) {

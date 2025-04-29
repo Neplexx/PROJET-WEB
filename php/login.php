@@ -17,9 +17,6 @@ if (isset($_SESSION['user_id'])) {
     header("Location: accueil.php");
     exit();
 }
-/* ce sont les clés de test de Google par défaut, réalisé par Badis */
-define('RECAPTCHA_SITE_KEY', '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI');
-define('RECAPTCHA_SECRET_KEY', '6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe');
 
 if (!isset($_SESSION['login_attempts'])) {
     $_SESSION['login_attempts'] = 0;
@@ -35,33 +32,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!isset($_POST['csrf_token']) || !hash_equals($_SESSION['csrf_token'], $_POST['csrf_token'])) {
         $error = "Erreur de sécurité. Veuillez réessayer.";
     } else {
-        if (isset($_POST['g-recaptcha-response'])) {
-            $recaptcha_response = $_POST['g-recaptcha-response'];
-            $recaptcha_url = 'https://www.google.com/recaptcha/api/siteverify';
-            $recaptcha_data = [
-                'secret' => RECAPTCHA_SECRET_KEY,
-                'response' => $recaptcha_response,
-                'remoteip' => $_SERVER['REMOTE_ADDR']
-            ];
-
-            $options = [
-                'http' => [
-                    'header' => "Content-type: application/x-www-form-urlencoded\r\n",
-                    'method' => 'POST',
-                    'content' => http_build_query($recaptcha_data)
-                ]
-            ];
-
-            $context = stream_context_create($options);
-            $recaptcha_result = file_get_contents($recaptcha_url, false, $context);
-            $recaptcha_json = json_decode($recaptcha_result);
-
-            if (!$recaptcha_json->success) {
-                $error = "Veuillez vérifier que vous n'êtes pas un robot.";
-            }
-        } else {
-            $error = "CAPTCHA manquant. Veuillez réessayer.";
-        }
 
         $current_time = time();
         if ($_SESSION['login_attempts'] >= 5) {
@@ -114,7 +84,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Connexion - CTM Platform</title>
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <style>
         * {
             box-sizing: border-box;
@@ -250,9 +219,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             text-decoration: underline;
         }
         
-        .g-recaptcha {
-            margin-bottom: 1.5rem;
-        }
     </style>
 </head>
 <body>
@@ -289,7 +255,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <input type="password" id="login-password" name="password" placeholder="Entrez votre mot de passe" required>
                     </div>
                     
-                    <div class="g-recaptcha" data-sitekey="<?php echo RECAPTCHA_SITE_KEY; ?>"></div>
                     
                     <button type="submit" class="btn">Se connecter</button>
                     

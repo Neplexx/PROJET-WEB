@@ -34,7 +34,7 @@ try {
             case 'employeur': // fait 
                 header("Location: espace/espace_employeur.php");
                 break;
-            case 'admin':
+            case 'admin': // fait 
                 header("Location: espace/espace_admin.php");
                 break;
             case 'manager': // fait

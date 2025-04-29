@@ -70,7 +70,24 @@ if (!isset($_SESSION['user_id'])) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="../styles/style_employees.css">
 </head>
+<script>
+        function showContactForm(userId) {
+            var form = document.getElementById('contact-form-' + userId);
+            if (form.style.display === 'none' || form.style.display === '') {
+                form.style.display = 'block'; // Affiche le formulaire
+            } else {
+                form.style.display = 'none'; // Masque le formulaire
+            }
+        }
+    </script>
 <body>
+<?php
+    if (isset($_GET['success']) && $_GET['success'] == 1): ?>
+        <div class="success-message">
+            <i class="fas fa-check-circle"></i> Message envoyé avec succès !
+        </div>
+    <?php endif; ?>
+    
     <div class="search-container">
         <header class="search-header">
             <a href="recherche.php" class="logo-link">
@@ -194,7 +211,7 @@ if (!isset($_SESSION['user_id'])) {
                                         <a href="profile.php?id=<?php echo $row['user_id']; ?>" class="btn btn-view">
                                             <i class="fas fa-eye"></i> Voir le profil
                                         </a>
-                                        
+
                                         <form id="contact-form-<?php echo $row['user_id']; ?>" class="contact-form" action="send_message.php" method="post" style="display: none;">
                                             <input type="hidden" name="receiver_id" value="<?php echo $row['user_id']; ?>">
                                             <textarea name="content" placeholder="Votre message..." required></textarea>

@@ -508,3 +508,20 @@ body {
         margin-bottom: 1rem;
     }
 }
+.success-message {
+    background-color: #2ecc71;
+    color: white;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.success-message i {
+    font-size: 18px;
+}

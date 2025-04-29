@@ -27,7 +27,7 @@ try {
             ':content' => $content
         ]);
 
-        //header("Location: employees.php?success=1");
+        header("Location: employees.php?success=1");
         exit();
     } else {
         var_dump($_POST);

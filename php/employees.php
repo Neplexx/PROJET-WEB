@@ -188,12 +188,18 @@ if (!isset($_SESSION['user_id'])) {
                                     </div>
                                     
                                     <div class="profile-footer">
-                                        <button class="btn btn-contact">
+                                        <button class="btn btn-contact" onclick="showContactForm(<?php echo $row['user_id']; ?>)">
                                             <i class="fas fa-envelope"></i> Contacter
                                         </button>
                                         <a href="profile.php?id=<?php echo $row['user_id']; ?>" class="btn btn-view">
                                             <i class="fas fa-eye"></i> Voir le profil
                                         </a>
+                                        
+                                        <form id="contact-form-<?php echo $row['user_id']; ?>" class="contact-form" action="send_message.php" method="post" style="display: none;">
+                                            <input type="hidden" name="receiver_id" value="<?php echo $row['user_id']; ?>">
+                                            <textarea name="content" placeholder="Votre message..." required></textarea>
+                                            <button type="submit" class="btn btn-send"><i class="fas fa-paper-plane"></i> Envoyer</button>
+                                        </form>
                                     </div>
                                 </article>
                             <?php endforeach; ?>

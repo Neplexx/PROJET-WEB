@@ -6,7 +6,38 @@ if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit();
 }
+
+$servername = 'localhost';
+$username = 'root';
+$password = 'root';
+$dbname = 'ctmdata';
+$charset = 'utf8mb4';
+
+$dsn = "mysql:host=$servername;dbname=$dbname;charset=$charset";
+$options = [
+    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+    PDO::ATTR_EMULATE_PREPARES   => false,
+];
+
+try {
+    $pdo = new PDO($dsn, $username, $password, $options);
+    
+    $user_id = $_SESSION['user_id'];
+    $query = "SELECT first_name, last_name, email FROM users WHERE user_id = ?";
+    $stmt = $pdo->prepare($query);
+    $stmt->execute([$user_id]);
+    $user = $stmt->fetch();
+    
+    if (!$user) {
+        die("Utilisateur non trouvé dans la base de données");
+    }
+    
+} catch (\PDOException $e) {
+    die("Erreur de connexion à la base de données: " . $e->getMessage());
+}
 ?>
+
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -18,6 +49,14 @@ if (!isset($_SESSION['user_id'])) {
     <link rel="stylesheet" type="text/css" href="../styles/style_support.css">
     <title>Support | CTM</title>
 </head>
+<style>
+input[readonly], textarea[readonly] {
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    color: #777;
+    cursor: not-allowed;
+}
+</style>
 <body>
     <header>
         <a id="index" href="../index.html"><img id="indexImage" src="../pictures/logorond.png" alt="Logo CTM"></a>
@@ -33,18 +72,18 @@ if (!isset($_SESSION['user_id'])) {
         <h1>Support</h1>
         <p>Bienvenue sur la page de Support. Si vous avez une question ou un problème, n'hésitez pas à nous contacter via le formulaire ci-dessous. Nous sommes là également pour vous éclairer !</p>
         <section>
-            <form id="supportForm">
+            <form id="supportForm" method="POST" action="traitement_support.php">
                 <div class="form-group">
                     <label for="nom">Nom :</label>
-                    <input type="text" id="nom" name="nom" placeholder="Votre nom" required>
+                    <input type="text" id="nom" name="nom" value="<?php echo htmlspecialchars($user['last_name'] ?? ''); ?>" readonly>
                 </div>
                 <div class="form-group">
-                    <label for="prénom">Prénom :</label>
-                    <input type="text" id="prénom" name="prénom" placeholder="Votre prénom" required>
+                    <label for="prenom">Prénom :</label>
+                    <input type="text" id="prenom" name="prenom" value="<?php echo htmlspecialchars($user['first_name'] ?? ''); ?>" readonly>
                 </div>
                 <div class="form-group">
                     <label for="email">Email :</label>
-                    <input type="email" id="email" name="email" placeholder="Votre email" required>
+                    <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($user['email'] ?? ''); ?>" readonly>
                 </div>
                 <div class="form-group">
                     <label for="message">Message :</label>
@@ -67,4 +106,3 @@ if (!isset($_SESSION['user_id'])) {
     </footer>
 </body>
 </html>
-

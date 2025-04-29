@@ -22,20 +22,21 @@ try {
     $stmt->execute([$user_id]);
     $user = $stmt->fetch();
 
-    if (!$user || $user['user_type'] !== 'beatmaker') {
+    if (!$user || $user['user_type'] !== 'graphiste') {
         header("Location: ../login.php");
         exit();
     }
 
     $stmt = $pdo->prepare("SELECT * FROM users WHERE user_id = ?");
     $stmt->execute([$user_id]);
-    $beatmaker = $stmt->fetch();
+    $graphiste = $stmt->fetch();
 
     $stmt = $pdo->prepare("
         SELECT p.*, e.company_name, COUNT(a.application_id) as applications_count
         FROM projects p
         JOIN employers e ON p.employer_id = e.employer_id
         LEFT JOIN applications a ON p.project_id = a.project_id
+        WHERE p.project_type IN ('publicité', 'branding', 'design')
         GROUP BY p.project_id
         ORDER BY p.created_at DESC
         LIMIT 5
@@ -47,6 +48,7 @@ try {
         SELECT u.user_id, u.first_name, u.last_name, u.email, e.years_experience
         FROM users u
         JOIN editors e ON u.user_id = e.user_id
+        WHERE u.user_type = 'graphiste'
         LIMIT 4
     ");
     $stmt->execute();
@@ -57,6 +59,7 @@ try {
             COUNT(*) as total_projects,
             SUM(CASE WHEN status = 'terminé' THEN 1 ELSE 0 END) as completed_projects
         FROM projects
+        WHERE project_type IN ('publicité', 'branding', 'design')
     ");
     $stmt->execute();
     $stats = $stmt->fetch();
@@ -65,46 +68,48 @@ try {
     die("Erreur de connexion à la base de données: " . $e->getMessage());
 }
 ?>
-
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Espace Beatmaker | CTM</title>
+    <title>Espace Graphiste | CTM</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         :root {
-            --primary: #1e1e2f; 
-            --secondary: #6a1b9a; 
-            --accent: #ff9800; 
-            --light: #f8f9fa;
-            --dark: #121212;
-            --text: #e0e0e0; 
-            --text-light: #b0b0b0;
+            --primary: #2d3436; 
+            --secondary: #e84393; 
+            --accent: #0984e3; 
+            --light: #f5f6fa; 
+            --dark: #1e272e; 
+            --text: #2d3436; 
+            --text-light: #636e72; 
             --white: #ffffff;
-            --success: #4caf50;
-            --warning: #ff5722;
+            --success: #00b894; 
+            --warning: #fdcb6e; 
+            --creative1: #fd79a8; 
+            --creative2: #74b9ff; 
+            --creative3: #55efc4; 
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: var(--text);
             margin: 0;
             padding: 0;
-            background-color: var(--primary);
-            background-image: linear-gradient(to bottom, rgba(30, 30, 47, 0.9), rgba(30, 30, 47, 0.95)), 
-                              url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="%236a1b9a" opacity="0.05" d="M0,0 L100,0 L100,100 L0,100 Z" /><path fill="none" stroke="%23ff9800" stroke-width="0.5" stroke-dasharray="2,2" d="M0,20 Q50,40 100,20 T200,20" /></svg>');
+            background-color: var(--light);
+            background-image: 
+                linear-gradient(to bottom, rgba(245, 246, 250, 0.9), rgba(245, 246, 250, 1)),
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%232d3436" opacity="0.03"/><circle cx="30" cy="30" r="5" fill="%23e84393" opacity="0.1"/><circle cx="70" cy="70" r="5" fill="%230984e3" opacity="0.1"/><circle cx="70" cy="30" r="5" fill="%23fd79a8" opacity="0.1"/><circle cx="30" cy="70" r="5" fill="%2355efc4" opacity="0.1"/></svg>');
         }
 
         .main-header {
-            background-color: rgba(26, 26, 40, 0.9);
+            background-color: var(--white);
             padding: 1rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(5px);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
             position: relative;
             z-index: 10;
         }
@@ -112,7 +117,7 @@ try {
         .logo {
             height: 60px;
             transition: transform 0.3s;
-            filter: drop-shadow(0 0 5px rgba(106, 27, 154, 0.5));
+            filter: drop-shadow(0 0 5px rgba(232, 67, 147, 0.3));
         }
 
         .logo:hover {
@@ -128,19 +133,17 @@ try {
             display: flex;
             align-items: center;
             text-decoration: none;
-            color: var(--white);
+            color: var(--primary);
             transition: all 0.3s;
             padding: 0.5rem 1rem;
             border-radius: 30px;
-            background: rgba(106, 27, 154, 0.3);
-            border: 1px solid rgba(106, 27, 154, 0.5);
+            background: linear-gradient(45deg, rgba(232, 67, 147, 0.1), rgba(9, 132, 227, 0.1));
         }
 
         .user-profile:hover {
-            color: var(--accent);
-            background: rgba(106, 27, 154, 0.5);
+            color: var(--secondary);
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(106, 27, 154, 0.3);
+            box-shadow: 0 5px 15px rgba(232, 67, 147, 0.2);
         }
 
         .user-avatar {
@@ -148,13 +151,13 @@ try {
             height: 40px;
             border-radius: 50%;
             margin-right: 0.5rem;
-            border: 2px solid var(--accent);
+            border: 2px solid var(--light);
             transition: all 0.3s;
             object-fit: cover;
         }
 
         .user-profile:hover .user-avatar {
-            border-color: var(--white);
+            border-color: var(--secondary);
             transform: rotate(10deg);
         }
 
@@ -163,10 +166,9 @@ try {
         }
 
         .main-nav {
-            background-color: rgba(18, 18, 18, 0.9);
+            background-color: var(--primary);
             padding: 0;
-            backdrop-filter: blur(5px);
-            border-bottom: 1px solid rgba(106, 27, 154, 0.3);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
         }
 
         .nav-list {
@@ -185,22 +187,19 @@ try {
         .nav-link {
             display: block;
             padding: 1rem 1.5rem;
-            color: var(--text);
+            color: var(--white);
             text-decoration: none;
             font-weight: 500;
             transition: all 0.3s;
             position: relative;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
         }
 
         .nav-link:hover {
-            color: var(--accent);
+            color: var(--secondary);
         }
 
         .nav-link.active {
-            color: var(--accent);
+            color: var(--secondary);
             font-weight: 600;
         }
 
@@ -208,12 +207,10 @@ try {
             content: '';
             position: absolute;
             bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60%;
+            left: 0;
+            width: 100%;
             height: 3px;
-            background-color: var(--accent);
-            border-radius: 3px;
+            background-color: var(--secondary);
         }
 
         .dashboard-container {
@@ -226,19 +223,18 @@ try {
         }
 
         .profile-card {
-            background: rgba(26, 26, 40, 0.8);
+            background: var(--white);
             border-radius: 15px;
             padding: 2rem;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
             text-align: center;
-            border: 1px solid rgba(106, 27, 154, 0.3);
-            backdrop-filter: blur(5px);
             transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 5px solid var(--secondary);
         }
 
         .profile-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(106, 27, 154, 0.3);
+            box-shadow: 0 15px 30px rgba(232, 67, 147, 0.2);
         }
 
         .profile-avatar {
@@ -247,26 +243,25 @@ try {
             border-radius: 50%;
             object-fit: cover;
             margin: 0 auto 1rem;
-            border: 5px solid var(--secondary);
-            box-shadow: 0 5px 15px rgba(106, 27, 154, 0.5);
+            border: 5px solid var(--light);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             transition: all 0.3s;
         }
 
         .profile-card:hover .profile-avatar {
-            border-color: var(--accent);
-            transform: rotate(5deg);
+            border-color: var(--secondary);
+            transform: scale(1.05);
         }
 
         .profile-name {
-            color: var(--white);
+            color: var(--primary);
             margin: 0.5rem 0;
             font-size: 1.5rem;
             font-weight: 600;
-            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
         }
 
         .profile-title {
-            color: var(--accent);
+            color: var(--secondary);
             margin: 0 0 1rem;
             font-weight: 500;
             display: flex;
@@ -275,16 +270,14 @@ try {
             font-size: 1.1rem;
         }
 
-        .beatmaker-badge {
-            background: linear-gradient(45deg, var(--secondary), #9c27b0);
+        .graphiste-badge {
+            background: linear-gradient(45deg, var(--secondary), var(--creative1));
             color: white;
             padding: 0.3rem 1rem;
             border-radius: 20px;
             font-size: 0.8rem;
             margin-left: 0.5rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: 0 3px 10px rgba(106, 27, 154, 0.5);
+            box-shadow: 0 3px 10px rgba(232, 67, 147, 0.3);
         }
 
         .profile-info {
@@ -296,18 +289,19 @@ try {
             margin-bottom: 1rem;
             display: flex;
             align-items: center;
-            padding: 0.5rem;
-            border-radius: 8px;
+            padding: 0.8rem;
+            border-radius: 10px;
             transition: all 0.3s;
+            background-color: rgba(245, 246, 250, 0.7);
         }
 
         .info-item:hover {
-            background: rgba(106, 27, 154, 0.2);
+            background: linear-gradient(45deg, rgba(232, 67, 147, 0.1), rgba(9, 132, 227, 0.1));
             transform: translateX(5px);
         }
 
         .info-icon {
-            color: var(--accent);
+            color: var(--secondary);
             margin-right: 0.8rem;
             width: 20px;
             text-align: center;
@@ -321,18 +315,17 @@ try {
         }
 
         .content-card {
-            background: rgba(26, 26, 40, 0.8);
+            background: var(--white);
             border-radius: 15px;
             padding: 1.5rem;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(106, 27, 154, 0.3);
-            backdrop-filter: blur(5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s;
+            border-top: 3px solid var(--secondary);
         }
 
         .content-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(106, 27, 154, 0.3);
+            box-shadow: 0 15px 30px rgba(232, 67, 147, 0.2);
         }
 
         .card-header {
@@ -341,16 +334,15 @@ try {
             align-items: center;
             margin-bottom: 1.5rem;
             padding-bottom: 1rem;
-            border-bottom: 1px solid rgba(106, 27, 154, 0.3);
+            border-bottom: 1px solid rgba(245, 246, 250, 0.7);
         }
 
         .card-title {
-            color: var(--white);
+            color: var(--primary);
             margin: 0;
             font-size: 1.5rem;
             font-weight: 600;
             position: relative;
-            display: inline-block;
         }
 
         .card-title::after {
@@ -360,8 +352,7 @@ try {
             left: 0;
             width: 50px;
             height: 3px;
-            background-color: var(--accent);
-            border-radius: 3px;
+            background-color: var(--secondary);
         }
 
         .btn {
@@ -373,22 +364,20 @@ try {
             font-weight: 500;
             transition: all 0.3s;
             font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
             border: none;
             cursor: pointer;
         }
 
         .btn-primary {
-            background: linear-gradient(45deg, var(--secondary), #9c27b0);
+            background: linear-gradient(45deg, var(--secondary), var(--creative1));
             color: var(--white);
-            box-shadow: 0 3px 10px rgba(106, 27, 154, 0.5);
+            box-shadow: 0 3px 10px rgba(232, 67, 147, 0.3);
         }
 
         .btn-primary:hover {
-            background: linear-gradient(45deg, #9c27b0, var(--secondary));
+            background: linear-gradient(45deg, var(--creative1), var(--secondary));
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(106, 27, 154, 0.7);
+            box-shadow: 0 5px 15px rgba(232, 67, 147, 0.4);
         }
 
         .btn i {
@@ -402,11 +391,11 @@ try {
         }
 
         .project-card {
-            background: rgba(30, 30, 47, 0.7);
-            border-radius: 12px;
+            background: var(--white);
+            border-radius: 15px;
             overflow: hidden;
             transition: transform 0.3s, box-shadow 0.3s;
-            border: 1px solid rgba(106, 27, 154, 0.3);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             position: relative;
         }
 
@@ -416,23 +405,23 @@ try {
             top: 0;
             left: 0;
             right: 0;
-            height: 4px;
+            height: 5px;
             background: linear-gradient(90deg, var(--secondary), var(--accent));
         }
 
         .project-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(106, 27, 154, 0.3);
+            box-shadow: 0 15px 30px rgba(232, 67, 147, 0.2);
         }
 
         .project-header {
-            background: rgba(18, 18, 18, 0.7);
+            background-color: var(--primary);
             color: white;
             padding: 0.8rem 1rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid rgba(106, 27, 154, 0.3);
+            border-bottom: 1px solid rgba(245, 246, 250, 0.2);
         }
 
         .project-status {
@@ -440,28 +429,26 @@ try {
             border-radius: 20px;
             font-size: 0.7rem;
             font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
         }
 
         .status-draft {
             background-color: var(--text-light);
-            color: var(--dark);
+            color: var(--white);
         }
 
         .status-published {
             background-color: var(--success);
-            color: white;
+            color: var(--white);
         }
 
         .status-in-progress {
-            background-color: var(--accent);
-            color: white;
+            background-color: var(--warning);
+            color: var(--dark);
         }
 
         .status-completed {
             background-color: var(--secondary);
-            color: white;
+            color: var(--white);
         }
 
         .project-content {
@@ -469,7 +456,7 @@ try {
         }
 
         .project-title {
-            color: var(--white);
+            color: var(--primary);
             margin: 0 0 0.5rem;
             font-size: 1.1rem;
             font-weight: 600;
@@ -490,17 +477,17 @@ try {
             line-height: 1.5;
         }
 
-        .project-applications {
+        .project-creative {
             display: flex;
             align-items: center;
             margin-top: 1rem;
             font-size: 0.9rem;
-            color: var(--accent);
+            color: var(--secondary);
             font-weight: 500;
         }
 
-        .project-applications i {
-            color: var(--accent);
+        .project-creative i {
+            color: var(--secondary);
             margin-right: 0.5rem;
             font-size: 1.1rem;
         }
@@ -512,39 +499,36 @@ try {
         }
 
         .stat-card {
-            background: rgba(30, 30, 47, 0.7);
-            border-radius: 12px;
+            background: var(--white);
+            border-radius: 15px;
             padding: 1.5rem;
             text-align: center;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            border: 1px solid rgba(106, 27, 154, 0.3);
             transition: transform 0.3s;
+            border-top: 3px solid var(--secondary);
         }
 
         .stat-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(106, 27, 154, 0.2);
+            box-shadow: 0 15px 30px rgba(232, 67, 147, 0.2);
         }
 
         .stat-icon {
             font-size: 2rem;
-            color: var(--accent);
+            color: var(--secondary);
             margin-bottom: 1rem;
         }
 
         .stat-value {
-            color: var(--white);
+            color: var(--primary);
             font-size: 2.2rem;
             font-weight: bold;
             margin: 0.5rem 0;
-            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
         }
 
         .stat-label {
             color: var(--text-light);
             font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
         }
 
         .team-grid {
@@ -557,16 +541,15 @@ try {
             display: flex;
             align-items: center;
             padding: 1rem;
-            background: rgba(30, 30, 47, 0.7);
-            border-radius: 12px;
+            background: var(--white);
+            border-radius: 15px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            border: 1px solid rgba(106, 27, 154, 0.3);
             transition: transform 0.3s;
         }
 
         .team-member:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(106, 27, 154, 0.2);
+            box-shadow: 0 15px 30px rgba(232, 67, 147, 0.2);
         }
 
         .team-avatar {
@@ -575,8 +558,8 @@ try {
             border-radius: 50%;
             object-fit: cover;
             margin-right: 1rem;
-            border: 2px solid var(--accent);
-            box-shadow: 0 3px 10px rgba(106, 27, 154, 0.3);
+            border: 2px solid var(--light);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
         }
 
         .team-info {
@@ -587,89 +570,61 @@ try {
             font-weight: 600;
             margin: 0 0 0.2rem;
             font-size: 0.95rem;
-            color: var(--white);
+            color: var(--primary);
         }
 
         .team-role {
-            color: var(--accent);
+            color: var(--secondary);
             font-size: 0.8rem;
             margin: 0;
-            font-weight: 500;
         }
 
-        .music-wave {
-            position: relative;
-            height: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 1rem 0;
-        }
-
-        .music-wave span {
-            display: block;
-            width: 3px;
-            height: 10px;
-            background: var(--accent);
-            margin: 0 2px;
-            border-radius: 3px;
-            animation: wave 1.5s infinite ease-in-out;
-        }
-
-        .music-wave span:nth-child(2) {
-            animation-delay: 0.2s;
-            height: 15px;
-        }
-        .music-wave span:nth-child(3) {
-            animation-delay: 0.4s;
-            height: 20px;
-        }
-        .music-wave span:nth-child(4) {
-            animation-delay: 0.6s;
-            height: 25px;
-        }
-        .music-wave span:nth-child(5) {
-            animation-delay: 0.8s;
-            height: 20px;
-        }
-        .music-wave span:nth-child(6) {
-            animation-delay: 1s;
-            height: 15px;
-        }
-        .music-wave span:nth-child(7) {
-            animation-delay: 1.2s;
-            height: 10px;
-        }
-
-        @keyframes wave {
-            0%, 60%, 100% { transform: scaleY(0.5); }
-            30% { transform: scaleY(1); }
-        }
-
-        .beatmaker-stats {
+        .creative-stats {
             display: flex;
             justify-content: space-around;
             margin: 1.5rem 0;
+            padding: 1rem;
+            border-radius: 15px;
+            background: linear-gradient(45deg, rgba(232, 67, 147, 0.1), rgba(9, 132, 227, 0.1));
         }
 
-        .beat-stat {
+        .creative-stat {
             text-align: center;
             padding: 0.5rem;
         }
 
-        .beat-stat-value {
+        .creative-stat-value {
             font-size: 1.8rem;
             font-weight: bold;
-            color: var(--accent);
+            color: var(--secondary);
             margin-bottom: 0.3rem;
         }
 
-        .beat-stat-label {
+        .creative-stat-label {
             font-size: 0.8rem;
             color: var(--text-light);
-            text-transform: uppercase;
-            letter-spacing: 1px;
         }
+
+        .color-palette {
+            display: flex;
+            margin: 1.5rem 0;
+        }
+
+        .color-box {
+            height: 30px;
+            flex: 1;
+            transition: all 0.3s;
+        }
+
+        .color-box:hover {
+            transform: scaleY(1.5);
+        }
+
+        .color-box:nth-child(1) { background-color: var(--secondary); }
+        .color-box:nth-child(2) { background-color: var(--accent); }
+        .color-box:nth-child(3) { background-color: var(--creative1); }
+        .color-box:nth-child(4) { background-color: var(--creative2); }
+        .color-box:nth-child(5) { background-color: var(--creative3); }
 
         @media (max-width: 992px) {
             .dashboard-container {
@@ -678,7 +633,7 @@ try {
         }
 
         @media (max-width: 768px) {
-            .stats-grid, .beatmaker-stats {
+            .stats-grid, .creative-stats {
                 grid-template-columns: 1fr;
             }
             
@@ -717,50 +672,48 @@ try {
     <div class="dashboard-container">
         <div class="profile-card">
             <img src="../../pictures/photoDeProfil.png" alt="Photo de profil" class="profile-avatar">
-            <h2 class="profile-name"><?php echo htmlspecialchars($beatmaker['first_name'] . ' ' . $beatmaker['last_name']); ?></h2>
+            <h2 class="profile-name"><?php echo htmlspecialchars($graphiste['first_name'] . ' ' . $graphiste['last_name']); ?></h2>
             <h3 class="profile-title">
-                Beatmaker
-                <span class="beatmaker-badge">CTM Music</span>
+                Graphiste
+                <span class="graphiste-badge">CTM Creative</span>
             </h3>
             
-            <div class="music-wave">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
+            <div class="color-palette">
+                <div class="color-box"></div>
+                <div class="color-box"></div>
+                <div class="color-box"></div>
+                <div class="color-box"></div>
+                <div class="color-box"></div>
             </div>
             
             <div class="profile-info">
                 <div class="info-item">
                     <i class="fas fa-envelope info-icon"></i>
-                    <span><?php echo htmlspecialchars($beatmaker['email']); ?></span>
+                    <span><?php echo htmlspecialchars($graphiste['email']); ?></span>
                 </div>
                 <div class="info-item">
                     <i class="fas fa-phone info-icon"></i>
-                    <span><?php echo htmlspecialchars($beatmaker['phone'] ?? 'Non renseigné'); ?></span>
+                    <span><?php echo htmlspecialchars($graphiste['phone'] ?? 'Non renseigné'); ?></span>
                 </div>
                 
-                <div class="beatmaker-stats">
-                    <div class="beat-stat">
-                        <div class="beat-stat-value">24</div>
-                        <div class="beat-stat-label">Projets</div>
+                <div class="creative-stats">
+                    <div class="creative-stat">
+                        <div class="creative-stat-value"><?php echo htmlspecialchars($stats['total_projects'] ?? 0); ?></div>
+                        <div class="creative-stat-label">Projets</div>
                     </div>
-                    <div class="beat-stat">
-                        <div class="beat-stat-value">8</div>
-                        <div class="beat-stat-label">Collabs</div>
+                    <div class="creative-stat">
+                        <div class="creative-stat-value"><?php echo htmlspecialchars($stats['completed_projects'] ?? 0); ?></div>
+                        <div class="creative-stat-label">Réalisés</div>
                     </div>
-                    <div class="beat-stat">
-                        <div class="beat-stat-value">4.8</div>
-                        <div class="beat-stat-label">Rating</div>
+                    <div class="creative-stat">
+                        <div class="creative-stat-value"><?php echo count($equipe); ?></div>
+                        <div class="creative-stat-label">Collègues</div>
                     </div>
                 </div>
                 
-                <div style="margin-top: 1.5rem; padding: 1rem; background-color: rgba(106, 27, 154, 0.2); border-radius: 8px; border-left: 3px solid var(--accent);">
-                    <h4 style="margin-top: 0; color: var(--accent);">Style Musical</h4>
-                    <p>Hip-Hop, Trap, Lo-Fi. Spécialisé dans les instrumentales percutantes avec des mélodies atmosphériques.</p>
+                <div style="margin-top: 1.5rem; padding: 1rem; background: linear-gradient(45deg, rgba(232, 67, 147, 0.1), rgba(9, 132, 227, 0.1)); border-radius: 15px; border-left: 3px solid var(--secondary);">
+                    <h4 style="margin-top: 0; color: var(--secondary);">Spécialisations</h4>
+                    <p>Identité visuelle, Motion Design, UI/UX. Passionné par les couleurs vives et les designs audacieux.</p>
                 </div>
             </div>
         </div>
@@ -786,51 +739,51 @@ try {
                                     <h3 class="project-title"><?php echo htmlspecialchars($projet['title']); ?></h3>
                                     <div class="project-meta">
                                         <span><?php echo htmlspecialchars($projet['project_type']); ?></span>
-                                        <span>BPM: <?php echo rand(80, 160); ?></span>
+                                        <span>Livré le <?php echo date('d/m/Y', strtotime($projet['end_date'] ?? 'now')); ?></span>
                                     </div>
                                     <p class="project-description"><?php echo htmlspecialchars(substr($projet['description'], 0, 100) . '...'); ?></p>
                                     
-                                    <div class="project-applications">
-                                        <i class="fas fa-music"></i>
-                                        <span><?php echo rand(3, 15); ?> versions</span>
+                                    <div class="project-creative">
+                                        <i class="fas fa-palette"></i>
+                                        <span><?php echo rand(3, 15); ?> versions créatives</span>
                                     </div>
                                 </div>
                             </div>
                         <?php endforeach; ?>
                     </div>
                 <?php else: ?>
-                    <p style="text-align: center; color: var(--text-light);">Aucune création pour le moment. Commencez un nouveau beat!</p>
+                    <p style="text-align: center; color: var(--text-light);">Aucune création pour le moment. Ajoutez votre premier projet!</p>
                 <?php endif; ?>
             </div>
 
             <div class="content-card">
                 <div class="card-header">
-                    <h2 class="card-title">Statistiques du Studio</h2>
+                    <h2 class="card-title">Mes Statistiques Créatives</h2>
                 </div>
                 <div class="stats-grid">
                     <div class="stat-card">
-                        <div class="stat-icon"><i class="fas fa-music"></i></div>
+                        <div class="stat-icon"><i class="fas fa-paint-brush"></i></div>
                         <div class="stat-value"><?php echo htmlspecialchars($stats['total_projects'] ?? 0); ?></div>
-                        <div class="stat-label">Beats créés</div>
+                        <div class="stat-label">Projets créatifs</div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-icon"><i class="fas fa-headphones"></i></div>
+                        <div class="stat-icon"><i class="fas fa-check-circle"></i></div>
                         <div class="stat-value"><?php echo htmlspecialchars($stats['completed_projects'] ?? 0); ?></div>
-                        <div class="stat-label">Beats vendus</div>
+                        <div class="stat-label">Projets livrés</div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-icon"><i class="fas fa-users"></i></div>
+                        <div class="stat-icon"><i class="fas fa-heart"></i></div>
                         <div class="stat-value"><?php echo count($equipe); ?></div>
-                        <div class="stat-label">Artistes collabs</div>
+                        <div class="stat-label">Clients satisfaits</div>
                     </div>
                 </div>
             </div>
 
             <div class="content-card">
                 <div class="card-header">
-                    <h2 class="card-title">Artistes en Collaboration</h2>
-                    <a href="../employees.php?user_type=beatmaker" class="btn btn-primary">
-                        <i class="fas fa-search"></i> Trouver des artistes
+                    <h2 class="card-title">Communauté Graphiste</h2>
+                    <a href="../employees.php?user_type=graphiste" class="btn btn-primary">
+                        <i class="fas fa-search"></i> Trouver des graphistes
                     </a>
                 </div>
                 
@@ -841,13 +794,13 @@ try {
                                 <img src="../../pictures/photoDeProfil.png" alt="Photo de profil" class="team-avatar">
                                 <div class="team-info">
                                     <h4 class="team-name"><?php echo htmlspecialchars($membre['first_name'] . ' ' . $membre['last_name']); ?></h4>
-                                    <p class="team-role"><?php echo htmlspecialchars($membre['years_experience']); ?> ans dans l'industrie</p>
+                                    <p class="team-role"><?php echo htmlspecialchars($membre['years_experience']); ?> ans d'expérience</p>
                                 </div>
                             </div>
                         <?php endforeach; ?>
                     </div>
                 <?php else: ?>
-                    <p style="text-align: center; color: var(--text-light);">Aucune collaboration active pour le moment.</p>
+                    <p style="text-align: center; color: var(--text-light);">Aucun collègue graphiste pour le moment.</p>
                 <?php endif; ?>
             </div>
         </div>

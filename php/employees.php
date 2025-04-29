@@ -110,9 +110,9 @@ if (!isset($_SESSION['user_id'])) {
         function showContactForm(userId) {
             var form = document.getElementById('contact-form-' + userId);
             if (form.style.display === 'none' || form.style.display === '') {
-                form.style.display = 'block'; // Affiche le formulaire
+                form.style.display = 'block'; 
             } else {
-                form.style.display = 'none'; // Masque le formulaire
+                form.style.display = 'none'; 
             }
         }
     </script>

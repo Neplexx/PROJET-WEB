@@ -521,8 +521,6 @@ try {
             <div class="content-card">
                 <div class="card-header">
                     <h2 class="card-title">Projets récents</h2>
-                    <a href="../recherche.php" class="btn btn-primary">
-                        <i class="fas fa-search"></i> Voir tous
                     </a>
                 </div>
                 
@@ -583,7 +581,7 @@ try {
             <div class="content-card">
                 <div class="card-header">
                     <h2 class="card-title">Monteurs disponibles</h2>
-                    <a href="../recherche.php?filter=monteurs" class="btn btn-primary">
+                    <a href="../employees.php?user_type=manager" class="btn btn-primary">
                         <i class="fas fa-users"></i> Voir tous
                     </a>
                 </div>

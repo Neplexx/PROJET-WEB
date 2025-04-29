@@ -479,7 +479,7 @@ try {
             <div class="content-card">
                 <div class="card-header">
                     <h2 class="card-title">Projets correspondant à vos compétences</h2>
-                    <a href="../recherche.php" class="btn btn-primary">Voir plus</a>
+                    <a href="../employees.php?user_type=monteur" class="btn btn-primary">Voir plus</a>
                 </div>
                 
                 <?php if (!empty($projets)): ?>

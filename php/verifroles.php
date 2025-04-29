@@ -22,28 +22,28 @@ try {
 
     if ($user) {
         switch ($user['user_type']) {
-            case 'client':
+            case 'client': // fait
                 header("Location: espace/espace_client.php");
                 break;
-            case 'graphiste':
+            case 'graphiste': // fait
                 header("Location: espace/espace_graphiste.php");
                 break;
-            case 'monteur':
+            case 'monteur': // fait
                 header("Location: espace/espace_monteur.php");
                 break;
-            case 'employeur':
+            case 'employeur': // fait 
                 header("Location: espace/espace_employeur.php");
                 break;
             case 'admin':
                 header("Location: espace/espace_admin.php");
                 break;
-            case 'manager':
+            case 'manager': // fait
                 header("Location: espace/espace_manager.php");
                 break;
-            case 'développeur':
+            case 'développeur': // fait
                 header("Location: espace/espace_developpeur.php");
                 break;
-            case 'beatmaker':
+            case 'beatmaker': // fait
                 header("Location: espace/espace_beatmaker.php");
                 break;
             default:

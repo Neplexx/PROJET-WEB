@@ -70,6 +70,44 @@ if (!isset($_SESSION['user_id'])) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="../styles/style_employees.css">
 </head>
+<style>
+.success-message {
+    background-color: #2ecc71; 
+    color: white;
+    padding: 15px;
+    margin: 20px auto;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    max-width: 600px;
+}
+
+.success-message i {
+    font-size: 20px;
+}
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        display: none;
+    }
+}
+
+.success-message {
+    animation: fadeOut 5s forwards; 
+}
+</style>
 <script>
         function showContactForm(userId) {
             var form = document.getElementById('contact-form-' + userId);
@@ -84,9 +122,9 @@ if (!isset($_SESSION['user_id'])) {
 <?php
     if (isset($_GET['success']) && $_GET['success'] == 1): ?>
         <div class="success-message">
-            <i class="fas fa-check-circle"></i> Message envoyé avec succès !
+            <i class="fas fa-check-circle"></i> Votre message a été envoyé avec succès !
         </div>
-    <?php endif; ?>
+<?php endif; ?>
     
     <div class="search-container">
         <header class="search-header">

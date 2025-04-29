@@ -81,17 +81,17 @@ try {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         :root {
-            --primary: #1a237e; /* Bleu foncé */
-            --secondary: #3949ab; /* Bleu */
-            --accent: #d81b60; /* Rose */
-            --light: #e8eaf6; /* Fond très clair */
-            --dark: #0d47a1; /* Bleu très foncé */
-            --text: #1a237e; /* Couleur de texte principale */
-            --text-light: #5c6bc0; /* Texte secondaire */
+            --primary: #1a237e; 
+            --secondary: #3949ab; 
+            --accent: #d81b60; 
+            --light: #e8eaf6; 
+            --dark: #0d47a1; 
+            --text: #1a237e; 
+            --text-light: #5c6bc0; 
             --white: #ffffff;
-            --success: #43a047; /* Vert */
-            --warning: #fb8c00; /* Orange */
-            --danger: #e53935; /* Rouge */
+            --success: #43a047; 
+            --warning: #fb8c00; 
+            --danger: #e53935; 
         }
 
         body {

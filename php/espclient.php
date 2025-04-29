@@ -685,6 +685,12 @@ try {
                             </a>
                         </li>
                         <li>
+                            <a href="notifications.php" class="menu-item">
+                                <i class="fas fa-bell"></i>
+                                <span>Notifications</span>
+                            </a>
+                        </li>
+                        <li>
                             <a href="../php/settings.php" class="menu-item">
                                 <i class="fas fa-cog"></i>
                                 <span>Paramètres</span>

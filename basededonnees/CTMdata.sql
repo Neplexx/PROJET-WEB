@@ -2,10 +2,10 @@
 -- version 5.1.2
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Apr 26, 2025 at 09:45 AM
--- Server version: 5.7.24
--- PHP Version: 8.3.1
+-- Hôte : localhost:3306
+-- Généré le : mer. 30 avr. 2025 à 09:17
+-- Version du serveur : 5.7.24
+-- Version de PHP : 8.3.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `ctmdata`
+-- Base de données : `ctmdata`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `applications`
+-- Structure de la table `applications`
 --
 
 CREATE TABLE `applications` (
@@ -38,7 +38,7 @@ CREATE TABLE `applications` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `applications`
+-- Déchargement des données de la table `applications`
 --
 
 INSERT INTO `applications` (`application_id`, `project_id`, `editor_id`, `message`, `proposed_rate`, `status`, `applied_at`) VALUES
@@ -48,7 +48,7 @@ INSERT INTO `applications` (`application_id`, `project_id`, `editor_id`, `messag
 -- --------------------------------------------------------
 
 --
--- Table structure for table `editors`
+-- Structure de la table `editors`
 --
 
 CREATE TABLE `editors` (
@@ -60,7 +60,7 @@ CREATE TABLE `editors` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `editors`
+-- Déchargement des données de la table `editors`
 --
 
 INSERT INTO `editors` (`editor_id`, `user_id`, `years_experience`, `daily_rate`, `availability`) VALUES
@@ -70,7 +70,7 @@ INSERT INTO `editors` (`editor_id`, `user_id`, `years_experience`, `daily_rate`,
 -- --------------------------------------------------------
 
 --
--- Table structure for table `editor_skills`
+-- Structure de la table `editor_skills`
 --
 
 CREATE TABLE `editor_skills` (
@@ -81,7 +81,7 @@ CREATE TABLE `editor_skills` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `editor_skills`
+-- Déchargement des données de la table `editor_skills`
 --
 
 INSERT INTO `editor_skills` (`editor_skill_id`, `editor_id`, `skill_id`, `proficiency_level`) VALUES
@@ -97,7 +97,7 @@ INSERT INTO `editor_skills` (`editor_skill_id`, `editor_id`, `skill_id`, `profic
 -- --------------------------------------------------------
 
 --
--- Table structure for table `employers`
+-- Structure de la table `employers`
 --
 
 CREATE TABLE `employers` (
@@ -109,7 +109,7 @@ CREATE TABLE `employers` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `employers`
+-- Déchargement des données de la table `employers`
 --
 
 INSERT INTO `employers` (`employer_id`, `user_id`, `company_name`, `company_size`, `industry`) VALUES
@@ -119,7 +119,7 @@ INSERT INTO `employers` (`employer_id`, `user_id`, `company_name`, `company_size
 -- --------------------------------------------------------
 
 --
--- Table structure for table `messages`
+-- Structure de la table `messages`
 --
 
 CREATE TABLE `messages` (
@@ -133,7 +133,7 @@ CREATE TABLE `messages` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `messages`
+-- Déchargement des données de la table `messages`
 --
 
 INSERT INTO `messages` (`message_id`, `sender_id`, `receiver_id`, `project_id`, `content`, `is_read`, `sent_at`) VALUES
@@ -144,7 +144,7 @@ INSERT INTO `messages` (`message_id`, `sender_id`, `receiver_id`, `project_id`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `notifications`
+-- Structure de la table `notifications`
 --
 
 CREATE TABLE `notifications` (
@@ -152,15 +152,22 @@ CREATE TABLE `notifications` (
   `user_id` int(11) NOT NULL,
   `content` text NOT NULL,
   `is_read` tinyint(1) DEFAULT '0',
-  `notification_type` enum('application','message','project','review','system') NOT NULL,
+  `notification_type` enum('application','message','project','review','system','support') NOT NULL,
   `related_id` int(11) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Déchargement des données de la table `notifications`
+--
+
+INSERT INTO `notifications` (`notification_id`, `user_id`, `content`, `is_read`, `notification_type`, `related_id`, `created_at`) VALUES
+(1, 5, 'Nouveau message de support:\n\nDe: dahi badis (englishbadisdahi@gmail.com)\n\nMessage:\nProblème de paiement', 1, 'support', 5, '2025-04-30 09:07:40');
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `portfolios`
+-- Structure de la table `portfolios`
 --
 
 CREATE TABLE `portfolios` (
@@ -175,7 +182,7 @@ CREATE TABLE `portfolios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `portfolios`
+-- Déchargement des données de la table `portfolios`
 --
 
 INSERT INTO `portfolios` (`portfolio_id`, `editor_id`, `title`, `description`, `video_url`, `thumbnail_url`, `is_featured`, `created_at`) VALUES
@@ -187,7 +194,7 @@ INSERT INTO `portfolios` (`portfolio_id`, `editor_id`, `title`, `description`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `projects`
+-- Structure de la table `projects`
 --
 
 CREATE TABLE `projects` (
@@ -204,7 +211,7 @@ CREATE TABLE `projects` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `projects`
+-- Déchargement des données de la table `projects`
 --
 
 INSERT INTO `projects` (`project_id`, `employer_id`, `title`, `description`, `project_type`, `budget`, `start_date`, `end_date`, `status`, `created_at`) VALUES
@@ -214,7 +221,7 @@ INSERT INTO `projects` (`project_id`, `employer_id`, `title`, `description`, `pr
 -- --------------------------------------------------------
 
 --
--- Table structure for table `project_requirements`
+-- Structure de la table `project_requirements`
 --
 
 CREATE TABLE `project_requirements` (
@@ -225,7 +232,7 @@ CREATE TABLE `project_requirements` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `project_requirements`
+-- Déchargement des données de la table `project_requirements`
 --
 
 INSERT INTO `project_requirements` (`requirement_id`, `project_id`, `skill_id`, `importance`) VALUES
@@ -239,7 +246,7 @@ INSERT INTO `project_requirements` (`requirement_id`, `project_id`, `skill_id`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `reviews`
+-- Structure de la table `reviews`
 --
 
 CREATE TABLE `reviews` (
@@ -253,7 +260,7 @@ CREATE TABLE `reviews` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `reviews`
+-- Déchargement des données de la table `reviews`
 --
 
 INSERT INTO `reviews` (`review_id`, `reviewer_id`, `reviewed_id`, `project_id`, `rating`, `comment`, `created_at`) VALUES
@@ -263,7 +270,7 @@ INSERT INTO `reviews` (`review_id`, `reviewer_id`, `reviewed_id`, `project_id`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `skills`
+-- Structure de la table `skills`
 --
 
 CREATE TABLE `skills` (
@@ -273,7 +280,7 @@ CREATE TABLE `skills` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `skills`
+-- Déchargement des données de la table `skills`
 --
 
 INSERT INTO `skills` (`skill_id`, `skill_name`, `category`) VALUES
@@ -296,7 +303,7 @@ INSERT INTO `skills` (`skill_id`, `skill_name`, `category`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Structure de la table `users`
 --
 
 CREATE TABLE `users` (
@@ -314,15 +321,15 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `users`
+-- Déchargement des données de la table `users`
 --
 
 INSERT INTO `users` (`user_id`, `email`, `password`, `first_name`, `last_name`, `phone`, `profile_picture`, `bio`, `user_type`, `created_at`, `updated_at`) VALUES
-(1, 'monteur1@example.com', 'salutlesmecs', 'Jean', 'Dupont', '0612345678', 'profile1.jpg', 'Monteur professionnel avec 5 ans d\'expérience dans le documentaire et la publicité.', 'monteur', '2025-04-07 18:19:08', '2025-04-07 18:19:08'),
+(1, 'monteur1@example.com', 'salutlesmecs', 'Jean', 'Dupont', '0612345678', 'profile1.jpg', 'Monteur professionnel avec 5 ans d\'expérience dans le documentaire et la publicité.', 'monteur', '2025-04-07 18:19:08', '2025-04-26 10:58:04'),
 (2, 'monteur2@example.com', 'jenesaispas', 'Marie', 'Martin', '0698765432', 'profile2.jpg', 'Spécialisée en motion design et montage créatif pour les réseaux sociaux.', 'monteur', '2025-04-07 18:19:08', '2025-04-07 18:19:08'),
 (3, 'employeur1@example.com', 'motdepassetemporaire', 'Pierre', 'Durand', '0687654321', 'company1.jpg', 'Producteur indépendant de courts-métrages et documentaires.', 'employeur', '2025-04-07 18:19:08', '2025-04-07 18:19:08'),
 (4, 'employeur2@example.com', 'oiseau', 'Sophie', 'Leroy', '0678912345', 'company2.jpg', 'Directrice de production dans une agence de publicité.', 'employeur', '2025-04-07 18:19:08', '2025-04-07 18:19:08'),
-(5, 'englishbadisdahi@gmail.com', 'motdepasse', 'dahi', 'badis', '454', NULL, '5454\r\n', 'monteur', '2025-04-08 17:47:46', '2025-04-09 17:34:30'),
+(5, 'englishbadisdahi@gmail.com', 'motdepasse', 'dahi', 'badis', '454', NULL, '5454\r\n', 'admin', '2025-04-08 17:47:46', '2025-04-30 08:17:36'),
 (6, 'max.castagne@example.com', 'maxpass23', 'Max', 'Castagne', '0678452310', 'profile1.jpg', 'Spécialiste du montage court-métrage avec un sens aigu du rythme.', 'monteur', '2025-04-08 13:42:52', '2025-04-08 13:42:52'),
 (7, 'jack.chrass@example.com', 'jackedit99', 'Jack', 'Chrass', '0770213456', 'profile1.jpg', 'Monteur avec une grande expérience dans le clip musical et les transitions dynamiques.', 'monteur', '2025-04-08 13:42:52', '2025-04-08 13:42:52'),
 (8, 'pierre.calvasse@example.com', 'pierrevideo88', 'Pierre', 'Calvasse', '0679981203', 'profile1.jpg', 'Expert en storytelling vidéo, adepte des logiciels Adobe Premiere et DaVinci.', 'monteur', '2025-04-08 13:42:52', '2025-04-08 13:42:52'),
@@ -342,14 +349,15 @@ INSERT INTO `users` (`user_id`, `email`, `password`, `first_name`, `last_name`, 
 (22, 'beatmaker1@example.com', 'antoinebeat', 'Antoine', 'Perrot', '0678912345', 'profile1.jpg', 'Beatmaker influencé par le boom bap et les textures vintage.', 'beatmaker', '2025-04-08 13:42:52', '2025-04-08 13:42:52'),
 (23, 'beatmaker2@example.com', 'juliebass', 'Julie', 'Barbier', '0778891234', 'profile1.jpg', 'Productrice musicale, je crée des sons doux et percutants à la fois.', 'beatmaker', '2025-04-08 13:42:52', '2025-04-08 13:42:52'),
 (24, 'beatmaker3@example.com', 'maximeloop', 'Maxime', 'Richard', '0670098765', 'profile1.jpg', 'Spécialiste des instrumentales trap et RnB, je façonne des hits sur mesure.', 'beatmaker', '2025-04-08 13:42:52', '2025-04-08 13:42:52'),
-(25, 'beatmaker4@example.com', 'sarahprod', 'Sarah', 'Gauthier', '0767801234', 'profile1.jpg', 'Beatmakeuse polyvalente, de l’électro chill au hip-hop expérimental.', 'beatmaker', '2025-04-08 13:42:52', '2025-04-08 13:42:52');
+(25, 'beatmaker4@example.com', 'sarahprod', 'Sarah', 'Gauthier', '0767801234', 'profile1.jpg', 'Beatmakeuse polyvalente, de l’électro chill au hip-hop expérimental.', 'beatmaker', '2025-04-08 13:42:52', '2025-04-08 13:42:52'),
+(26, 'maxlamax@gmail.com', 'maxlamax', 'Max', 'LaMax', NULL, NULL, NULL, 'client', '2025-04-30 08:45:55', '2025-04-30 08:45:55');
 
 --
--- Indexes for dumped tables
+-- Index pour les tables déchargées
 --
 
 --
--- Indexes for table `applications`
+-- Index pour la table `applications`
 --
 ALTER TABLE `applications`
   ADD PRIMARY KEY (`application_id`),
@@ -357,14 +365,14 @@ ALTER TABLE `applications`
   ADD KEY `editor_id` (`editor_id`);
 
 --
--- Indexes for table `editors`
+-- Index pour la table `editors`
 --
 ALTER TABLE `editors`
   ADD PRIMARY KEY (`editor_id`),
   ADD KEY `user_id` (`user_id`);
 
 --
--- Indexes for table `editor_skills`
+-- Index pour la table `editor_skills`
 --
 ALTER TABLE `editor_skills`
   ADD PRIMARY KEY (`editor_skill_id`),
@@ -372,42 +380,42 @@ ALTER TABLE `editor_skills`
   ADD KEY `skill_id` (`skill_id`);
 
 --
--- Indexes for table `employers`
+-- Index pour la table `employers`
 --
 ALTER TABLE `employers`
   ADD PRIMARY KEY (`employer_id`),
   ADD KEY `user_id` (`user_id`);
 
 --
--- Indexes for table `messages`
+-- Index pour la table `messages`
 --
 ALTER TABLE `messages`
   ADD PRIMARY KEY (`message_id`),
   ADD KEY `project_id` (`project_id`);
 
 --
--- Indexes for table `notifications`
+-- Index pour la table `notifications`
 --
 ALTER TABLE `notifications`
   ADD PRIMARY KEY (`notification_id`),
   ADD KEY `user_id` (`user_id`);
 
 --
--- Indexes for table `portfolios`
+-- Index pour la table `portfolios`
 --
 ALTER TABLE `portfolios`
   ADD PRIMARY KEY (`portfolio_id`),
   ADD KEY `editor_id` (`editor_id`);
 
 --
--- Indexes for table `projects`
+-- Index pour la table `projects`
 --
 ALTER TABLE `projects`
   ADD PRIMARY KEY (`project_id`),
   ADD KEY `employer_id` (`employer_id`);
 
 --
--- Indexes for table `project_requirements`
+-- Index pour la table `project_requirements`
 --
 ALTER TABLE `project_requirements`
   ADD PRIMARY KEY (`requirement_id`),
@@ -415,88 +423,88 @@ ALTER TABLE `project_requirements`
   ADD KEY `skill_id` (`skill_id`);
 
 --
--- Indexes for table `reviews`
+-- Index pour la table `reviews`
 --
 ALTER TABLE `reviews`
   ADD PRIMARY KEY (`review_id`),
   ADD KEY `project_id` (`project_id`);
 
 --
--- Indexes for table `skills`
+-- Index pour la table `skills`
 --
 ALTER TABLE `skills`
   ADD PRIMARY KEY (`skill_id`),
   ADD UNIQUE KEY `skill_name` (`skill_name`);
 
 --
--- Indexes for table `users`
+-- Index pour la table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`user_id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT pour les tables déchargées
 --
 
 --
--- AUTO_INCREMENT for table `applications`
+-- AUTO_INCREMENT pour la table `applications`
 --
 ALTER TABLE `applications`
   MODIFY `application_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `editor_skills`
+-- AUTO_INCREMENT pour la table `editor_skills`
 --
 ALTER TABLE `editor_skills`
   MODIFY `editor_skill_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT for table `messages`
+-- AUTO_INCREMENT pour la table `messages`
 --
 ALTER TABLE `messages`
   MODIFY `message_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `notifications`
+-- AUTO_INCREMENT pour la table `notifications`
 --
 ALTER TABLE `notifications`
-  MODIFY `notification_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `notification_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `portfolios`
+-- AUTO_INCREMENT pour la table `portfolios`
 --
 ALTER TABLE `portfolios`
   MODIFY `portfolio_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `projects`
+-- AUTO_INCREMENT pour la table `projects`
 --
 ALTER TABLE `projects`
   MODIFY `project_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `project_requirements`
+-- AUTO_INCREMENT pour la table `project_requirements`
 --
 ALTER TABLE `project_requirements`
   MODIFY `requirement_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `reviews`
+-- AUTO_INCREMENT pour la table `reviews`
 --
 ALTER TABLE `reviews`
   MODIFY `review_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `skills`
+-- AUTO_INCREMENT pour la table `skills`
 --
 ALTER TABLE `skills`
   MODIFY `skill_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

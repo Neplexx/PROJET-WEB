@@ -36,6 +36,11 @@ try {
 } catch (\PDOException $e) {
     die("Erreur de connexion à la base de données: " . $e->getMessage());
 }
+
+if (isset($_SESSION['support_message'])) {
+    $message = $_SESSION['support_message'];
+    unset($_SESSION['support_message']);
+}
 ?>
 
 <html lang="fr">

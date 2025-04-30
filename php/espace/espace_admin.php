@@ -68,6 +68,23 @@ try {
         $stmt->execute([$search_term, $search_term, $search_term]);
         $search_results = $stmt->fetchAll();
     }
+        // Ajoutez cette requête après les autres requêtes SQL
+    $stmt = $pdo->prepare("SELECT n.*, u.first_name, u.last_name, u.email 
+    FROM notifications n
+    LEFT JOIN users u ON n.related_id = u.user_id
+    ORDER BY n.created_at DESC LIMIT 10");
+    $stmt->execute();
+    $notifications = $stmt->fetchAll();
+
+    // Marquer les notifications comme lues
+    if (!empty($notifications)) {
+        $unread_ids = array_column(array_filter($notifications, function($n) { return !$n['is_read']; }), 'notification_id');
+    }
+    if (!empty($unread_ids)) {
+        $placeholders = implode(',', array_fill(0, count($unread_ids), '?'));
+        $pdo->prepare("UPDATE notifications SET is_read = 1 WHERE notification_id IN ($placeholders)")
+        ->execute($unread_ids);
+    }
 
 } catch(PDOException $e) {
     die("Erreur de connexion à la base de données: " . $e->getMessage());
@@ -496,6 +513,127 @@ try {
             display: flex;
             gap: 0.5rem;
         }
+        .notifications-container {
+            max-height: 600px;
+            overflow-y: auto;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            background: white;
+            margin-top: 20px;
+        }
+
+        .notifications-container::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .notifications-container::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        .notifications-container::-webkit-scrollbar-thumb {
+            background: #c1c1c1;
+            border-radius: 10px;
+        }
+
+        .notifications-container::-webkit-scrollbar-thumb:hover {
+            background: #a8a8a8;
+        }
+
+        .unread {
+            background-color: rgba(25, 118, 210, 0.05);
+            position: relative;
+        }
+
+        .unread::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background-color: #1976d2;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .notifications-container table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+        }
+
+        .notifications-container th, 
+        .notifications-container td {
+            padding: 16px 24px;
+            text-align: left;
+            border-bottom: 1px solid #f0f0f0;
+            vertical-align: top;
+        }
+
+        .notifications-container th {
+            background-color: #fafafa;
+            position: sticky;
+            top: 0;
+            font-weight: 600;
+            color: #424242;
+            text-transform: uppercase;
+            font-size: 0.8em;
+            letter-spacing: 0.5px;
+            backdrop-filter: blur(5px);
+        }
+
+        .notifications-container tr:last-child td {
+            border-bottom: none;
+        }
+
+        .notifications-container tr:hover {
+            background-color: rgba(25, 118, 210, 0.03);
+        }
+
+        .notifications-container td:first-child {
+            font-weight: 500;
+            color: #1976d2;
+        }
+
+        .notifications-container .notification-time {
+            color: #757575;
+            font-size: 0.85em;
+            white-space: nowrap;
+        }
+
+        .notifications-container .notification-content {
+            line-height: 1.6;
+            color: #424242;
+        }
+
+        .notifications-container .user-badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.75em;
+            font-weight: 500;
+            margin-top: 4px;
+        }
+
+        .notifications-container .user-badge.admin {
+            background-color: #d81b60;
+            color: white;
+        }
+
+        .notifications-container .user-badge.monteur {
+            background-color: #3949ab;
+            color: white;
+        }
+
+        .notifications-container .user-badge.employeur {
+            background-color: #43a047;
+            color: white;
+        }
+
+        .notifications-container .user-badge.client {
+            background-color: #fb8c00;
+            color: white;
+        }
 
         @media (max-width: 1200px) {
             .stats-grid {
@@ -625,7 +763,7 @@ try {
                                         '<?php echo htmlspecialchars($user['email'], ENT_QUOTES); ?>',
                                         '<?php echo htmlspecialchars($user['user_type'], ENT_QUOTES); ?>'
                                     )">
-                                    </form>
+                                    </button>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
@@ -694,5 +832,45 @@ try {
             <?php endif; ?>
         </div>
 
+        <div class="admin-card">
+            <div class="card-header">
+                <h2 class="card-title">Notifications de support</h2>
+            </div>
+            
+            <div class="notifications-container">
+                <?php if (empty($notifications)): ?>
+                    <p>Aucune notification pour le moment.</p>
+                <?php else: ?>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Expéditeur</th>
+                                <th>Message</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($notifications as $notification): ?>
+                                <tr class="<?php echo !$notification['is_read'] ? 'unread' : ''; ?>">
+                                    <td>
+                                        <?php if ($notification['first_name']): ?>
+                                            <?php echo htmlspecialchars($notification['first_name']) . ' ' . htmlspecialchars($notification['last_name']); ?>
+                                            <br>
+                                            <?php echo htmlspecialchars($notification['email']); ?>
+                                        <?php else: ?>
+                                            Utilisateur inconnu
+                                        <?php endif; ?>
+                                    </td>
+                                    <td><?php echo nl2br(htmlspecialchars($notification['content'])); ?></td>
+                                    <td><?php echo date('d/m/Y H:i', strtotime($notification['created_at'])); ?></td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                <?php endif; ?>
+            </div>               
+        </div>
+    </div>
 </body>
 </html>
+

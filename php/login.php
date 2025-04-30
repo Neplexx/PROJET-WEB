@@ -237,8 +237,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="tabs">
             <div class="tab active">Connexion</div>
             <div class="tab" onclick="window.location.href='inscription.php'">Inscription</div>
-        </div>
-        
+        </div>        
         <div class="form-container">
             <div id="login-form" class="form-content active">
                 <form action="login.php" method="post">
